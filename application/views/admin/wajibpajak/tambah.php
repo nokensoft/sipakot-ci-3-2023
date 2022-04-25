@@ -125,6 +125,18 @@
                                                     </div>
 
                                                     <div class="form-group mb-3">
+                                                        <label for="usaha_kategori">Distrik <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
+                                                        <select class="form-control form-control-lg" name="usaha_kategori" id="usaha_kategori" required>
+                                                            <option></option>
+                                                            <option value="abepura">Abepura</option>
+                                                            <option value="heram">Heram</option>
+                                                            <option value="jprutara">Jayapura Utara</option>
+                                                            <option value="jprselatan">Jayapura Selatan</option>
+                                                            <option value="muaratami">Muara Tami</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group mb-3">
                                                         <label for="usaha_kategori">Kategori Usaha <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
                                                         <select class="form-control form-control-lg" name="usaha_kategori" id="usaha_kategori" required>
                                                             <option></option>
