@@ -3,21 +3,21 @@
 ## Control Panel
 
 ### Admin
-| URLs : /admin
+`| URLs : /admin
 | Email : admin.sipakot@jayapurakota.go.id
-| Pass : qwerty12345
+| Pass : qwerty12345`
 
 ### Pelaksana
-| URLs : /pelaksana
+`| URLs : /pelaksana
 | Email : sacode.pelaksana@sacode.web.id
-| Pass : qwerty12345
+| Pass : qwerty12345`
 
 ### Dispenda
-| URLs : /dispenda
+`| URLs : /dispenda
 | Email : 
-| Pass : qwerty12345
+| Pass : qwerty12345`
 
 ### Wajib Pajak
-| URLs : /wajibpajak
+`| URLs : /wajibpajak
 | Email : sacode.wajibpajak@sacode.web.id
-| Pass : qwerty12345
+| Pass : qwerty12345`
