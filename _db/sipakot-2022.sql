@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2022 at 02:04 PM
+-- Generation Time: Apr 26, 2022 at 05:43 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -1765,9 +1765,9 @@ CREATE TABLE `wajib_pajak` (
 --
 
 INSERT INTO `wajib_pajak` (`id_wp`, `pemilik_nama`, `pemilik_foto`, `pemilik_email`, `pemilik_kata_sandi`, `pemilik_telp`, `pemilik_alamat`, `usaha_nama`, `usaha_logo`, `usaha_email`, `usaha_telp`, `usaha_alamat`, `usaha_kategori`, `usaha_luas_bangunan`, `usaha_luas_lahan`, `usaha_izin`, `usaha_dokumen`, `usaha_kos_jml_kmr`, `usaha_kos_jml_penghuni`, `usaha_rm_jml_kursi`, `usaha_keterangan`, `usaha_distrik`, `created_by`, `created_at`, `is_active`, `hapus`) VALUES
-('1621923113', 'Hasah Bakti Naba', 'default-user.png', 'hasah@gmail.com', '$2y$10$eZYoqvye8DVCMx/x1OKuaewYrdsVGU.HNaa0P0JlLCppeiaE3RCFS', '081344543691', 'Kompleks KUD Expo', 'Rumah Kos Hasah Bakti Naba', 'default-image.png', 'hasah@gmail.com', '081344543691', 'Kompleks KUD Expo', 2, '', '', '', '', '14', '42', '', '', '', 0, '2021-05-25 06:15:40', 1, 0),
-('1621923117', 'Ridwan', 'default-user.png', 'ridwanwaena@gmail.com', '$2y$10$kSDVZsIP.uMHVmVeVkVFKOgRO9ydO9WZov/ZqYMb8MsSc2wpI4yiK', '08124816892', 'Jl. Gelanggang Waena', 'Rumah Kos Ridwan', 'default-image.png', 'ridwanwaena@gmail.com', '08124816892', 'Jl. Gelanggang Waena', 2, '', '', 'Tidak Ada', 'Tidak Ada', '23', '49', '', '', '', 0, '2021-05-25 06:14:24', 1, 0),
-('1621923127', 'Hermin Tati', 'default-user.png', 'hermintati@gmail.com', '$2y$10$jnscbDkibsNITHXb4i3b9O.JtlRYISjif1CJgGmSLDgfUAJS4Exjy', '082216112625', 'Jl. Yoka', 'Rumah Kos Hermin Tati', 'default-image.png', 'hermintati@gmail.com', '081240207175', 'Jl. Yoka', 2, '', '', '', '', '25', '71', '', '', '', 0, '2021-05-25 06:12:19', 1, 0),
+('1621923113', 'Hasah Bakti Naba', 'default-user.png', 'hasah@gmail.com', '$2y$10$eZYoqvye8DVCMx/x1OKuaewYrdsVGU.HNaa0P0JlLCppeiaE3RCFS', '081344543691', 'Kompleks KUD Expo', 'Rumah Kos Hasah Bakti Naba', 'default-image.png', 'hasah@gmail.com', '081344543691', 'Kompleks KUD Expo', 2, '', '', '', '', '14', '42', '', '', 'jprutara', 0, '2021-05-25 06:15:40', 1, 0),
+('1621923117', 'Ridwan', 'default-user.png', 'ridwanwaena@gmail.com', '$2y$10$kSDVZsIP.uMHVmVeVkVFKOgRO9ydO9WZov/ZqYMb8MsSc2wpI4yiK', '08124816892', 'Jl. Gelanggang Waena', 'Rumah Kos Ridwan', 'default-image.png', 'ridwanwaena@gmail.com', '08124816892', 'Jl. Gelanggang Waena', 2, '', '', 'Tidak Ada', 'Tidak Ada', '23', '49', '', '', 'jprutara', 0, '2021-05-25 06:14:24', 1, 0),
+('1621923127', 'Hermin Tati', 'default-user.png', 'hermintati@gmail.com', '$2y$10$jnscbDkibsNITHXb4i3b9O.JtlRYISjif1CJgGmSLDgfUAJS4Exjy', '082216112625', 'Jl. Yoka', 'Rumah Kos Hermin Tati', 'default-image.png', 'hermintati@gmail.com', '081240207175', 'Jl. Yoka', 2, '', '', '', '', '25', '71', '', '', 'abepura', 0, '2021-05-25 06:12:19', 1, 0),
 ('1621923145', 'Herdrik seru', 'default-user.png', 'herdrikseru@gmail.com', '$2y$10$rDvm9bR9cGfEDqf9Skzzq.fzNpt1Bd9Jy7Lq7FunFQgglaE4/L0ry', '081344767706', 'Jl Yotefa', 'Rumah Kos Herdrik Seru', 'default-image.png', 'herdrikseru@gmail.com', '081344767706', 'Jl Yotefa', 2, '', '', '', '', '8', '17', '', '', '', 0, '2021-05-25 06:16:51', 0, 1),
 ('1621923304', 'Sudin Retob', 'default-user.png', 'sudinretob@gmail.com', '$2y$10$kbAN4jqO7YLkcpn0X1Z3bOJY1bbOkHAaBrMcWaBjH.SPmojb8DBEK', '', 'Jl. Gelanggang Waena', 'Rumah Kos Sudin Retob', 'default-image.png', 'sudinretob@gmail.com', '', 'Jl. Gelanggang Waena', 2, '', '', 'Tidak Ada', 'Tidak Ada', '10', '32', '', '', '', 0, '2021-05-25 06:17:19', 1, 0),
 ('1621923352', 'Hj. Munahdira', 'default-user.png', 'munahdira@gmail.com', '$2y$10$qrViL9ttClyK/DmMbv6z2.cDIFT1T2goCb.92UK93NTWTixQyQbv.', '081344453293', 'Kompleks KUD Expo', 'Rumah Kos Hj. Munahdira', 'default-image.png', 'munahdira@gmail.com', '081344453293', 'Kompleks KUD Expo', 2, '', '', '', '', '16', '64', '', '', '', 0, '2021-05-25 06:18:39', 1, 0),

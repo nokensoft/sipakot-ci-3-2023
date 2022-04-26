@@ -103,10 +103,8 @@
 
                         </div>
                         <!-- end row-->
-
-
-                        <!-- start row  -->
-                        <div class="row">
+   <!-- start row  -->
+   <div class="row">
                             <!-- start col  -->
                             <div class="col-lg-6 col-xl-6">
                                 
@@ -216,12 +214,150 @@
 
                         </div>
                         <!-- end row  -->
+                        <!-- Grafik -->
+                           <!-- start row -->
+                           <div class="row">
+                            <!-- start col -->
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-dark">
+                                        <h4 class="text-light">Distrik <sup class="badge badge-warning text-dark"> Grafik</sup></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class=""></h3>
+                                        <div class="mt-4">
+                                            <div id="chart3"></div>
+                                        </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                             <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+
+                        <!-- start row -->
+                         <div class="row">
+                            <!-- start col  -->
+                            <div class="col-lg-6 col-xl-6">     
+                                <div class="card">
+                                    <div class="card-header bg-dark">
+                                        <h4 class="text-light">Wajib Pajak <sup class="badge badge-warning text-dark">Grafik</sup></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mt-4">
+                                            <div id="chart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col  -->
+
+                            <!-- start col -->
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="card">
+                                    <div class="card-header bg-dark">
+                                        <h4 class="text-light">Tagihan <sup class="badge badge-warning text-dark"> Grafik</sup></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class=""></h3>
+                                        <div class="mt-4">
+                                            <div id="chart2"></div>
+                                        </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                             <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+
+                      
+                     
                         
                     </div> <!-- container -->
 
                 </div> <!-- content -->    
-            
-            
+                
+        <!--C3 Chart-->
+        <script src="<?= base_url() ?>assets/libs/d3/d3.min.js"></script>
+        <script src="<?= base_url() ?>assets/libs/c3/c3.min.js"></script>
+
+        <script>
+            var chart = c3.generate({
+                bindto: '#chart',
+                data: {
+                    columns: [
+                        ['Total Wajib Pajak', <?php echo $totalWajibPajak; ?>],
+                        ['Total Wajib Pajak Non Niaga', <?= $totalNonNiaga ?>],
+                        ['Total Wajib Pajak Niaga Kecil', <?= $totalNiagaKecil ?>],
+                        ['Total Wajib Pajak Niaga Besar', <?= $totalNiagaBesar ?>],
+                        ['Total Wajib Pajak Industri Besar', <?= $totalIndustriBesar ?>],
+                    ],
+                    type: 'bar',
+                    labels: true
+
+                },
+                bar: {
+                    width: {
+                        ratio: 0.9 // this makes bar width 50% of length between ticks
+                    }
+                    // or
+                    //width: 100 // this makes bar width 100px
+                }
+            });
+
+            var chart = c3.generate({
+                bindto: '#chart2',
+                data: {
+                    columns: [
+                        ['Total Tagihan', <?php echo $totalTagihan; ?>],
+                        ['Total Tagihan Non Niaga', <?= $totalNonNiaga ?>],
+                        ['Total Tagihan Niaga Kecil', <?= $totalTagihanNiagaKecil ?>],
+                        ['Total Tagihan  Industri Kecil', <?= $totalTagihanIndustriKecil ?>],
+                        ['Total Tagihan Niaga Besar', <?= $totalTagihanNiagaBesar ?>],
+                        ['Total Tagihan  Industri Besar', <?= $totalTagihanIndustriBesar ?>]
+                    ],
+                    type: 'bar',
+                    labels: true
+                },
+                bar: {
+                    width: {
+                        ratio: 0.9 // this makes bar width 50% of length between ticks
+                    },
+                    zoom: {
+                        enabled: true
+                    }
+                    // or
+                    //width: 100 // this makes bar width 100px
+                }
+            });
+
+            var chart = c3.generate({
+                bindto: '#chart3',
+                data: {
+                    columns: [
+                        ['Abepura', <?= $totalAbepura ?>],
+                        ['Heram', <?= $totalHeram ?>],
+                        ['Jayapura Utara', <?= $totalJprutara ?>],
+                        ['Jayapura Selatan', <?= $totalJprselatan ?>],
+                        ['Muara Tami', <?= $totalMuaratami ?>],
+                    ],
+                    type: 'bar',
+                    labels: true
+                },
+                bar: {
+                    width: {
+                        ratio: 0.9 // this makes bar width 50% of length between ticks
+                    },
+                    zoom: {
+                        enabled: true
+                    }
+                    // or
+                    //width: 100 // this makes bar width 100px
+                }
+            });
+        </script>
             
             
             

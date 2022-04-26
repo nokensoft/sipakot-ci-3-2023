@@ -11,6 +11,7 @@ class Admin extends CI_Controller
 		$this->load->model('M_wajibpajak');
 		$this->load->model('M_user');
 		$this->load->model('M_tagihan');
+		$this->load->model('M_distrik');
 
 		if ($this->session->userdata('status') != "telah_login") {
 			redirect(base_url("admin/masuk"));
@@ -77,8 +78,32 @@ class Admin extends CI_Controller
 
 			'dasbor_info_wajib_pajak_baru' => $this->M_opsi->dasbor_info_wajib_pajak_baru(),
 			'dasbor_info_tagihan_baru' => $this->M_opsi->dasbor_info_tagihan_baru(),
+
+			// total wajibpajak
+			'totalWajibPajak' => $this->M_wajibpajak->totalWajibPajak(),
+			'totalNonNiaga' => $this->M_wajibpajak->totalNonNiaga(),
+			'totalNiagaKecil' => $this->M_wajibpajak->totalNiagaKecil(),
+			'totalIndustriKecil' => $this->M_wajibpajak->totalIndustriKecil(),
+			'totalNiagaBesar' => $this->M_wajibpajak->totalNiagaBesar(),
+			'totalIndustriBesar' => $this->M_wajibpajak->totalIndustriBesar(),
+
+			// total tagihan
+			'totalTagihan' => $this->M_tagihan->totalTagihan(),
+			'totalTagihanNonNiaga' => $this->M_tagihan->totalTagihanNonNiaga(),
+			'totalTagihanNiagaKecil' => $this->M_tagihan->totalTagihanNiagaKecil(),
+			'totalTagihanIndustriKecil' => $this->M_tagihan->totalTagihanIndustriKecil(),
+			'totalTagihanNiagaBesar' => $this->M_tagihan->totalTagihanNiagaBesar(),
+			'totalTagihanIndustriBesar' => $this->M_tagihan->totalTagihanIndustriBesar(),
+
+			// Total Distrik
+			'totalAbepura' => $this->M_distrik->totalDistrikAbepura(),
+			'totalHeram' => $this->M_distrik->totalDistrikHeram(),
+			'totalJprutara' => $this->M_distrik->totalDistrikJprutara(),
+			'totalJprselatan' => $this->M_distrik->totalDistrikJprselatan(),
+			'totalMuaratami' => $this->M_distrik->totalDistrikMuaratami(),
 		);
-		
+	
+
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
 			'footer_text' => $this->M_pengaturan->footer_text(),

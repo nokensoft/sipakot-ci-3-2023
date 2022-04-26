@@ -139,6 +139,66 @@ class M_tagihan extends CI_Model
     {
         // 
     }
+
+
+     // 	total tagihan
+     function totalTagihan()
+     {
+         return $this->db->from("tagihan")
+                         ->where("hapus", "0")
+                         ->join('wajib_pajak', 'wajib_pajak.id_wp=tagihan.id_wp')
+                         ->count_all_results();
+     }
+ 
+     // total non niaga [1]
+     function totalTagihanNonNiaga()
+     {
+         return $this->db->from("tagihan")
+                         ->where("hapus", "0")
+                         ->where_in('wajib_pajak.usaha_kategori', '1')
+                         ->join('wajib_pajak', 'wajib_pajak.id_wp=tagihan.id_wp')
+                         ->count_all_results();
+     }
+ 
+     // total niaga kecil [2]
+     function totalTagihanNiagaKecil()
+     {
+         return $this->db->from("tagihan")
+                         ->where("hapus", "0")
+                         ->where_in('wajib_pajak.usaha_kategori', '2')
+                         ->join('wajib_pajak', 'wajib_pajak.id_wp=tagihan.id_wp')
+                         ->count_all_results();
+     }
+ 
+     // total niaga kecil [3]
+     function totalTagihanIndustriKecil()
+     {
+         return $this->db->from("tagihan")
+                         ->where("hapus", "0")
+                         ->where_in('wajib_pajak.usaha_kategori', '3')
+                         ->join('wajib_pajak', 'wajib_pajak.id_wp=tagihan.id_wp')
+                         ->count_all_results();
+     }
+ 
+     // total niaga besar [4]
+     function totalTagihanNiagaBesar()
+     {
+         return $this->db->from("tagihan")
+                         ->where("hapus", "0")
+                         ->where_in('wajib_pajak.usaha_kategori', '4')
+                         ->join('wajib_pajak', 'wajib_pajak.id_wp=tagihan.id_wp')
+                         ->count_all_results();
+     }
+ 
+     // total industri besar [5]
+     function totalTagihanIndustriBesar()
+     {
+         return $this->db->from("tagihan")
+                         ->where("hapus", "0")
+                         ->where_in('wajib_pajak.usaha_kategori', '5')
+                         ->join('wajib_pajak', 'wajib_pajak.id_wp=tagihan.id_wp')
+                         ->count_all_results();
+     }
 }
 
 

@@ -103,6 +103,63 @@ class M_wajibpajak extends CI_Model
 
 
 
+	// Menghitung Jumlah
+
+	 // 	total wajib pajak
+	 function totalWajibPajak()
+	 {
+		 return $this->db->from("wajib_pajak")
+						 ->where("hapus", "0")
+						 ->count_all_results();
+	 }
+ 
+	 // total wajib pajak : non niaga [1]
+	 function totalNonNiaga()
+	 {
+		 return $this->db->from("wajib_pajak")
+						 ->where("hapus", "0")
+						 ->where("usaha_kategori", "1")
+						 ->count_all_results();
+	 }
+ 
+	 // total wajib pajak : niaga kecil [2]
+	 function totalNiagaKecil()
+	 {
+		 return $this->db->from("wajib_pajak")
+						 ->where("hapus", "0")
+						 ->where("usaha_kategori", "2")
+						 ->count_all_results();
+	 }
+ 
+	 // total wajib pajak : industri kecil [3]
+	 function totalIndustriKecil()
+	 {
+		 return $this->db->from("wajib_pajak")
+						 ->where("hapus", "0")
+						 ->where("usaha_kategori", "3")
+						 ->count_all_results();
+	 }
+ 
+	 // total wajib pajak : niaga besar [4]
+	 function totalNiagaBesar()
+	 {
+		 return $this->db->from("wajib_pajak")
+						 ->where("hapus", "0")
+						 ->where("usaha_kategori", "4")
+						 ->count_all_results();
+	 }
+ 
+	 // total wajib pajak : industri besar [5]
+	 function totalIndustriBesar()
+	 {
+		 return $this->db->from("wajib_pajak")
+						 ->where("hapus", "0")
+						 ->where("usaha_kategori", "5")
+						 ->count_all_results();
+	 }
+
+
+
 
 
 

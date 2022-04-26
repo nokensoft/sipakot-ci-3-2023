@@ -29,6 +29,8 @@
     <!-- icons -->
     <link href="<?= base_url('assets/css/icons.min.css') ?>" rel="stylesheet" type="text/css" />
 
+    <!-- C3 Chart css -->
+    <link href="<?= base_url() ?>/assets/libs/c3/c3.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="loading"  data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": true}, "topbar": {"color": "light"}, "showRightSidebarOnPageLoad": true}'>
