@@ -12,6 +12,7 @@ class Admin extends CI_Controller
 		$this->load->model('M_user');
 		$this->load->model('M_tagihan');
 		$this->load->model('M_distrik');
+		$this->load->model('M_berita');
 
 		if ($this->session->userdata('status') != "telah_login") {
 			redirect(base_url("admin/masuk"));
@@ -874,6 +875,64 @@ class Admin extends CI_Controller
 
 
 
+	/**
+	 * ==========================================================
+	 * ADMIN > BERITA
+	 * ==========================================================
+	*/
+
+
+
+	// admin > berita
+	public function berita()
+	{
+		
+		$this->db->order_by('id', 'DESC');
+		$data['berita'] = $this->M_berita->baca_berita('berita')->result_array();
+		
+		$pengaturan = array (
+			'judul_situs' => $this->M_pengaturan->judul_situs(),
+			'footer_text' => $this->M_pengaturan->footer_text(),
+			'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+		);
+		
+		$this->load->view('admin/partials/header', $pengaturan);
+		$this->load->view('admin/berita/index', $data);
+		$this->load->view('admin/partials/footer');
+	}
+
+	// admin > berita > tambah
+	public function beritatambah()
+	{
+		$data['kode'] = $this->M_wajibpajak->kode();
+		$data['levels'] = $this->M_user->baca_role();
+		
+		$pengaturan = array (
+			'judul_situs' => $this->M_pengaturan->judul_situs(),
+			'footer_text' => $this->M_pengaturan->footer_text(),
+			'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+		);
+		
+		$this->load->view('admin/partials/header', $pengaturan);
+		$this->load->view('admin/berita/tambah', $data);
+		$this->load->view('admin/partials/footer');
+	}
+
+	// admin > berita > ubah
+	public function beritaubah($id)
+	{
+		$data['berita'] = $this->M_berita->detail($id);
+		
+		$pengaturan = array (
+			'judul_situs' => $this->M_pengaturan->judul_situs(),
+			'footer_text' => $this->M_pengaturan->footer_text(),
+			'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+		);
+		
+		$this->load->view('admin/partials/header', $pengaturan);
+		$this->load->view('admin/berita/ubah', $data);
+		$this->load->view('admin/partials/footer');
+	}
 
 
 

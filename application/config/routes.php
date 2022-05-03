@@ -275,6 +275,25 @@ $route['admin/wajibpajak/informasi/tagihan'] = 'admin/informasitagihan'; // hala
 
 
 
+// BERITA
+
+// Berita
+$route['admin/berita'] = 'admin/berita'; // halaman dasar pengenaan pajak
+
+// TAMBAH
+$route['admin/berita/tambah'] = 'admin/beritatambah';
+$route['admin/berita/tambah/proses'] = 'C_Berita/proses_tambah';
+
+// UBAH
+$route['admin/berita/ubah/(:any)'] = 'admin/beritaubah/$1';
+$route['admin/berita/ubah/proses/(:any)'] = 'C_Berita/proses_ubah/$1';
+
+
+
+// HAPUS
+$route['admin/berita/hapus/proses/(:any)'] = 'C_berita/hapus/$1';
+
+
 
 
 

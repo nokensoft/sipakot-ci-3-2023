@@ -26,6 +26,7 @@
                         </div>     
                         <!-- end page title --> 
 
+                        <!-- row -->
                         <div class="row">
                             <div class="col-lg-6 col-xl-3">
                                 <div class="card-box bg-pattern">
@@ -103,8 +104,9 @@
 
                         </div>
                         <!-- end row-->
-   <!-- start row  -->
-   <div class="row">
+
+                        <!-- start row  -->
+                        <div class="row">
                             <!-- start col  -->
                             <div class="col-lg-6 col-xl-6">
                                 
@@ -214,30 +216,12 @@
 
                         </div>
                         <!-- end row  -->
-                        <!-- Grafik -->
-                           <!-- start row -->
-                           <div class="row">
-                            <!-- start col -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header bg-dark">
-                                        <h4 class="text-light">Distrik <sup class="badge badge-warning text-dark"> Grafik</sup></h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <h3 class=""></h3>
-                                        <div class="mt-4">
-                                            <div id="chart3"></div>
-                                        </div>
-                                    </div> 
-                                </div> 
-                            </div>
-                             <!-- end col -->
 
-                        </div>
-                        <!-- end row -->
+                        <!-- Grafik -->
 
                         <!-- start row -->
                          <div class="row">
+                            
                             <!-- start col  -->
                             <div class="col-lg-6 col-xl-6">     
                                 <div class="card">
@@ -263,6 +247,27 @@
                                         <h3 class=""></h3>
                                         <div class="mt-4">
                                             <div id="chart2"></div>
+                                        </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                             <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+
+                        <!-- start row -->
+                        <div class="row">
+                            <!-- start col -->
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header bg-dark">
+                                        <h4 class="text-light">Distrik <sup class="badge badge-warning text-dark"> Grafik</sup></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <h3 class=""></h3>
+                                        <div class="mt-4">
+                                            <div id="chart3"></div>
                                         </div>
                                     </div> 
                                 </div> 

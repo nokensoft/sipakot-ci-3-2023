@@ -8,11 +8,13 @@ class Beranda extends CI_Controller
 		parent::__construct();
 		$this->load->model('M_pengaturan');
 		$this->load->model('M_opsi');
+		$this->load->model('M_berita');
 	}
 
     public function index()
-    {		
+    {	
 		$pengaturan = array (
+			'beritas' => $this->M_berita->beranda_berita('berita')->result_array(),
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
 			'footer_text' => $this->M_pengaturan->footer_text(),
 			'footer_text_right' => $this->M_pengaturan->footer_text_right(),

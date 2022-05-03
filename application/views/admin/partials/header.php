@@ -245,6 +245,24 @@
                         </li>
 
                         <li>
+                            <a href="#sidebarBerita" data-toggle="collapse">
+                                <i data-feather="globe"></i>
+                                <span> Berita </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarBerita">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="<?= base_url('admin/berita') ?>">Semua</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url('admin/berita/tambah') ?>">Tambah Baru</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
                             <a href="#sidebarPengaturan" data-toggle="collapse">
                                 <i data-feather="settings"></i>
                                 <span> Pengaturan </span>
