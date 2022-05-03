@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2022 at 05:43 AM
+-- Generation Time: May 03, 2022 at 08:02 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `sipakot-2022`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `berita`
+--
+
+CREATE TABLE `berita` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `is_active` enum('1','0') NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `berita`
+--
+
+INSERT INTO `berita` (`id`, `title`, `image`, `slug`, `body`, `is_active`, `created_at`) VALUES
+(15, 'Pelatihan Pemanfaatan Bahan Bekas Kepada Masyarakat', 'pelatihan-pemanfaatan-bahan-bekas-kepada-masyarakat.jpg', 'pelatihan pemanfaatan bahan bekas kepada masyarakat', '<p>Kegiatan pelatihan pemanfaatan bahan bekas yaotu membuat hidroponik menggunakan jerigen bekas dan gelas minuman kemasan serta pembuatan aquaponik menggunakan ban bekas di Kelurahan Bahayangkara serta pembagian tanah, pupuk kandang, sekam, komposter dan tong air.</p>\r\n', '1', '2022-04-29 02:54:14'),
+(16, 'Masyarakat Membuat Kompos Dari Bahan Bekas', 'masyarakat-membuat-kompos-dari-bahan-bekas.jpg', 'masyarakat membuat kompos dari bahan bekas', '<p>Kegiatan pelatihan pembuatan kompos menggunakan komposter dan menggunakan keranjang takakura di Kampung Yoka.</p>\r\n', '1', '2022-04-29 02:56:10'),
+(17, 'Rehabilitasi Lahan Kritis di Gunung Gurabesi', 'rehabilitasi-lahan-kritis-di-gunung-gurabesi.jpg', 'rehabilitasi lahan kritis di gunung gurabesi', '<p>Kegiatan rehabilitasi lahan kritis di Kelurahan Gurabesi. Lokasi seluas 1 hektar. Pemilihan Gunung Gurabesi karena area ini merupakan area penyangga intake air. Jenis pohon yang ditanam antara lain cemara, kayu putih, jambu mete, gnemo dan ketapang. Jumlah bibit yang ditanam adalah sebanyak 1111 bibit.</p>\r\n', '1', '2022-04-29 02:58:44');
 
 -- --------------------------------------------------------
 
@@ -1629,7 +1654,7 @@ INSERT INTO `user` (`id`, `nama_lengkap`, `email`, `foto`, `kata_sandi`, `role_i
 (42, 'Billy Koirewoa', 'grahamkoirewoa@gmail.com', 'pengguna-1622051766.png', '$2y$10$ZDPPJTUKcO43QZQHnr4Ga.NtCHL1uwGcq17VkiW.U3AiN7k.VSNDa', 3, 1, 0, '', '', 0),
 (43, 'Wero Febriadi', 'wero@gmail.com', 'pengguna-1622777266.png', '$2y$10$FF3.LDKaCTQRHtHys8gAYOjkQdyiWZL5NE0k/l9adMW7P1BilifiW', 1, 1, 0, '', '082189110898', 0),
 (44, 'Erich R.E.M. Waromi', 'erich@gmail.com', 'default-user.png', '$2y$10$1vNq92u8M5eq.BsVkHHGpuHd.ZRN3kK4J56bEAZzZeVAn/8tfyKAq', 3, 1, 0, '', 'NA', 0),
-(45, 'SaCode Pelaksana', 'sacode.pelaksana@sacode.web.id', 'default-user.png', '$2y$10$EErxFTZc2rwzZ0CcKVzsvuHhfhnF.7HA4auyroWhINx.vW8oY8h7i', 3, 1, 0, '', '082199558191', 0);
+(45, 'SaCode Pelaksana', 'sacode.pelaksana@sacode.web.id', 'default-user.png', '$2y$10$EErxFTZc2rwzZ0CcKVzsvuHhfhnF.7HA4auyroWhINx.vW8oY8h7i', 3, 0, 0, '', '082199558191', 1);
 
 -- --------------------------------------------------------
 
@@ -2217,6 +2242,12 @@ INSERT INTO `wajib_pajak` (`id_wp`, `pemilik_nama`, `pemilik_foto`, `pemilik_ema
 --
 
 --
+-- Indexes for table `berita`
+--
+ALTER TABLE `berita`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `bobot_kk`
 --
 ALTER TABLE `bobot_kk`
@@ -2339,6 +2370,12 @@ ALTER TABLE `wajib_pajak`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `berita`
+--
+ALTER TABLE `berita`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `bukti_pembayaran`
