@@ -118,7 +118,7 @@
                                         <i class="fas fa-globe-asia"></i> Berita
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="#profil-dinas" data-toggle="tab" aria-expanded="false" class="nav-link">
                                         <i class="fas fa-university"></i> Profil Dinas
                                     </a>
@@ -127,7 +127,7 @@
                                     <a href="#tugas-poko-dan-fungsi" data-toggle="tab" aria-expanded="false" class="nav-link">
                                         <i class="fas fa-thumbtack"></i> Tupoksi
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane show active" id="info">
