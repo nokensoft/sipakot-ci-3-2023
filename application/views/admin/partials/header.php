@@ -206,6 +206,33 @@
                         </li>
 
                         <li>
+                            <a href="#sidebarRekapan" data-toggle="collapse">
+                                <i data-feather="book-open"></i>
+                                <span> Rekapan Wajib Pajak </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarRekapan">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="<?= base_url('admin/non-niaga') ?>">Non Niaga</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url('admin/niaga-kecil') ?>">Niaga Kecil</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url('admin/industri-kecil') ?>">Industri Kecil</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url('admin/niaga-besar') ?>">Niaga Besar</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?= base_url('admin/industri-besar') ?>">Industri Besar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
                             <a href="#sidebarTentangPajak" data-toggle="collapse">
                                 <i data-feather="book"></i>
                                 <span> Tentang Pajak </span>
