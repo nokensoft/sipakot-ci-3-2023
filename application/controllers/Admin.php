@@ -239,7 +239,6 @@ class Admin extends CI_Controller
 	// admin > wajib pajak
 	public function wajib_pajak_sortir($id)
 	{
-
 		$data = array (
 			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha()
@@ -255,6 +254,31 @@ class Admin extends CI_Controller
 		$this->load->view('admin/partials/header', $pengaturan);
 		$this->load->view('admin/wajibpajak/index-sortir', $data);
 		$this->load->view('admin/partials/footer');
+	}
+
+	// admin > wajib pajak > PDF
+	public function wajib_pajak_pdf($id)
+	{
+		$wajib_pajak_kategori_usaha = $this->M_opsi->wajib_pajak_kategori_usaha();
+		foreach($wajib_pajak_kategori_usaha as $kategori)
+		{
+			if($kategori['id'] == $id)
+			{
+				$judul_kategori = $kategori['kriteria'];
+			}
+		}
+
+		$data = array (
+			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
+			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
+			'id' => $id,
+			'judul' => $judul_kategori
+		);
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
+		$pdf = $this->load->view('admin/wajibpajak/pdf',$data, TRUE);
+		$mpdf->setFooter($judul_kategori. ' Halaman - {PAGENO}');
+		$mpdf->WriteHTML($pdf);
+		$mpdf->Output($judul_kategori.'.pdf',"I");
 	}
 
 
