@@ -63,7 +63,14 @@
                                                                 <a class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortir/')?><?=$kategori_usaha['id']?>"><?=$kategori_usaha['kriteria']?></a>
                                                                 <?php endforeach; ?>
                                                             </div>
+
                                                         </div>
+
+                                                        <a href="<?= base_url('admin/wajibpajak/pdf') ?>">
+                                                            <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
+                                                            <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
+                                                        </a>
+
                                                     </div>
                                                     
                                                     <a href="<?= base_url('admin/wajibpajak/terhapus') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Menampilkan Wajib Pajak Terhapus">
