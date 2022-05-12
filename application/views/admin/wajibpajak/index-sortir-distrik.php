@@ -15,10 +15,11 @@
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="<?=base_url('admin/dasbor')?>">Dasbor</a></li>
-                                            <li class="breadcrumb-item active">Wajib Pajak</li>
+                                            <li class="breadcrumb-item"><a href="<?=base_url('admin/wajibpajak/')?>">Wajib Pajak</a></li>
+                                            <li class="breadcrumb-item active">Sortir</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Wajib Pajak</span></h4>
+                                    <h4 class="page-title">Sortir Wajib Pajak Berdasarkan Distrik</span></h4>
                                 </div>
                             </div>
                         </div>
@@ -46,22 +47,41 @@
                                                         </a>
                                                         <div class="btn-group">                                                            
                                                             <button class="btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Jenis Usaha</button>
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
+                                                            
+                                                            <?php
+                                                                // // query komponen usaha
+                                                                $distrik = $this->uri->segment(4);
+                                                                $nama_distrik = "";
+                                                                foreach($wajib_pajak_distrik as $distrikLoop)
+                                                                {
+                                                                    if($distrikLoop['id_distrik'] == $distrik )
+                                                                    {
+                                                                        $nama_distrik = $distrikLoop['nama_distrik'];
+                                                                    }
+                                                                }
+                                                                if($nama_distrik != null)
+                                                                {
+                                                                    echo $nama_distrik;
+                                                                }
+                                                            
+                                                            ?>
+
+                                                            </button>
+
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <?php foreach ($wajib_pajak_kategori_usaha as $kategori_usaha ) : ?>
-                                                                <a target="_blank" class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortir/')?><?=$kategori_usaha['id']?>"><?=$kategori_usaha['kriteria']?></a>
+                                                                <?php foreach ($wajib_pajak_distrik as $distrik_usaha ) : ?>
+                                                                <a class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortirdistrik/')?><?=$distrik_usaha['id_distrik']?>"><?=$distrik_usaha['nama_distrik']?></a>
                                                                 <?php endforeach; ?>
                                                             </div>
+
                                                         </div>
-                                                        <div class="btn-group">                                                            
-                                                            <button class="btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Distrik</button>
-                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <?php foreach ($wajib_pajak_distrik as $distrik ) : ?>
-                                                                <a target="_blank" class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortirdistrik/')?><?=$distrik['id_distrik']?>"><?=$distrik['nama_distrik']?></a>
-                                                                <?php endforeach; ?>
-                                                            </div>
-                                                        </div>
+
+                                                        <a target="_blank" href="<?= base_url('admin/wajibpajak/pdfdistrik/'. $this->uri->segment(4)) ?>">
+                                                            <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
+                                                            <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
+                                                        </a>
+
                                                     </div>
                                                     
                                                     <a href="<?= base_url('admin/wajibpajak/terhapus') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Menampilkan Wajib Pajak Terhapus">
@@ -98,7 +118,8 @@
                                                         <tbody>
 
                                                             <?php $no = 1;
-                                                            foreach ($wp as $l) { ?>
+                                                         
+                                                            foreach ($wajib_pajak_sortir_distrik as $l) { ?>
 
                                                                 <tr>
                                                                     <td>
@@ -156,7 +177,7 @@
                                                                         
 
                                                                         <div class="btn-group dropright">
-                                                                            <button type="button" class="btn btn-xs btn-light waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                                            <button type="button" class="btn btn-xs btn-dark waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                                                                 <i class="fas fa-ellipsis-v"></i>
                                                                             </button>
                                                                             <div class="dropdown-menu" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(106px, 0px, 0px);" x-placement="bottom-start">

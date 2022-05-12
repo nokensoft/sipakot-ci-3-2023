@@ -37,4 +37,38 @@ class M_distrik extends CI_Model
                         ->count_all_results();
     }
 
+    // Data Distrik
+    function wajib_pajak_distrik()
+    {
+        $data = [
+                    [
+                        "id_distrik" => "abepura",
+                        "nama_distrik" => "Abepura"
+                    ],
+                    [
+                        "id_distrik" => "heram",
+                        "nama_distrik" => "Heram"
+                    ],
+                    [
+                        "id_distrik" => "jprutara",
+                        "nama_distrik" => "Jayapura Utara"
+                    ],
+                    [
+                        "id_distrik" => "jprselatan",
+                        "nama_distrik" => "Jayapura Selatan"
+                    ],
+                    [
+                        "id_distrik" => "muaratami",
+                        "nama_distrik" => "Muara Tami"
+                    ],
+                    
+
+                ];
+        return $data;
+    }
+    function wajib_pajak_sortir_distrik($id)
+    {
+        return $this->db->where('usaha_distrik', $id)->get('wajib_pajak')->result_array();
+    }
+
 }

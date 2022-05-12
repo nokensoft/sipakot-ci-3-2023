@@ -110,8 +110,14 @@ $route['admin/wajibpajak'] = 'admin/wajibpajak';
 // SORTIR
 $route['admin/wajibpajak/sortir/(:any)'] = 'admin/wajib_pajak_sortir/$1';
 
-// CETAK PDF
+// SORTIR DISTRIK
+$route['admin/wajibpajak/sortirdistrik/(:any)'] = 'admin/wajib_pajak_sortir_distrik/$1';
+
+// CETAK PDF KATEGORI
 $route['admin/wajibpajak/pdf/(:any)'] = 'admin/wajib_pajak_pdf/$1';
+
+// CETAK PDF DISTRIK
+$route['admin/wajibpajak/pdfdistrik/(:any)'] = 'admin/wajib_pajak_pdf_distrik/$1';
 
 // INDEX SAMPAH
 $route['admin/wajibpajak/sampah'] = 'admin/wajibpajak_sampah';

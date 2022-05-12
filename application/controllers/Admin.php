@@ -223,6 +223,7 @@ class Admin extends CI_Controller
 		$this->db->order_by('id_wp', 'DESC')->where('hapus', '0');
 		$data['wp'] = $this->M_wajibpajak->baca('wajib_pajak')->result_array();
 		$data['wajib_pajak_kategori_usaha'] = $this->M_opsi->wajib_pajak_kategori_usaha();
+		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
 		
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
@@ -243,6 +244,7 @@ class Admin extends CI_Controller
 			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha()
 		);
+		
 		
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
@@ -281,6 +283,52 @@ class Admin extends CI_Controller
 		$mpdf->Output($judul_kategori.'.pdf',"I");
 	}
 
+	// admin > wajib pajak distrik
+	public function wajib_pajak_sortir_distrik($id)
+	{
+		$data = array (
+			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
+			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
+			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik()
+		);
+			
+			
+		$pengaturan = array (
+				'judul_situs' => $this->M_pengaturan->judul_situs(),
+				'footer_text' => $this->M_pengaturan->footer_text(),
+				'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+			);
+			
+			
+			$this->load->view('admin/partials/header', $pengaturan);
+			$this->load->view('admin/wajibpajak/index-sortir-distrik', $data);
+			$this->load->view('admin/partials/footer');
+		}
+
+	public function wajib_pajak_pdf_distrik($id)
+	{
+		$wajib_pajak_distrik = $this->M_distrik->wajib_pajak_distrik();
+
+		foreach($wajib_pajak_distrik as $distrik)
+		{
+			if($distrik['id_distrik'] == $id)
+			{
+				$judul_kategori = $distrik['nama_distrik'];
+			}
+		}
+
+		$data = array (
+			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
+			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
+			'id' => $id,
+			'judul' => $judul_kategori
+		);
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
+		$pdf = $this->load->view('admin/wajibpajak/distrikpdf',$data, TRUE);
+		$mpdf->setFooter($judul_kategori. ' Halaman - {PAGENO}');
+		$mpdf->WriteHTML($pdf);
+		$mpdf->Output($judul_kategori.'.pdf',"I");
+	}
 
 	// admin > wajib pajak > terhapus
 	public function wajib_pajak_terhapus()
