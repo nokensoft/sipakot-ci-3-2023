@@ -46,7 +46,7 @@
                                                             <span class="btn-label"><i class="fas fa-plus"></i></span>Tambah</button>
                                                         </a>
                                                         <div class="btn-group">                                                            
-                                                            <button class="btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <button class="btn btn-success bg-success text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
                                                             <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
                                                             
                                                             <?php
@@ -64,6 +64,16 @@
                                                                 <?php endforeach; ?>
                                                             </div>
 
+                                                        </div>
+
+                                                        <div class="btn-group">                                                            
+                                                            <button class="btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Distrik</button>
+                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
+                                                                <?php foreach ($wajib_pajak_distrik as $distrik ) : ?>
+                                                                <a target="_blank" class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortirdistrik/')?><?=$distrik['id_distrik']?>"><?=$distrik['nama_distrik']?></a>
+                                                                <?php endforeach; ?>
+                                                            </div>
                                                         </div>
 
                                                         <a target="_blank" href="<?= base_url('admin/wajibpajak/pdf/'. $this->uri->segment(4)) ?>">
