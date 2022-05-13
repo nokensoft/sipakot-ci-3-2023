@@ -86,6 +86,7 @@
                                                                 <th class="font-weight-bold">Logo</th>
                                                                 <th class="font-weight-bold">Nama Usaha</th>
                                                                 <th class="font-weight-bold">Alamat Usaha</th>
+                                                                <th class="font-weight-bold">Distrik</th>
                                                                 <th class="font-weight-bold">Pemilik Usaha</th>
                                                                 <th class="font-weight-bold">Nomor Telepon Pemilik</th>
                                                                 <th class="font-weight-bold">Email Pemilik</th>
@@ -123,7 +124,17 @@
                                                                     </td>
 
                                                                     <td>
-                                                                        <?= $l['usaha_alamat']; ?>
+                                                                        <?= $l['usaha_alamat']; ?>  
+                                                                    </td>
+                                                                    <td>
+                                                                    <?php foreach($wajib_pajak_distrik as $distrik)
+                                                                        if($distrik['id_distrik'] == $l['usaha_distrik'])
+                                                                        {
+                                                                            echo $distrik['nama_distrik'];
+                                                                        }else{
+                                                                            echo '';
+                                                                        }
+                                                                        ?>
                                                                     </td>
 
                                                                     <td>

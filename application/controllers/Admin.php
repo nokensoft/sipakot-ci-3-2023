@@ -242,7 +242,8 @@ class Admin extends CI_Controller
 	{
 		$data = array (
 			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
-			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha()
+			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
+			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik()
 		);
 		
 		
@@ -290,6 +291,7 @@ class Admin extends CI_Controller
 			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
 			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik()
+			
 		);
 			
 			
