@@ -150,6 +150,7 @@ class C_Wajibpajak extends CI_Controller
 		$usaha_email = $this->input->post('usaha_email');
 		$usaha_telp = $this->input->post('usaha_telp');
 		$usaha_alamat = $this->input->post('usaha_alamat');
+		$usaha_distrik = $this->input->post('usaha_distrik');
 		$usaha_kategori = $this->input->post('usaha_kategori');
 
 		$usaha_luas_bangunan = $this->input->post('usaha_luas_bangunan');
@@ -183,6 +184,7 @@ class C_Wajibpajak extends CI_Controller
 			'usaha_email' => $usaha_email,
 			'usaha_telp' => $usaha_telp,
 			'usaha_alamat' => $usaha_alamat,
+			'usaha_distrik' => $usaha_distrik,
 			'usaha_kategori' => $usaha_kategori,
 
 			'usaha_luas_bangunan' => $usaha_luas_bangunan,

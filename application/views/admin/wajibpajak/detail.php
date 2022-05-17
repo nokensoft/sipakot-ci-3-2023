@@ -85,8 +85,8 @@
                                                     <div class="form-group">
                                                         <label for="pemilik_alamat">Alamat</label>
                                                         <textarea rows="3" id="message" class="form-control form-control-lg bg-light" name="pemilik_alamat" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10" data-parsley-id="23" readonly><?php echo $wp['pemilik_alamat']; ?></textarea>
-                                                    </div>
-
+                                                    </div>  
+                                                
                                                     <div class="form-group mb-3">
                                                         <label for="pemilik_kata_sandi">Kata Sandi (password) <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
                                                         <div class="input-group input-group-merge">
@@ -145,6 +145,18 @@
                                                     <div class="form-group">
                                                         <label for="usaha_alamat">Alamat <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
                                                         <textarea rows="3" id="usaha_alamat" class="form-control form-control-lg bg-light" name="usaha_alamat" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10" data-parsley-id="23" readonly><?php echo $wp['usaha_alamat']; ?></textarea>
+                                                    </div>
+                                                    
+                                                    <div class="form-group mb-3">
+                                                        <label for="usaha_distrik">Distrik</label>
+                                                        <input type="text" name="usaha_distrik" class="form-control form-control-lg bg-light" id="usaha_distrik" value="<?php foreach($wajib_pajak_distrik as $distrik)
+                                                                        if($distrik['id_distrik'] == $wp['usaha_distrik'])
+                                                                        {
+                                                                            echo $distrik['nama_distrik'];
+                                                                        }else{
+                                                                            echo '';
+                                                                        }
+                                                                    ?>" readonly>
                                                     </div>
 
                                                     <div class="form-group mb-3">
