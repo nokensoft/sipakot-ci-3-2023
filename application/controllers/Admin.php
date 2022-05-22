@@ -510,7 +510,13 @@ class Admin extends CI_Controller
 		$data['jenis_usaha'] = $this->M_tagihan->baca('pajak_kk')->result_array();
 
 		$this->load->view('admin/wajibpajak/tagihan-cetak', $data);
-
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-L','margin_top' => 9,
+		'margin_left' => 3,
+		'margin_right' => 3,
+		'mirrorMargins' => true]);
+		$pdf = $this->load->view('admin/wajibpajak/tagihan-cetak_pdf', $data,TRUE);
+		$mpdf->WriteHTML($pdf);
+		$mpdf->Output('Tagihan Wajib Pajak'.'.pdf',"I");
 	}
 
 
