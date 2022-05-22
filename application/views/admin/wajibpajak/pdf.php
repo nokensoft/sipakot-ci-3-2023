@@ -42,7 +42,8 @@
             <?php endforeach ?>    
         </table>   
         <div class="ttd" style="text-align: center; margin-left:500px">
-            <p>Mengetahui, <br>
+            <p>Mengetahui, 
+            <br>
             Kepala Dinas Lingkungan Hidup dan Kebersihan Kota Jayapura
             </p>
                 <br><br><br>
@@ -51,7 +52,6 @@
             Pembina Tk. 1 <br>
             NIP. 19671223 199503 2 001
             </p>
-
         </div> 
      </div>
 </body>

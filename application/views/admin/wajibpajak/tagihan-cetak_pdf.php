@@ -221,7 +221,8 @@
                                         <td rowspan="9" width="100" class="text-center font-weight-bold align-middle">
                                             <div class="image-container">
                                                 <div class="before">
-                                                    <h4>Mengetahui, <br> <b>KEPALA DLHK KOTA JAYAPURA</b> </h4>
+                                                    <h4>Mengetahui,
+                                                         <br> <b>KEPALA DLHK KOTA JAYAPURA</b> </h4>
                                                 </div>
                                                 <img class="tdd" src="<?=base_url('assets/images/info_tagihan/stempel_ttd.png')?>" alt="">
                                                 <div class="after">
