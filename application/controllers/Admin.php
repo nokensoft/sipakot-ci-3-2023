@@ -613,7 +613,8 @@ class Admin extends CI_Controller
 	{
 		$where = array('id_wp' => $id_wp);
 		$data['wp'] = $this->M_wajibpajak->edit($where, 'wajib_pajak')->row_array();
-		$data['kategori_usaha'] = $this->M_wajibpajak->baca('pajak_kk')->result_array();
+		$data['kategori_usaha'] = $this->M_wajibpajak->baca('pajak_kk')->result_array();		
+		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
 		
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),

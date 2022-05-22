@@ -151,8 +151,8 @@
                                                     </div>
 
                                                     <div class="form-group mb-3">
-                                                        <label for="usaha_kategori">Distrik <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
-                                                        <select class="form-control form-control-lg" name="usaha_kategori" id="usaha_kategori" required>
+                                                        <label for="usaha_distrik">Distrik <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
+                                                        <select class="form-control form-control-lg" name="usaha_distrik" id="usaha_distrik" required>
                                                             <option <?php if($wp['usaha_distrik'] == ''){ echo 'selected';} ?> ></option>
                                                             <option <?php if($wp['usaha_distrik'] == 'abepura'){ echo 'selected';} ?> value="abepura">Abepura</option>
                                                             <option <?php if($wp['usaha_distrik'] == 'heram'){ echo 'selected';} ?> value="heram">Heram</option>
