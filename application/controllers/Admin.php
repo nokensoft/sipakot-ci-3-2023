@@ -270,7 +270,7 @@ class Admin extends CI_Controller
 				$judul_kategori = $kategori['kriteria'];
 			}
 		}
-
+		$judul=  strtolower(str_replace(" ", "_", $judul_kategori));
 		$data = array (
 			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
@@ -281,7 +281,7 @@ class Admin extends CI_Controller
 		$pdf = $this->load->view('admin/wajibpajak/pdf',$data, TRUE);
 		$mpdf->setFooter($judul_kategori. ' Halaman - {PAGENO}');
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output($judul_kategori.'.pdf',"I");
+		$mpdf->Output($judul.'.pdf',"I");
 	}
 
 	// admin > wajib pajak distrik
@@ -318,7 +318,7 @@ class Admin extends CI_Controller
 				$judul_kategori = $distrik['nama_distrik'];
 			}
 		}
-
+		$judul=  strtolower(str_replace(" ", "_", $judul_kategori));
 		$data = array (
 			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
@@ -327,9 +327,9 @@ class Admin extends CI_Controller
 		);
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
 		$pdf = $this->load->view('admin/wajibpajak/distrikpdf',$data, TRUE);
-		$mpdf->setFooter($judul_kategori. ' Halaman - {PAGENO}');
+		$mpdf->setFooter($judul. ' Halaman - {PAGENO}');
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output($judul_kategori.'.pdf',"I");
+		$mpdf->Output($judul.'.pdf',"I");
 	}
 
 	// admin > wajib pajak > terhapus
@@ -516,7 +516,7 @@ class Admin extends CI_Controller
 		'mirrorMargins' => true]);
 		$pdf = $this->load->view('admin/wajibpajak/tagihan-cetak_pdf', $data,TRUE);
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output('Tagihan Wajib Pajak'.'.pdf',"I");
+		$mpdf->Output('tagihan_wajib_pajak'.'.pdf',"I");
 	}
 
 
