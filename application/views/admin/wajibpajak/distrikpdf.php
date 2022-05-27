@@ -10,14 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?=base_url()?>assets/images/favicon-cms-hr.png">
-    <title>Sortir Wajib Pajak - <?=$judul?> </title>
+    <title>Data Wajib Pajak - <?=$judul?> </title>
     <!-- CSS only -->
     <link rel="stylesheet" href="<?=base_url()?>assets/css/pdf.css">
 </head>
 <body>
-   
-    <p class="judul"> Sortir Wajib Pajak <br> Distrik <?=$judul?>
-    </p>
+   <div class="judul">
+        <h1> Data Wajib Pajak  </h1>
+        <h3> Distrik <?=$judul?> </h3>
+    </div>
+    <br><br>
      <div>
             <table border="1">
             <tr>
@@ -25,7 +27,6 @@
                 <th>Nama Usaha</th>
                 <th>Alamat Usaha</th>
                 <th>Pemilik Usaha</th>
-                <th>Nomor Telepon Pemilik</th>
                 <th>Email Pemilik</th>
             </tr>
             <?php $i=1;
@@ -36,7 +37,6 @@
                     <td><?=$pajak["usaha_nama"]?></td>
                     <td><?=$pajak["usaha_alamat"]?></td>
                     <td><?=$pajak["pemilik_nama"]?></td>
-                    <td><?=$pajak["pemilik_telp"]?></td>
                     <td><?=$pajak["pemilik_email"]?></td>
                 </tr>
             <?php endforeach ?>    
