@@ -270,7 +270,7 @@ class Admin extends CI_Controller
 				$judul_kategori = $kategori['kriteria'];
 			}
 		}
-		$judul=  strtolower(str_replace(" ", "_", $judul_kategori));
+		$judul=  strtolower(str_replace(" ", "-", $judul_kategori));
 		$data = array (
 			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
@@ -281,7 +281,7 @@ class Admin extends CI_Controller
 		$pdf = $this->load->view('admin/wajibpajak/pdf',$data, TRUE);
 		$mpdf->setFooter($judul_kategori. ' Halaman - {PAGENO}');
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output($judul.'.pdf',"I");
+		$mpdf->Output('sipakot-wajib-pajak-'.$judul.'.pdf',"I");
 	}
 
 	// admin > wajib pajak distrik
@@ -329,7 +329,7 @@ class Admin extends CI_Controller
 		$pdf = $this->load->view('admin/wajibpajak/distrikpdf',$data, TRUE);
 		$mpdf->setFooter($judul. ' Halaman - {PAGENO}');
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output($judul.'.pdf',"I");
+		$mpdf->Output('sipakot-wajib-pajak-distrik-'.$judul.'.pdf',"I");
 	}
 
 	// admin > wajib pajak > terhapus
