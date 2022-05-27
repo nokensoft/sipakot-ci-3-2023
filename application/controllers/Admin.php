@@ -271,15 +271,27 @@ class Admin extends CI_Controller
 			}
 		}
 		$judul=  strtolower(str_replace(" ", "-", $judul_kategori));
+		$judul_dua =  $judul_kategori;
 		$data = array (
 			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
 			'id' => $id,
 			'judul' => $judul_kategori
 		);
-		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
 		$pdf = $this->load->view('admin/wajibpajak/pdf',$data, TRUE);
-		$mpdf->setFooter($judul_kategori. ' Halaman - {PAGENO}');
+		
+		// $mpdf->setFooter($judul_kategori. ' Halaman - {PAGENO}');
+		$mpdf->SetHTMLFooter('
+				<table width="100%" height="1" style="border:0px; font-size:12px">
+					<tr>
+					<hr>
+						<td width="33%"> <i>sipakot.jayapurakota.go.id</i></td>
+						<td width="33%" align="center"></td>
+						<td width="33%" style="text-align: right;"> Wajib Pajak '.$judul_dua.'<b>  Halaman - {PAGENO}</b></td>
+					</tr>
+				</table>
+		');
 		$mpdf->WriteHTML($pdf);
 		$mpdf->Output('sipakot-wajib-pajak-'.$judul.'.pdf',"I");
 	}
@@ -319,15 +331,27 @@ class Admin extends CI_Controller
 			}
 		}
 		$judul=  strtolower(str_replace(" ", "_", $judul_kategori));
+		$judul_dua =  $judul_kategori;
 		$data = array (
 			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
 			'id' => $id,
 			'judul' => $judul_kategori
 		);
-		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
 		$pdf = $this->load->view('admin/wajibpajak/distrikpdf',$data, TRUE);
-		$mpdf->setFooter($judul. ' Halaman - {PAGENO}');
+		// $mpdf->setFooter($judul_dua. 'Halaman - {PAGENO}');
+		// $mpdf->setFooter('sipakot.jayapurakota.go.id||Data Distrik '.$judul_dua.' Halaman - {PAGENO}');
+		$mpdf->SetHTMLFooter('
+				<table width="100%" height="1" style="border:0px; font-size:12px">
+					<tr>
+					<hr>
+						<td width="33%"> <i>sipakot.jayapurakota.go.id</i></td>
+						<td width="33%" align="center"></td>
+						<td width="33%" style="text-align: right;"> Wajib Pajak Distrik '.$judul_dua.'<b>  Halaman - {PAGENO}</b></td>
+					</tr>
+				</table>
+		');
 		$mpdf->WriteHTML($pdf);
 		$mpdf->Output('sipakot-wajib-pajak-distrik-'.$judul.'.pdf',"I");
 	}
