@@ -548,11 +548,41 @@ class Wajibpajak extends CI_Controller {
 		$data['wajib_pajak'] = $this->M_tagihan->baca_detail_wajib_pajak_info_tagihan('wajib_pajak')->row_array(); // baca data wajib pajak saat buka detail tagihan bulan
 		$data['bulans'] = $this->M_wajibpajak->baca('bulan')->result_array();
 		$data['tagihan'] = $this->M_tagihan->baca_info_tagihan('tagihan', $id)->row_array(); // baca semua data tagihan
-
 		$data['jenis_usaha'] = $this->M_tagihan->baca('pajak_kk')->result_array();
 
-		$this->load->view('wajibpajak/tagihan/tagihan-cetak', $data);
+		$nama = $this->session->nama_lengkap;
+		$judul=  strtolower(str_replace(" ", "-", $nama));
+		$tanggal = strtolower($this->tgl_indo(date('Y-m-d')));
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-L','margin_top' => 9,
+		'margin_left' => 3,
+		'margin_right' => 3,
+		'mirrorMargins' => true]);
+		$pdf = $this->load->view('wajibpajak/tagihan/tagihan-cetak_pdf', $data,TRUE);
+		$mpdf->WriteHTML($pdf);
+		$mpdf->Output('tagihan-wajib-pajak-'.$judul. '-('.$tanggal.')'.'.pdf',"I");
 
+	}
+
+	public function tgl_indo($tanggal){
+		$bulan = array (
+			1 =>   'Januari',
+			'Februari',
+			'Maret',
+			'April',
+			'Mei',
+			'Juni',
+			'Juli',
+			'Agustus',
+			'September',
+			'Oktober',
+			'November',
+			'Desember'
+		);
+		$pecahkan = explode('-', $tanggal);
+		// variabel pecahkan 0 = tanggal
+		// variabel pecahkan 1 = bulan
+		// variabel pecahkan 2 = tahun
+		return $pecahkan[2] . '-' . $bulan[ (int)$pecahkan[1] ] . '-' . $pecahkan[0];
 	}
 
 

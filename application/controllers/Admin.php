@@ -540,7 +540,7 @@ class Admin extends CI_Controller
 		'mirrorMargins' => true]);
 		$pdf = $this->load->view('admin/wajibpajak/tagihan-cetak_pdf', $data,TRUE);
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output('tagihan_wajib_pajak'.'.pdf',"I");
+		$mpdf->Output('tagihan-wajib-pajak'.'.pdf',"I");
 	}
 
 
