@@ -37,7 +37,7 @@
                 border: 1px solid #dee2e6;
                 border-collapse: collapse;
         }
-        .text-left  style="padding-left:20px ;"{
+        .text-left {
             text-align :left;
         }
         .text-center {
