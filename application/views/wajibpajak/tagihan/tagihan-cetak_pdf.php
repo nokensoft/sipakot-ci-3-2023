@@ -276,7 +276,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="bg-light text-dark text-center">
+                                        <td class="bg-light text-dark text-left" style="padding-left:20px ;">
                                             <!-- <?php
                                             $jmlPenagihan1 = $volume1 * $fna1 * $hargaBaku;
                                             echo rupiah($jmlPenagihan1);
@@ -334,7 +334,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="bg-light text-dark text-center">
+                                        <td class="bg-light text-dark text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 2 -->
                                             <?php
                                             if(!empty($volume2)) {
@@ -384,7 +384,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 3 -->
                                             <?php
                                                 if(!empty($volume3)) {
@@ -433,7 +433,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 4 -->
                                             <?php
                                                 if(!empty($volume4)) {
@@ -484,7 +484,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-left" style="padding-left:20px ;">
                                             <?php
                                             if(!empty($nilaiSisah5)) {
                                                 $jmlPenagihan5 = $nilaiSisah5 * $fna5 * $hargaBaku;
@@ -521,7 +521,7 @@
 
                                     <tr>
                                         <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">NPA </td>
-                                        <td class="text-center" style="font-weight:bold">
+                                        <td class="text-left" style="font-weight:bold;padding-left:20px ;">
                                             <?php
                                             $totalNPA = $jmlPenagihan1 + $jmlPenagihan2 + $jmlPenagihan3 + $jmlPenagihan4 + $jmlPenagihan5;
                                             echo rupiah($totalNPA);
@@ -530,7 +530,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">PAJAK PABT ( <?= $pajakPABT*100 ?> %)</td>
-                                        <td class="text-center" style="font-weight:bold">
+                                        <td class="text-left" style="font-weight:bold;padding-left:20px ;">
                                             <?php
                                             $totalPajakPABT = $pajakPABT * $totalNPA;
                                             echo rupiah($totalPajakPABT);

@@ -37,7 +37,7 @@
                 border: 1px solid #dee2e6;
                 border-collapse: collapse;
         }
-        .text-left {
+        .text-left  style="padding-left:20px ;"{
             text-align :left;
         }
         .text-center {
@@ -163,7 +163,7 @@
                     
         <table>
                 <tr>
-                    <th class="text-left align-middle">
+                    <th class="text-left  style="padding-left:20px ;"align-middle">
                         <img src="<?=base_url()?>assets/images/logo-kota-jayapura-700-dark.png" height="200" alt="">
                     </th>
                     <th class="align-middle" width="700">
@@ -171,7 +171,7 @@
                     </th>
                 </tr>
                 <tr>
-                    <td class="text-left align-top" style="height: 150px; padding:30px">
+                    <td class="text-left  style="padding-left:20px ;"align-top" style="height: 150px; padding:30px">
                         
                         <table style="border: 1px solid #dee2e6; width:500px ">
                             <tr>
@@ -182,7 +182,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td class="text-left align-top" style="height: 150px; padding:30px">
+                    <td class="text-left  style="padding-left:20px ;"align-top" style="height: 150px; padding:30px">
                         <table style="border: 1px solid #dee2e6;  width:500px">
                                 <tr>
                                     <td style="padding:20px ">
@@ -217,7 +217,7 @@
                                         <td width="5%" class="text-center" style="font-weight:bold">Volume (m<sup>3</sup>)</td>
                                         <td width="5%" class="text-center" style="font-weight:bold">FNA</td>
                                         <td width="5%" class="text-center" style="font-weight:bold">Harga Baku</td>
-                                        <td width="5%" class="text-center" style="font-weight:bold">Jumlah</td>
+                                        <td width="5%" class="text-center" style="font-weight:bold; "> Jumlah</td>
                                         <td rowspan="9" width="100" class="text-center font-weight-bold align-middle">
                                             <div class="image-container">
                                                 <div class="before">
@@ -276,7 +276,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="bg-light text-dark text-center">
+                                        <td class="bg-light text-dark text-left" style="padding-left:20px ;">
                                             <!-- <?php
                                             $jmlPenagihan1 = $volume1 * $fna1 * $hargaBaku;
                                             echo rupiah($jmlPenagihan1);
@@ -334,7 +334,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="bg-light text-dark text-center">
+                                        <td class="bg-light text-dark text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 2 -->
                                             <?php
                                             if(!empty($volume2)) {
@@ -384,7 +384,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 3 -->
                                             <?php
                                                 if(!empty($volume3)) {
@@ -433,7 +433,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 4 -->
                                             <?php
                                                 if(!empty($volume4)) {
@@ -484,7 +484,7 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="text-center">
+                                        <td class="text-left" style="padding-left:20px ;" >
                                             <?php
                                             if(!empty($nilaiSisah5)) {
                                                 $jmlPenagihan5 = $nilaiSisah5 * $fna5 * $hargaBaku;
@@ -521,7 +521,7 @@
 
                                     <tr>
                                         <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">NPA </td>
-                                        <td class="text-center" style="font-weight:bold">
+                                        <td class="text-left" style="font-weight:bold;padding-left:20px ;">
                                             <?php
                                             $totalNPA = $jmlPenagihan1 + $jmlPenagihan2 + $jmlPenagihan3 + $jmlPenagihan4 + $jmlPenagihan5;
                                             echo rupiah($totalNPA);
@@ -530,7 +530,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">PAJAK PABT ( <?= $pajakPABT*100 ?> %)</td>
-                                        <td class="text-center" style="font-weight:bold">
+                                        <td class="text-left"  style="font-weight:bold;padding-left:20px ;">
                                             <?php
                                             $totalPajakPABT = $pajakPABT * $totalNPA;
                                             echo rupiah($totalPajakPABT);
