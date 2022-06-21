@@ -60,6 +60,7 @@ class C_Wajibpajak extends CI_Controller
 		$usaha_email = $this->input->post('usaha_email');
 		$usaha_telp = $this->input->post('usaha_telp');
 		$usaha_alamat = $this->input->post('usaha_alamat');
+		$usaha_distrik = $this->input->post('usaha_distrik');
 		$usaha_kategori = $this->input->post('usaha_kategori');
 
 		$usaha_luas_bangunan = $this->input->post('usaha_luas_bangunan');
@@ -77,7 +78,7 @@ class C_Wajibpajak extends CI_Controller
 		// memasukan data ke dalam array
 		$data = array(
 			'id_wp' => $id_wp,
-			
+
 			// profil pemilik
 			'pemilik_nama' => $pemilik_nama,
 			'pemilik_foto' => $pemilik_foto,
@@ -85,13 +86,14 @@ class C_Wajibpajak extends CI_Controller
 			'pemilik_kata_sandi' => $pemilik_kata_sandi,
 			'pemilik_telp' => $pemilik_telp,
 			'pemilik_alamat' => $pemilik_alamat,
-			
+
 			// profil usaha
 			'usaha_nama' => $usaha_nama,
 			'usaha_logo' => $usaha_logo,
 			'usaha_email' => $usaha_email,
 			'usaha_telp' => $usaha_telp,
 			'usaha_alamat' => $usaha_alamat,
+			'usaha_distrik' => $usaha_distrik,
 			'usaha_kategori' => $usaha_kategori,
 
 			'usaha_luas_bangunan' => $usaha_luas_bangunan,
@@ -107,10 +109,10 @@ class C_Wajibpajak extends CI_Controller
 			'is_active' => $is_active,
 		);
 
-		
+
 		// mengirim data ke database melalui model
 		$this->M_wajibpajak->tambah($data, 'wajib_pajak');
-		
+
 		// pesan proses berhasil 
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -129,7 +131,7 @@ class C_Wajibpajak extends CI_Controller
 
 
 
-	
+
 
 	// proses ubah
 	public function proses_ubah()
@@ -171,14 +173,14 @@ class C_Wajibpajak extends CI_Controller
 
 		$data = array(
 			'id_wp' => $id_wp,
-			
+
 			// profil pemilik
 			'pemilik_nama' => $pemilik_nama,
 			'pemilik_email' => $pemilik_email,
 			'pemilik_kata_sandi' => $pemilik_kata_sandi,
 			'pemilik_telp' => $pemilik_telp,
 			'pemilik_alamat' => $pemilik_alamat,
-			
+
 			// profil usaha
 			'usaha_nama' => $usaha_nama,
 			'usaha_email' => $usaha_email,
@@ -199,10 +201,10 @@ class C_Wajibpajak extends CI_Controller
 
 			'is_active' => $is_active,
 
-		);	
+		);
 
 		$this->M_wajibpajak->ubah($where, $data, 'wajib_pajak');
-		
+
 		// alert success 
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -214,24 +216,23 @@ class C_Wajibpajak extends CI_Controller
 		');
 
 		redirect('admin/wajibpajak/detail/' . $id_wp);
-		
 	}
 
-	public function proses_ubah_foto_pemilik() 
+	public function proses_ubah_foto_pemilik()
 	{
 		$config['upload_path'] = './assets/images/pemilik_foto/';
 		$config['allowed_types'] = 'jpg|png|jpeg|gif';
 		$config['max_size'] = '2048';  //2MB max
 		$config['max_width'] = '4480'; // pixel
 		$config['max_height'] = '4480'; // pixel
-		$config['file_name'] = 'pemilik-'.time();
+		$config['file_name'] = 'pemilik-' . time();
 
 		$this->load->library('upload', $config);
 
 		if (!$this->upload->do_upload('foto')) {
 
-			$id_wp = $this->input->post('id_wp');	
-		
+			$id_wp = $this->input->post('id_wp');
+
 			// tanda peringatan
 			$this->session->set_flashdata('message', '
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -242,24 +243,22 @@ class C_Wajibpajak extends CI_Controller
 			</div>
 			');
 
-			redirect('admin/wajibpajak/ubah/foto/pemilik/'. $id_wp);
-
+			redirect('admin/wajibpajak/ubah/foto/pemilik/' . $id_wp);
 		} else {
 
 
 
 			$foto = $this->upload->data();
-			$id_wp = $this->input->post('id_wp');	
+			$id_wp = $this->input->post('id_wp');
 
 			$data = array(
 				'id_wp' => $id_wp,
 				'pemilik_foto' => $foto['file_name'],
 			);
-
 		}
-		
+
 		$this->M_wajibpajak->ubah_foto($data, $id_wp);
-		
+
 		// tanda sukses
 		$this->session->set_flashdata('message', '
 		<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -270,31 +269,30 @@ class C_Wajibpajak extends CI_Controller
 		</div>
 		');
 
-		redirect('admin/wajibpajak/ubah/foto/pemilik/'. $id_wp);
-
+		redirect('admin/wajibpajak/ubah/foto/pemilik/' . $id_wp);
 	}
 
 
 
 
 
-	
 
-	public function proses_ubah_foto_usaha() 
+
+	public function proses_ubah_foto_usaha()
 	{
 		$config['upload_path'] = './assets/images/usaha_logo/';
 		$config['allowed_types'] = 'jpg|png|jpeg|gif';
 		$config['max_size'] = '2048';  //2MB max
 		$config['max_width'] = '4480'; // pixel
 		$config['max_height'] = '4480'; // pixel
-		$config['file_name'] = 'pemilik-'.time();
+		$config['file_name'] = 'pemilik-' . time();
 
 		$this->load->library('upload', $config);
 
 		if (!$this->upload->do_upload('foto')) {
 
-			$id_wp = $this->input->post('id_wp');	
-		
+			$id_wp = $this->input->post('id_wp');
+
 			// tanda peringatan
 			$this->session->set_flashdata('message', '
 			<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -305,24 +303,22 @@ class C_Wajibpajak extends CI_Controller
 			</div>
 			');
 
-			redirect('admin/wajibpajak/ubah/foto/usaha/'. $id_wp);
-
+			redirect('admin/wajibpajak/ubah/foto/usaha/' . $id_wp);
 		} else {
 
 
 
 			$foto = $this->upload->data();
-			$id_wp = $this->input->post('id_wp');	
+			$id_wp = $this->input->post('id_wp');
 
 			$data = array(
 				'id_wp' => $id_wp,
 				'usaha_logo' => $foto['file_name'],
 			);
-
 		}
-		
+
 		$this->M_wajibpajak->ubah_foto($data, $id_wp);
-		
+
 		// tanda sukses
 		$this->session->set_flashdata('message', '
 		<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -333,31 +329,30 @@ class C_Wajibpajak extends CI_Controller
 		</div>
 		');
 
-		redirect('admin/wajibpajak/ubah/foto/usaha/'. $id_wp);
-
+		redirect('admin/wajibpajak/ubah/foto/usaha/' . $id_wp);
 	}
 
 
 
 
-    // proses hapus wajibpajak (pindah ke tempat sampah)
-    public function proses_hapus_wajib_pajak()
-    {
+	// proses hapus wajibpajak (pindah ke tempat sampah)
+	public function proses_hapus_wajib_pajak()
+	{
 
-        $id_wp = $this->input->post('id_wp');
+		$id_wp = $this->input->post('id_wp');
 
 		$where = array(
 			'id_wp' => $id_wp
 		);
-		
+
 		$data = array(
 			'hapus' => '1',
 			'is_active' => '0',
 		);
 
-        $this->M_wajibpajak->terhapus($where, $data, 'wajib_pajak');
-        // alert success 
-        $this->session->set_flashdata('message', '
+		$this->M_wajibpajak->terhapus($where, $data, 'wajib_pajak');
+		// alert success 
+		$this->session->set_flashdata('message', '
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
 				<strong>Terhapus!</strong> Data telah dihapus.
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -366,27 +361,27 @@ class C_Wajibpajak extends CI_Controller
 			</div>
 		');
 
-        redirect(base_url() . 'admin/wajibpajak');
-    }
+		redirect(base_url() . 'admin/wajibpajak');
+	}
 
-    // proses hapus wajibpajak (keluarkan dari tempat sampah)
-    public function proses_kembalikan_wajib_pajak()
-    {
+	// proses hapus wajibpajak (keluarkan dari tempat sampah)
+	public function proses_kembalikan_wajib_pajak()
+	{
 
-        $id_wp = $this->input->post('id_wp');
+		$id_wp = $this->input->post('id_wp');
 
 		$where = array(
 			'id_wp' => $id_wp
 		);
-		
+
 		$data = array(
 			'hapus' => '0',
 			'is_active' => '0',
 		);
 
-        $this->M_wajibpajak->terhapus($where, $data, 'wajib_pajak');
-        // alert success 
-        $this->session->set_flashdata('message', '
+		$this->M_wajibpajak->terhapus($where, $data, 'wajib_pajak');
+		// alert success 
+		$this->session->set_flashdata('message', '
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				<strong>Berhasil!</strong> Data telah dikembalikan.
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -395,22 +390,22 @@ class C_Wajibpajak extends CI_Controller
 			</div>
 		');
 
-        redirect(base_url() . 'admin/wajibpajak');
-    }
+		redirect(base_url() . 'admin/wajibpajak');
+	}
 
-    // proses hapus wajibpajak (keluarkan dari tempat sampah)
-    public function proses_hapus_wajib_pajak_permanen()
-    {
+	// proses hapus wajibpajak (keluarkan dari tempat sampah)
+	public function proses_hapus_wajib_pajak_permanen()
+	{
 
-        $id_wp = $this->input->post('id_wp');
+		$id_wp = $this->input->post('id_wp');
 
 		$where = array(
 			'id_wp' => $id_wp
 		);
 
-        $this->M_wajibpajak->hapus_permanen($where, 'wajib_pajak');
-        // alert success 
-        $this->session->set_flashdata('message', '
+		$this->M_wajibpajak->hapus_permanen($where, 'wajib_pajak');
+		// alert success 
+		$this->session->set_flashdata('message', '
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
 				<strong>Terhapus!</strong> Data telah terhapus secara permanen.
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -419,8 +414,8 @@ class C_Wajibpajak extends CI_Controller
 			</div>
 		');
 
-        redirect(base_url() . 'admin/wajibpajak/terhapus');
-    }
+		redirect(base_url() . 'admin/wajibpajak/terhapus');
+	}
 
 	// proses hapus
 	public function hapus($id_wp)
