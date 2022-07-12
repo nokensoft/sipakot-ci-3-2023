@@ -152,7 +152,7 @@
 
                                                     <div class="form-group mb-3">
                                                         <label for="usaha_distrik">Distrik <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
-                                                        <select class="form-control form-control-lg" name="usaha_distrik" id="usaha_distrik" required>
+                                                        <select onchange="distrik()"  class="form-control form-control-lg" name="usaha_distrik" id="usaha_distrik" required>
                                                             <option <?php if($wp['usaha_distrik'] == ''){ echo 'selected';} ?> ></option>
                                                             <option <?php if($wp['usaha_distrik'] == 'abepura'){ echo 'selected';} ?> value="abepura">Abepura</option>
                                                             <option <?php if($wp['usaha_distrik'] == 'heram'){ echo 'selected';} ?> value="heram">Heram</option>
@@ -161,7 +161,16 @@
                                                             <option <?php if($wp['usaha_distrik'] == 'muaratami'){ echo 'selected';} ?> value="muaratami">Muara Tami</option>
                                                         </select>
                                                     </div>
-
+                                                    <div class="form-group mb-3">
+                                                    <input type="hidden" name="kelurahan" value="<?= $wp['usaha_kelurahan']?>" id="kelurahan">
+                                                    <label for="usaha_kelurahan">Kelurahan <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
+                                                    <select class="form-control form-control-lg" name="usaha_kelurahan" id="usaha_kelurahan" required>
+                                                        <div id="usaha_kelurahan">
+                                                          
+                                                        </div>
+                                                    </select>
+                                                    </div>
+                                                         
                                                     <div class="form-group mb-3">
                                                         <label for="usaha_kategori">Kategori Usaha</label>
                                                         <select class="form-control form-control-lg" name="usaha_kategori" id="usaha_kategori" required>
@@ -264,3 +273,61 @@
                     </div> <!-- container -->
 
                 </div> <!-- content -->
+                <script src="<?=base_url('/assets/js/kelurahan.js')?>"></script>
+                <script>
+                    var data = document.getElementById("usaha_distrik").value;
+                    var kelurahan = document.getElementById("kelurahan").value;
+                    if(data == 'abepura')
+                            {
+                                document.getElementById("usaha_kelurahan").innerHTML=`
+                                                    
+                                                            <option <?php if($wp['usaha_kelurahan'] == ''){ echo 'selected';} ?>  value=""></option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'asano'){ echo 'selected';} ?>  value="asano">Asano</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'awiyo'){ echo 'selected';} ?>  value="awiyo">Awiyo</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'kotabaru'){ echo 'selected';} ?>  value="kotabaru">Kota Baru</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'yobe'){ echo 'selected';} ?>  value="yobe">Yobe</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'abepantai'){ echo 'selected';} ?>   value="abepantai">Abe Pantai</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'vim'){ echo 'selected';} ?>  value="vim">Vim</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'awiyo'){ echo 'selected';} ?>  value="whymhorock">Why Mhorock</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'awiyo'){ echo 'selected';} ?>  value="wahno">Wahno</option>
+                            `;
+                            }
+                            if(data == 'heram')
+                            {
+                                document.getElementById("usaha_kelurahan").innerHTML=`
+                                                            <option <?php if($wp['usaha_kelurahan'] == ''){ echo 'selected';} ?>  value=""></option>
+                                                            <option  <?php if($wp['usaha_kelurahan'] == 'waena'){ echo 'selected';} ?>value="waena">Waena</option>
+                                                            <option  <?php if($wp['usaha_kelurahan'] == 'yabansai'){ echo 'selected';} ?>value="yabansai">Yabansai</option>
+                                                            <option  <?php if($wp['usaha_kelurahan'] == 'hedam'){ echo 'selected';} ?> value="hedam">Hedam</option>
+                                                            `;
+                            }
+                            if(data == 'jprutara')
+                            {
+                                document.getElementById("usaha_kelurahan").innerHTML=`
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'gurabesi'){ echo 'selected';} ?> value="gurabesi">Gurabesi</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'mandala'){ echo 'selected';} ?>value="mandala">Mandala</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'bhayangkara'){ echo 'selected';} ?>value="bhayangkara">Bhayangkara</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'trikora'){ echo 'selected';} ?>value="trikora">Trikora</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'angkasapura'){ echo 'selected';} ?>value="angkasapura">Angkasapura</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'imbi'){ echo 'selected';} ?>value="imbi">Imbi</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'tanjungria'){ echo 'selected';} ?> value="tanjungria">Tanjung Ria</option>
+                                                            `;
+                            }
+                            if(data == 'jprselatan')
+                            {
+                                document.getElementById("usaha_kelurahan").innerHTML=`
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'entrop'){ echo 'selected';} ?>  value="entrop">Entrop</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'hamadi'){ echo 'selected';} ?> value="hamadi">Hamadi</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'ardipura'){ echo 'selected';} ?> value="ardipura">Ardipura</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'numbay'){ echo 'selected';} ?> value="numbay">Numbay</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'argapura'){ echo 'selected';} ?> value="argapura">Argapura </option>
+                                                            `;
+                            }
+                            if(data == 'muaratami')
+                            {
+                                document.getElementById("usaha_kelurahan").innerHTML=`
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'koyabarat'){ echo 'selected';} ?>  value="koyabarat">Koya barat</option>
+                                                            <option <?php if($wp['usaha_kelurahan'] == 'koyatimur'){ echo 'selected';} ?> value="koyatimur">Koya timur</option>
+                                                            `;
+                            }
+                </script>

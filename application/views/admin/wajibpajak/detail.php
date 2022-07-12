@@ -160,6 +160,18 @@
                                                     </div>
 
                                                     <div class="form-group mb-3">
+                                                        <label for="usaha_kelurahan">Kelurahan</label>
+                                                        <input type="text" name="usaha_kelurahan" class="form-control form-control-lg bg-light" id="usaha_kelurahan" value="<?php foreach($wajib_pajak_kelurahan as $kelurahan)
+                                                                        if($kelurahan['id_kelurahan'] == $wp['usaha_kelurahan'])
+                                                                        {
+                                                                            echo $kelurahan['nama_kelurahan'];
+                                                                        }else{
+                                                                            echo '';
+                                                                        }
+                                                                    ?>" readonly>
+                                                    </div>
+
+                                                    <div class="form-group mb-3">
                                                         <label for="usaha_kategori">Kategori Usaha <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>                                                        
                                                         <?php
                                                             $queryKomponenUsaha = $this->db->query("SELECT * FROM pajak_kk WHERE id = " . $wp['usaha_kategori']);

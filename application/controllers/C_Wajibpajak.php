@@ -42,7 +42,7 @@ class C_Wajibpajak extends CI_Controller
 	// proses tambah
 	public function proses_tambah()
 	{
-
+		
 		// membuat variabel
 		$id_wp = $this->input->post('id_wp');
 
@@ -61,6 +61,7 @@ class C_Wajibpajak extends CI_Controller
 		$usaha_telp = $this->input->post('usaha_telp');
 		$usaha_alamat = $this->input->post('usaha_alamat');
 		$usaha_distrik = $this->input->post('usaha_distrik');
+		$usaha_kelurahan = $this->input->post('usaha_kelurahan');
 		$usaha_kategori = $this->input->post('usaha_kategori');
 
 		$usaha_luas_bangunan = $this->input->post('usaha_luas_bangunan');
@@ -94,6 +95,7 @@ class C_Wajibpajak extends CI_Controller
 			'usaha_telp' => $usaha_telp,
 			'usaha_alamat' => $usaha_alamat,
 			'usaha_distrik' => $usaha_distrik,
+			'usaha_kelurahan' => $usaha_kelurahan,
 			'usaha_kategori' => $usaha_kategori,
 
 			'usaha_luas_bangunan' => $usaha_luas_bangunan,
@@ -153,6 +155,7 @@ class C_Wajibpajak extends CI_Controller
 		$usaha_telp = $this->input->post('usaha_telp');
 		$usaha_alamat = $this->input->post('usaha_alamat');
 		$usaha_distrik = $this->input->post('usaha_distrik');
+		$usaha_kelurahan = $this->input->post('usaha_kelurahan');
 		$usaha_kategori = $this->input->post('usaha_kategori');
 
 		$usaha_luas_bangunan = $this->input->post('usaha_luas_bangunan');
@@ -187,6 +190,7 @@ class C_Wajibpajak extends CI_Controller
 			'usaha_telp' => $usaha_telp,
 			'usaha_alamat' => $usaha_alamat,
 			'usaha_distrik' => $usaha_distrik,
+			'usaha_kelurahan' => $usaha_kelurahan,
 			'usaha_kategori' => $usaha_kategori,
 
 			'usaha_luas_bangunan' => $usaha_luas_bangunan,

@@ -19,7 +19,7 @@
                                             <li class="breadcrumb-item active">Sortir</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Sortir Wajib Pajak</span></h4>
+                                    <h4 class="page-title">Sortir Wajib Pajak Berdasarkan Distrik & Kelurahan</span></h4>
                                 </div>
                             </div>
                         </div>
@@ -46,41 +46,74 @@
                                                             <span class="btn-label"><i class="fas fa-plus"></i></span>Tambah</button>
                                                         </a>
                                                         <div class="btn-group">                                                            
+                                                            <button class="btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Jenis Usaha</button>
+                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
+                                                                <?php foreach ($wajib_pajak_kategori_usaha as $kategori_usaha ) : ?>
+                                                                <a target="_blank" class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortir/')?><?=$kategori_usaha['id']?>"><?=$kategori_usaha['kriteria']?></a>
+                                                                <?php endforeach; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-group">                                                            
                                                             <button class="btn btn-success bg-success text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
                                                             <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
-                                                            
                                                             <?php
                                                                 // // query komponen usaha
-                                                                $queryKategoriUsaha = $this->db->query("SELECT * FROM pajak_kk WHERE id = " . $this->uri->segment(4));
-                                                                $rowKategoriUsaha = $queryKategoriUsaha->row_array();
-                                                                echo $rowKategoriUsaha['kriteria'];
+                                                                $distrik = $distrik;
+                                                                $nama_distrik = "";
+                                                                foreach($wajib_pajak_distrik as $distrikLoop)
+                                                                {
+                                                                    if($distrikLoop['id_distrik'] == $distrik )
+                                                                    {
+                                                                        $nama_distrik = $distrikLoop['nama_distrik'];
+                                                                    }
+                                                                }
+                                                                if($nama_distrik != null)
+                                                                {
+                                                                    echo $nama_distrik;
+                                                                }
+                                                            
                                                             ?>
 
                                                             </button>
 
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <?php foreach ($wajib_pajak_kategori_usaha as $kategori_usaha ) : ?>
-                                                                <a class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortir/')?><?=$kategori_usaha['id']?>"><?=$kategori_usaha['kriteria']?></a>
+                                                                <?php foreach ($wajib_pajak_distrik as $distrik_usaha ) : ?>
+                                                                <a class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortirdistrik/')?><?=$distrik_usaha['id_distrik']?>"><?=$distrik_usaha['nama_distrik']?></a>
                                                                 <?php endforeach; ?>
                                                             </div>
 
                                                         </div>
-
                                                         <div class="btn-group">                                                            
-                                                            <button class="btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Distrik</button>
+                                                            <button class="btn btn-secondary bg-secondary text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
+                                                            <?php
+                                                                $nama_kelurahan = '';
+                                                                foreach($wajib_pajak_kelurahan as $kelurahanLoop)
+                                                                {
+                                                                    if($kelurahanLoop['id_kelurahan'] == $kelurahan )
+                                                                    {
+                                                                        $nama_kelurahan = $kelurahanLoop['nama_kelurahan'];
+                                                                    }
+                                                                }
+                                                                    echo $nama_kelurahan;
+                                                            
+                                                            ?>
+                                                            </button>
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <?php foreach ($wajib_pajak_distrik as $distrik ) : ?>
-                                                                <a target="_blank" class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortirdistrik/')?><?=$distrik['id_distrik']?>"><?=$distrik['nama_distrik']?></a>
+                                                                <?php foreach ($wajib_pajak_kelurahan as $kelurahan_usaha ) : ?>
+                                                                <?php if($kelurahan_usaha['id_distrik'] == $distrik) 
+                                                                {?>
+                                                                     <a class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortirkelurahan/kelurahan')?>?kelurahan=<?=$kelurahan_usaha['id_kelurahan']?>&distrik=<?=$distrik?>"><?=$kelurahan_usaha['nama_kelurahan']?></a>
+                                                                <?php } ?>
                                                                 <?php endforeach; ?>
                                                             </div>
                                                         </div>
 
-                                                        <a target="_blank" href="<?= base_url('admin/wajibpajak/pdf/'. $this->uri->segment(4)) ?>">
+                                                        <a target="_blank" href="<?=base_url('admin/wajibpajak/cetakkelurahan/kelurahan')?>?kelurahan=<?=$kelurahan?>&distrik=<?=$distrik?>">
                                                             <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
                                                             <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
                                                         </a>
-
                                                     </div>
                                                     
                                                     <a href="<?= base_url('admin/wajibpajak/terhapus') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Menampilkan Wajib Pajak Terhapus">
@@ -119,7 +152,8 @@
                                                         <tbody>
 
                                                             <?php $no = 1;
-                                                            foreach ($wajib_pajak_sortir as $l) { ?>
+                                                         
+                                                            foreach ($wajib_pajak_sortir_kelurahan as $l) { ?>
 
                                                                 <tr>
                                                                     <td>
@@ -148,16 +182,14 @@
                                                                     </td>
                                                                     <td>
                                                                         <?php foreach($wajib_pajak_kelurahan as $kelurahan)
+                                                                        if($kelurahan['id_kelurahan'] == $l['usaha_kelurahan'])
                                                                         {
-                                                                            if($l['usaha_kelurahan'] == $kelurahan['id_kelurahan']){
-                                                                                echo $kelurahan['nama_kelurahan'];
-                                                                            }else{
-                                                                                echo '';
-                                                                            }
+                                                                            echo $kelurahan['nama_kelurahan'];
+                                                                        }else{
+                                                                            echo '';
                                                                         }
                                                                         ?>
-                                                                    </td>
-
+                                                                    </td>         
                                                                     <td>
                                                                         <?php foreach($wajib_pajak_distrik as $distrik)
                                                                         if($distrik['id_distrik'] == $l['usaha_distrik'])

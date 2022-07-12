@@ -62,6 +62,7 @@
                                                                 <?php endforeach; ?>
                                                             </div>
                                                         </div>
+                                                       
                                                     </div>
                                                     
                                                     <a href="<?= base_url('admin/wajibpajak/terhapus') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Menampilkan Wajib Pajak Terhapus">
@@ -87,6 +88,7 @@
                                                                 <th class="font-weight-bold">Nama Usaha</th>
                                                                 <th class="font-weight-bold">Alamat Usaha</th>
                                                                 <th class="font-weight-bold">Distrik</th>
+                                                                <th class="font-weight-bold">Kelurahan</th>
                                                                 <th class="font-weight-bold">Pemilik Usaha</th>
                                                                 <th class="font-weight-bold">Nomor Telepon Pemilik</th>
                                                                 <th class="font-weight-bold">Email Pemilik</th>
@@ -135,6 +137,20 @@
                                                                             echo '';
                                                                         }
                                                                     ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php foreach($wajib_pajak_kelurahan as $kelurahan)
+                                                                        {
+                                                                            if($l['usaha_kelurahan'] == $kelurahan['id_kelurahan']){
+                                                                                echo $kelurahan['nama_kelurahan'];
+                                                                            }else{
+                                                                                echo '';
+                                                                            }
+                                                                        }
+                                                                        ?>
+
+
+                                                                        
                                                                     </td>
 
                                                                     <td>

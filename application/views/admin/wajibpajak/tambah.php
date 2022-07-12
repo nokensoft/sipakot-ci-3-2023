@@ -126,7 +126,7 @@
 
                                                 <div class="form-group mb-3">
                                                     <label for="usaha_distrik">Distrik <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
-                                                    <select class="form-control form-control-lg" name="usaha_distrik" id="usaha_distrik" required>
+                                                    <select class="form-control form-control-lg" onchange="distrik()" name="usaha_distrik" id="usaha_distrik" required>
                                                         <option></option>
                                                         <option value="abepura">Abepura</option>
                                                         <option value="heram">Heram</option>
@@ -135,6 +135,16 @@
                                                         <option value="muaratami">Muara Tami</option>
                                                     </select>
                                                 </div>
+                                                <div class="form-group mb-3">
+                                                    <label for="usaha_kelurahan">Kelurahan <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
+                                                    <select class="form-control form-control-lg" name="usaha_kelurahan" id="usaha_kelurahan" required>
+                                                        <div id="usaha_kelurahan">
+
+                                                        </div>
+                                                    </select>
+                                                </div>
+                                              
+                                               
 
                                                 <div class="form-group mb-3">
                                                     <label for="usaha_kategori">Kategori Usaha <sup class="text-danger" data-plugin="tippy" data-tippy-placement="top-start" title="Wajib dilengkapi"><i class="fas fa-xs fa-asterisk"></i></sup> </label>
@@ -229,10 +239,8 @@
                         </div>
                         <!-- end row -->
 
-
-
-
-
                     </div> <!-- container -->
 
                 </div> <!-- content -->
+
+                <script src="<?=base_url('/assets/js/kelurahan.js')?>"></script>

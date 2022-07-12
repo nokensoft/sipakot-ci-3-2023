@@ -13,6 +13,7 @@ class Admin extends CI_Controller
 		$this->load->model('M_tagihan');
 		$this->load->model('M_distrik');
 		$this->load->model('M_berita');
+		$this->load->model('M_kelurahan');
 
 		if ($this->session->userdata('status') != "telah_login") {
 			redirect(base_url("admin/masuk"));
@@ -224,6 +225,7 @@ class Admin extends CI_Controller
 		$data['wp'] = $this->M_wajibpajak->baca('wajib_pajak')->result_array();
 		$data['wajib_pajak_kategori_usaha'] = $this->M_opsi->wajib_pajak_kategori_usaha();
 		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
+		$data['wajib_pajak_kelurahan'] = $this->M_kelurahan->wajib_pajak_kelurahan();
 		
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
@@ -243,7 +245,9 @@ class Admin extends CI_Controller
 		$data = array (
 			'wajib_pajak_sortir' => $this->M_opsi->wajib_pajak_sortir($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
-			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik()
+			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik(),
+			'wajib_pajak_kelurahan' => $this->M_kelurahan->wajib_pajak_kelurahan()
+
 		);
 		
 		
@@ -302,7 +306,8 @@ class Admin extends CI_Controller
 		$data = array (
 			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
-			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik()
+			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik(),
+			'wajib_pajak_kelurahan' => $this->M_kelurahan->wajib_pajak_kelurahan()
 			
 		);
 			
@@ -340,6 +345,82 @@ class Admin extends CI_Controller
 		);
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
 		$pdf = $this->load->view('admin/wajibpajak/distrikpdf',$data, TRUE);
+		// $mpdf->setFooter($judul_dua. 'Halaman - {PAGENO}');
+		// $mpdf->setFooter('sipakot.jayapurakota.go.id||Data Distrik '.$judul_dua.' Halaman - {PAGENO}');
+		$mpdf->SetHTMLFooter('
+				<table width="100%" height="1" style="border:0px; font-size:12px">
+					<tr>
+					<hr>
+						<td width="33%"> <i>sipakot.jayapurakota.go.id</i></td>
+						<td width="33%" align="center"></td>
+						<td width="33%" style="text-align: right;"> Wajib Pajak Distrik '.$judul_dua.'<b>  Halaman - {PAGENO}</b></td>
+					</tr>
+				</table>
+		');
+		$mpdf->WriteHTML($pdf);
+		$mpdf->Output('sipakot-wajib-pajak-distrik-'.$judul.'.pdf',"I");
+	}
+
+
+	// admin > wajib pajak distrik
+	public function wajib_pajak_sortir_kelurahan()
+	{
+		
+		$kelurahan =$_GET['kelurahan'];
+		$distrik =$_GET['distrik'];
+		$data = array (
+			'wajib_pajak_sortir_kelurahan' => $this->M_kelurahan->wajib_pajak_sortir_kelurahan($kelurahan,$distrik),
+			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
+			'wajib_pajak_distrik' => $this->M_distrik->wajib_pajak_distrik(),
+			'wajib_pajak_kelurahan' => $this->M_kelurahan->wajib_pajak_kelurahan(),
+			'kelurahan' =>$kelurahan,
+			'distrik' =>$distrik,
+		);
+			
+		$pengaturan = array (
+				'judul_situs' => $this->M_pengaturan->judul_situs(),
+				'footer_text' => $this->M_pengaturan->footer_text(),
+				'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+			);
+			
+			
+			$this->load->view('admin/partials/header', $pengaturan);
+			$this->load->view('admin/wajibpajak/index-sortir-kelurahan', $data);
+			$this->load->view('admin/partials/footer');
+		}
+
+	public function wajib_pajak_pdf_kelurahan()
+	{
+		$kelurahan =$_GET['kelurahan'];
+		$distrik =$_GET['distrik'];
+		$wajib_pajak_kelurahan = $this->M_kelurahan->wajib_pajak_kelurahan();
+		$wajib_pajak_distrik = $this->M_distrik->wajib_pajak_distrik();
+
+		foreach($wajib_pajak_kelurahan as $k)
+		{
+			if($k['id_kelurahan'] == $kelurahan)
+			{
+				$judul_kelurahan = $k['nama_kelurahan'];
+			}
+		}
+
+		foreach($wajib_pajak_distrik as $k)
+		{
+			if($k['id_distrik'] == $distrik)
+			{
+				$judul_distrik = $k['nama_distrik'];
+			}
+		}
+		$judul_kategori = 'Kelurahan '. $judul_kelurahan.' Distrik '.$judul_distrik;
+		$judul=  strtolower(str_replace(" ", "_", $judul_kategori));
+		$judul_dua =  $judul_kategori;
+		$data = array (
+			'wajib_pajak_sortir_kelurahan' => $this->M_kelurahan->wajib_pajak_sortir_kelurahan($kelurahan,$distrik),
+			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
+			'judul' => $judul_kategori
+		);
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
+		$pdf = $this->load->view('admin/wajibpajak/kelurahanpdf',$data, TRUE);
 		// $mpdf->setFooter($judul_dua. 'Halaman - {PAGENO}');
 		// $mpdf->setFooter('sipakot.jayapurakota.go.id||Data Distrik '.$judul_dua.' Halaman - {PAGENO}');
 		$mpdf->SetHTMLFooter('
@@ -639,6 +720,7 @@ class Admin extends CI_Controller
 		$data['wp'] = $this->M_wajibpajak->edit($where, 'wajib_pajak')->row_array();
 		$data['kategori_usaha'] = $this->M_wajibpajak->baca('pajak_kk')->result_array();		
 		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
+		$data['wajib_pajak_kelurahan'] = $this->M_kelurahan->wajib_pajak_kelurahan();
 		
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
