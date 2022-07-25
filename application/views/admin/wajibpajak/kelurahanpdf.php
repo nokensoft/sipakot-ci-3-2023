@@ -29,9 +29,7 @@
                 <th>Pemilik Usaha</th>
                 <th>Email Pemilik</th>
             </tr>
-            <?php $i=1;
-            foreach($wajib_pajak_sortir_kelurahan as $pajak):
-            ?>
+            <?php $i=1; foreach($wajib_pajak_sortir_kelurahan as $pajak): ?>
                 <tr>
                     <td class="no"><?=$i++?>.</td>
                     <td><?=$pajak["usaha_nama"]?></td>
