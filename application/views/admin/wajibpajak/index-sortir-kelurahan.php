@@ -142,7 +142,6 @@
                                                                 <th class="font-weight-bold">Distrik</th>
                                                                 <th class="font-weight-bold">Pemilik Usaha</th>
                                                                 <th class="font-weight-bold">Nomor Telepon Pemilik</th>
-                                                                <th class="font-weight-bold">Email Pemilik</th>
                                                                 <th class="font-weight-bold">Aktif</th>
                                                                 <th class="font-weight-bold">Opsi</th>
                                                             </tr>
@@ -207,10 +206,6 @@
 
                                                                     <td>
                                                                         <?= $l['pemilik_telp']; ?>
-                                                                    </td>
-
-                                                                    <td>
-                                                                        <?= $l['pemilik_email']; ?>
                                                                     </td>
 
                                                                     <td>
