@@ -27,7 +27,6 @@
                 <th>Nama Usaha</th>
                 <th>Alamat Usaha</th>
                 <th>Pemilik Usaha</th>
-                <th>Email Pemilik</th>
             </tr>
             <?php $i=1; foreach($wajib_pajak_sortir_kelurahan as $pajak): ?>
                 <tr>
@@ -35,7 +34,6 @@
                     <td><?=$pajak["usaha_nama"]?></td>
                     <td><?=$pajak["usaha_alamat"]?></td>
                     <td><?=$pajak["pemilik_nama"]?></td>
-                    <td><?=$pajak["pemilik_email"]?></td>
                 </tr>
             <?php endforeach ?>    
         </table>  
