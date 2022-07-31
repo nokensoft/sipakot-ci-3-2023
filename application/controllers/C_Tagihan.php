@@ -42,6 +42,7 @@ class C_Tagihan extends CI_Controller
                     </button>
                 </div>
             ');
+            
         redirect('admin/wajibpajak/tagihan/' . $id_wp);
     }
     // proses ubah status tagihan
@@ -71,6 +72,13 @@ class C_Tagihan extends CI_Controller
 
         $id_pengguna = $this->input->post('id_pengguna');
 
+        /* 
+            PERHITUNGAN PABT
+            BISA BUAT DI SEKITAR SINI
+        */
+
+        $totalPABT;
+
         $data = array(
             'id_wp' => $id_wp,
             'id_bulan' => $id_bulan,
@@ -90,8 +98,13 @@ class C_Tagihan extends CI_Controller
 
             'id_pengguna' => $id_pengguna,
 
+            // TAMBAH DATA PABT
+            // 'total_pabt' => $totalPABT;
+
             'status' => '0', // 1 = aktif, 0 = tidak_aktif, 3 = hapus
-        );
+        );        
+
+         
 
         $this->M_wajibpajak->tambah($data, 'tagihan');
 

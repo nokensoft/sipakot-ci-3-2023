@@ -141,7 +141,6 @@
                                 
                                 <div class="fna">
 
-                                    
                                     <?php if (isset($tagihan['kualitas'])) { $jml1A = $tagihan['kualitas'] * $tagihan['persentasi_sda']; } ?>
                                     <?php if (isset($nilai1)) {  $jml1B = $nilai1 * $tagihan['persentasi_kompensasi']; } ?>
                                     <?php $fna1 = $jml1A + $jml1B; ?>
@@ -165,7 +164,6 @@
                                     
                                     <?php $fna5 = $jml5A + $jml5B; ?>
 
-                
                                 <!-- end fna -->
 
                                 <div class="info-tagihan">
@@ -492,8 +490,8 @@
                                                 <td colspan="4" class="bg-soft-dark text-dark text-center align-middle font-weight-bold" width="20%">PAJAK PABT ( <?= $pajakPABT*100 ?>%)</td>
                                                 <td class="bg-soft-dark text-dark text-center font-weight-bold">
                                                     <?php
-                                                    $totalPajakPABT = $pajakPABT * $totalNPA;
-                                                    echo rupiah($totalPajakPABT);
+                                                        $totalPajakPABT = $pajakPABT * $totalNPA;
+                                                        echo rupiah($totalPajakPABT);
                                                     ?>
                                                 </td>
                                             </tr>
