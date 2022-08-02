@@ -14,6 +14,7 @@ class Admin extends CI_Controller
 		$this->load->model('M_distrik');
 		$this->load->model('M_berita');
 		$this->load->model('M_kelurahan');
+		$this->load->model('M_pabt');
 
 		if ($this->session->userdata('status') != "telah_login") {
 			redirect(base_url("admin/masuk"));
@@ -435,6 +436,47 @@ class Admin extends CI_Controller
 		');
 		$mpdf->WriteHTML($pdf);
 		$mpdf->Output('sipakot-wajib-pajak-distrik-'.$judul.'.pdf',"I");
+	}
+
+	// admin > wajib pajak > pabt
+	public function wajib_pajak_pabt($id)
+	{
+		$data['wajib_pajak'] = $this->M_pabt->tampilkan_data('wajib_pajak')->result_array();
+		$data['bulan'] = $this->M_wajibpajak->baca('bulan')->result_array();
+		$data['tahun'] = $id;
+		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
+
+		
+		
+		$pengaturan = array (
+			'judul_situs' => $this->M_pengaturan->judul_situs(),
+			'footer_text' => $this->M_pengaturan->footer_text(),
+			'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+		);
+		
+		
+		$this->load->view('admin/partials/header', $pengaturan);
+		$this->load->view('admin/wajibpajak/pabt', $data);
+		$this->load->view('admin/partials/footer');
+	}
+
+	// admin > wajib pajak > patb - distrik 
+	public function wajib_pajak_pabt_distrik($id)
+	{
+		$distrik = $_GET['distrik'];
+		$data['wajib_pajak'] = $this->M_distrik->wajib_pajak_sortir_distrik($distrik);
+		$data['bulan'] = $this->M_wajibpajak->baca('bulan')->result_array();
+		$data['tahun'] = $id;
+		$data['distrik'] = $distrik;
+		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
+		$pengaturan = array (
+			'judul_situs' => $this->M_pengaturan->judul_situs(),
+			'footer_text' => $this->M_pengaturan->footer_text(),
+			'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+		);
+		$this->load->view('admin/partials/header', $pengaturan);
+		$this->load->view('admin/wajibpajak/pabt-distrik', $data);
+		$this->load->view('admin/partials/footer');
 	}
 
 	// admin > wajib pajak > terhapus

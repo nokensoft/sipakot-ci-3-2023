@@ -7,6 +7,7 @@ class C_Tagihan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_wajibpajak');
+        $this->load->library('tagihan');
     }
 
     public function index()
@@ -72,12 +73,7 @@ class C_Tagihan extends CI_Controller
 
         $id_pengguna = $this->input->post('id_pengguna');
 
-        /* 
-            PERHITUNGAN PABT
-            BISA BUAT DI SEKITAR SINI
-        */
-
-        $totalPABT;
+        $totalPABT = $this->tagihan->hitung($usaha_kategori, $harga_baku, $pajak_pabt, $kualitas, $persentasi_sda, $persentasi_kompensasi, $volume);
 
         $data = array(
             'id_wp' => $id_wp,
@@ -99,12 +95,10 @@ class C_Tagihan extends CI_Controller
             'id_pengguna' => $id_pengguna,
 
             // TAMBAH DATA PABT
-            // 'total_pabt' => $totalPABT;
+            'total_pabt' => $totalPABT,
 
             'status' => '0', // 1 = aktif, 0 = tidak_aktif, 3 = hapus
         );        
-
-         
 
         $this->M_wajibpajak->tambah($data, 'tagihan');
 
@@ -174,6 +168,7 @@ class C_Tagihan extends CI_Controller
         $pajak_pabt = $this->input->post('pajak_pabt');
         $persentasi_sda = $this->input->post('persentasi_sda');
         $persentasi_kompensasi = $this->input->post('persentasi_kompensasi');
+        $totalPABT = $this->tagihan->hitung($usaha_kategori, $harga_baku, $pajak_pabt, $kualitas, $persentasi_sda, $persentasi_kompensasi, $volume);
 
         $where = array(
             'id' => $this->input->post('id')
@@ -195,6 +190,7 @@ class C_Tagihan extends CI_Controller
             'pajak_pabt' => $pajak_pabt,
             'persentasi_sda' => $persentasi_sda,
             'persentasi_kompensasi' => $persentasi_kompensasi,
+            'total_pabt' => $totalPABT,
 
             // 'status' => '0', // 1 = aktif, 0 = tidak_aktif, 3 = hapus
         );

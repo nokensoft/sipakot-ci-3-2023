@@ -125,6 +125,11 @@ $route['admin/wajibpajak/pdfdistrik/(:any)'] = 'admin/wajib_pajak_pdf_distrik/$1
 // CETAK PDF KELURAHAN
 $route['admin/wajibpajak/cetakkelurahan/kelurahan'] = 'admin/wajib_pajak_pdf_kelurahan';
 
+// SORTIR PABT
+$route['admin/wajibpajak/pabt/(:any)'] = 'admin/wajib_pajak_pabt/$1';
+
+// SORTIR PABT PERDISTRIK
+$route['admin/wajibpajak/pabt-distrik/(:any)'] = 'admin/wajib_pajak_pabt_distrik/$1';
 
 // INDEX SAMPAH
 $route['admin/wajibpajak/sampah'] = 'admin/wajibpajak_sampah';

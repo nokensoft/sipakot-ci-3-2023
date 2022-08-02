@@ -168,6 +168,15 @@
                                                 <input type="text" class="form-control bg-light" id="persentasi_kompensasi" value="<?= $tagihan['persentasi_kompensasi'] ?>" name="persentasi_kompensasi" required="" readonly>
                                             </div> <!-- end .form-group  -->
 
+                                            <div class="form-group mb-3">
+                                                <label for="total_pabt">Total PABT </label>
+                                                <?php if($tagihan['total_pabt']==''): ?>
+                                                    <p class="text-danger text-small"> Total PABT belum tersimpan di database. Klik simpan agar bisa diupdate !!</p>
+                                                <?php else: ?>
+                                                    <input type="text" class="form-control bg-light" id="total_pabt" value="<?= rupiah($tagihan['total_pabt']) ?>"  readonly>
+                                                <?php endif; ?>
+                                            </div> <!-- end .form-group  -->
+
                                            
                                         
                                         </div>

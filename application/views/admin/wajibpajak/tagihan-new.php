@@ -87,9 +87,8 @@
                                                         <th width="" style="font-weight:bold">Bulan</th>
                                                         <th width="" style="font-weight:bold">Komponen Sumber Daya Alam (SDA)</th>
                                                         <th width="" style="font-weight:bold">Volume</th>
-                                                        <th width="" style="font-weight:bold">Keterangan</th>
-                                                        <!-- <th width="" style="font-weight:bold">Info Tagihan</th> -->
-                                                        <!-- <th width="" style="font-weight:bold">Bukti Pembayaran</th> -->
+                                                        <!-- <th width="" style="font-weight:bold">Keterangan</th> -->
+                                                        <th width="" style="font-weight:bold">Total PABT</th>
                                                         <th width="" style="font-weight:bold">Opsi</th>
                                                     </tr>
                                                 </thead>
@@ -111,7 +110,7 @@
                                                         ?>
                                                         <td><?=$rowKomponenSDA['kriteria']?></td>
                                                         <td><?=volume_air($tagihan['volume'])?></td>
-                                                        <td><?=$tagihan['keterangan']?></td>
+                                                        <!-- <td><?=$tagihan['keterangan']?></td> -->
                                                         <!-- <td>
                                                             <a href="<?= base_url('admin/wajibpajak/tagihan/fna/') . $this->uri->segment(5) .'?id=' .$tagihan['id'] ?>" class="btn btn-xs btn-primary bg-light text-primary" target="_blank" data-plugin="tippy" data-tippy-placement="top-start" title="Lihat Perhitungan Faktor Nilai Air (FNA)">Faktor Nilai Air</a>
                                                             <a href="<?= base_url('admin/wajibpajak/tagihan/info/') . $this->uri->segment(5) .'?id=' .$tagihan['id'] ?>" class="btn btn-xs btn-primary" target="_blank" data-plugin="tippy" data-tippy-placement="top-start" title="Lihat Informasi Tagihan"><i class="fas fa-info-circle"></i> Info Tagihan</a>
@@ -129,6 +128,13 @@
                                                             <?php }?>
 
                                                         </td> -->
+                                                        <td>
+                                                            <?php if(!empty($tagihan['total_pabt'])){
+                                                                  echo rupiah($tagihan['total_pabt']);
+                                                            }else{
+                                                                echo 'Belum Tersimpan';
+                                                            } ?>
+                                                        </td>
                                                         <td>
                                                             <!-- <a href="<?= base_url('admin/wajibpajak/tagihan/sunting/') . $this->uri->segment(5) . '?id=' . $tagihan['id'] . '&b='.$tagihan['id_bulan'].'&t='.date('Y')?>" class="btn btn-xs btn-success" data-plugin="tippy" data-tippy-placement="top-start" title="Ubah"><i class="mdi mdi-pencil"></i></a> -->
                                                             <!-- <a href="#" class="btn btn-xs btn-light" data-toggle="modal" data-target="#MODAL-HAPUS-<?=$tagihan['id']?>" data-plugin="tippy" data-tippy-placement="top-start" title="Hapus"><i class="fas fa-trash"></i></a> -->

@@ -62,7 +62,19 @@
                                                                 <?php endforeach; ?>
                                                             </div>
                                                         </div>
-                                                       
+                                                        <div class="btn-group">                                                            
+                                                            <button class="btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>PABT</button>
+                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2019')?>">2019</a>
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2020')?>">2020</a>
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2021')?>">2021</a>
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2022')?>">2022</a>
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2023')?>">2023</a>
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2024')?>">2024</a>
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2025')?>">2025</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     
                                                     <a href="<?= base_url('admin/wajibpajak/terhapus') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Menampilkan Wajib Pajak Terhapus">
