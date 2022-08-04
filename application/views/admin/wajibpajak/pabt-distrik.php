@@ -53,7 +53,6 @@
                                                         <div class="btn-group">                                                            
                                                             <button class="btn btn-success bg-success text-light btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
                                                             <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
-                                                        
                                                             <?php 
                                                                  $nama_distrik = "";
                                                                  foreach($wajib_pajak_distrik as $distrikLoop)
@@ -72,12 +71,15 @@
                                                         
                                                             </button>
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <?php foreach ($wajib_pajak_distrik as $distrik ) : ?>
-                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-distrik/'.$tahun)?>?distrik=<?=$distrik['id_distrik']?>"><?=$distrik['nama_distrik']?></a>
+                                                                <?php foreach ($wajib_pajak_distrik as $d ) : ?>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/cetak-pabt-perdistrik/'.$tahun)?>?distrik=<?=$d['id_distrik']?>"><?=$d['nama_distrik']?></a>
                                                                 <?php endforeach; ?>
                                                             </div>
                                                         </div>
-                                                        
+                                                            <a target="_blank" href="<?= base_url('admin/wajibpajak/cetak-pabt-perdistrik/'.$tahun) ?>?distrik=<?=$distrik?>">
+                                                            <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
+                                                            <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
+                                                        </a>
                                                     </div>
                                                     
                                                     <a href="<?= base_url('admin/wajibpajak/terhapus') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Menampilkan Wajib Pajak Terhapus">

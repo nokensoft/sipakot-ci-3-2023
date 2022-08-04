@@ -119,7 +119,6 @@
 
             if(!empty($volume2)) {
                 $jmlPenagihan2 = $volume2 * $fna2 * $hargaBaku;
-                echo rupiah($jmlPenagihan2);
             } elseif(!empty($nilaiSisah1)){
                 $jmlPenagihan2 = $nilaiSisah1 * $fna2 * $hargaBaku;
             } 
@@ -147,10 +146,8 @@
             }
             if(!empty($volume4)) {
                 $jmlPenagihan4 = $volume4 * $fna4 * $hargaBaku;
-                echo rupiah($jmlPenagihan4);
             } elseif(!empty($nilaiSisah3)){
                 $jmlPenagihan4 = $nilaiSisah3 * $fna4 * $hargaBaku;
-                echo rupiah($jmlPenagihan4);
             } else {
                 $jmlPenagihan4 = 0;
             }

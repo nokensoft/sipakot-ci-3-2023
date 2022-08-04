@@ -336,7 +336,7 @@ class Admin extends CI_Controller
 				$judul_kategori = $distrik['nama_distrik'];
 			}
 		}
-		$judul=  strtolower(str_replace(" ", "_", $judul_kategori));
+		$judul=  strtolower(str_replace(" ", "-", $judul_kategori));
 		$judul_dua =  $judul_kategori;
 		$data = array (
 			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
@@ -422,8 +422,6 @@ class Admin extends CI_Controller
 		);
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
 		$pdf = $this->load->view('admin/wajibpajak/kelurahanpdf',$data, TRUE);
-		// $mpdf->setFooter($judul_dua. 'Halaman - {PAGENO}');
-		// $mpdf->setFooter('sipakot.jayapurakota.go.id||Data Distrik '.$judul_dua.' Halaman - {PAGENO}');
 		$mpdf->SetHTMLFooter('
 				<table width="100%" height="1" style="border:0px; font-size:12px">
 					<tr>
@@ -478,6 +476,67 @@ class Admin extends CI_Controller
 		$this->load->view('admin/wajibpajak/pabt-distrik', $data);
 		$this->load->view('admin/partials/footer');
 	}
+
+	// admin > wajin pajak > patb > pdf 
+	public function wajib_pajak_pabt_pdf($id)
+	{
+		$data['wajib_pajak'] = $this->M_pabt->tampilkan_data('wajib_pajak')->result_array();
+		$data['bulan'] = $this->M_wajibpajak->baca('bulan')->result_array();
+		$data['judul'] = $id;
+		$judul = $id;
+		
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 30,'margin_top' => 10]);
+		$pdf = $this->load->view('admin/wajibpajak/pabt-pdf',$data, TRUE);
+		$mpdf->SetHTMLFooter('
+				<table width="100%" height="1" style="border:0px; font-size:12px">
+					<tr>
+					<hr>
+						<td width="33%"> <i>sipakot.jayapurakota.go.id</i></td>
+						<td width="33%" align="center"></td>
+						<td width="33%" style="text-align: right;"> PABT Wajib Pajak Tahun '.$judul.'<b>  Halaman - {PAGENO}</b></td>
+					</tr>
+				</table>
+		');
+		$mpdf->WriteHTML($pdf);
+		$mpdf->Output('sipakot-wajib-pajak-pabt-tahun-'.$judul.'.pdf',"I");
+
+		
+	}
+
+		// admin > wajin pajak > patb > perdistrik pdf 
+		public function wajib_pajak_pabt_perdistrik_pdf($id)
+		{
+			$distrik = $_GET['distrik'];
+			$data['wajib_pajak'] = $this->M_distrik->wajib_pajak_sortir_distrik($distrik);
+			$data['bulan'] = $this->M_wajibpajak->baca('bulan')->result_array();
+			$data['tahun'] = $id;
+			$wajib_pajak_distrik = $this->M_distrik->wajib_pajak_distrik();
+			foreach($wajib_pajak_distrik as $k)
+			{
+			if($k['id_distrik'] == $distrik)
+			{
+				$judul_distrik = $k['nama_distrik'];
+			}
+			}
+			$data['distrik'] = $judul_distrik;
+			$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 30,'margin_top' => 10]);
+			$pdf = $this->load->view('admin/wajibpajak/pabt-perdistrik-pdf',$data, TRUE);
+			$mpdf->SetHTMLFooter('
+					<table width="100%" height="1" style="border:0px; font-size:12px">
+						<tr>
+						<hr>
+							<td width="33%"> <i>sipakot.jayapurakota.go.id</i></td>
+							<td width="30%" align="center"></td>
+							<td width="36%" style="text-align: right;"> PABT Wajib Pajak Distrik '.$judul_distrik.' Tahun '.$id.'<b>  Halaman - {PAGENO}</b></td>
+						</tr>
+					</table>
+			');
+			$judul_lower= strtolower(str_replace(" ", "-", $judul_distrik));
+			$mpdf->WriteHTML($pdf);
+			$mpdf->Output('sipakot-pabt-wajib-pajak-distrik-'.$judul_lower.'-tahun-'.$id.'.pdf',"I");
+	
+			
+		}
 
 	// admin > wajib pajak > terhapus
 	public function wajib_pajak_terhapus()
