@@ -60,10 +60,10 @@
                                                             </div>
                                                         </div>
 
-                                                        <a target="_blank" href="<?= base_url('admin/wajibpajak/cetak-pabt/'. $this->uri->segment(4)) ?>">
+                                                        <!-- <a target="_blank" href="<?= base_url('admin/wajibpajak/cetak-pabt/'. $this->uri->segment(4)) ?>">
                                                             <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
                                                             <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
-                                                        </a>
+                                                        </a> -->
 
                                                        
                                                     </div>
