@@ -5,7 +5,9 @@ class M_pabt extends CI_Model
     // 	TAMPILKAN 
     function tampilkan_data($table)
     {
-		return $this->db->get($table);
+        $this->db->from($table);
+		$this->db->order_by('id_wp','desc');
+		return $this->db->get();
     }
 
     // BERSADARKAN DISTRIK 
