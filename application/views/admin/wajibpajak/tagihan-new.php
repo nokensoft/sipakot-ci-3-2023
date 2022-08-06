@@ -132,7 +132,11 @@
                                                             <?php if(!empty($tagihan['total_pabt'])){
                                                                   echo rupiah($tagihan['total_pabt']);
                                                             }else{
-                                                                echo 'Belum Tersimpan';
+                                                                if(($tagihan['total_pabt'] == '0'))
+                                                                echo "Rp 0";
+                                                                else{
+                                                                    echo 'Belum Tersimpan';
+                                                                }
                                                             } ?>
                                                         </td>
                                                         <td>

@@ -25,7 +25,6 @@
                         </div>
                         <!-- end page title -->
 
-                        
 
                         <!-- start .row  -->
                         <div class="row">
@@ -107,7 +106,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <?= $l['usaha_nama'];?>
-                                                                    </td>
+                                                                   </td>
                                                                     <?php foreach($bulan as $b):?>
                                                                     <td>
                                                                         <?php
@@ -120,15 +119,27 @@
                                                                             echo '-';
                                                                         }else{
                                                                             echo rupiah($queryPabt[0]['total_pabt']);
-                                                                        }; ?>
+                                                                        };
+                                                                        ?>
                                                                     </td>
                                                                     <?php endforeach;?>
-
-                                                                  
+                                                                    
+                                                                    
                                                                    
 
                                                                 </tr>
-                                                            <?php $no++;} ?>
+                                                            <?php $no++;}?>
+                                                            <tr>
+                                                                <td><?=$no?></td>
+                                                                <td class="text-center"> Total</td>
+                                                                 <?php 
+                                                                 foreach($bulan as $b):?>
+                                                                    <?php  $id_bulan  = $b['id'];
+                                                                        $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan WHERE tahun = '$tahun' AND id_bulan = '$id_bulan'")->result_array();
+                                                                        ?>
+                                                                    <td><?= rupiah($queryTotal[0]['total'])?></td>
+                                                                <?php endforeach;?>       
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                     <!-- end table  -->

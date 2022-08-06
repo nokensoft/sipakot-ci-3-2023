@@ -1,5 +1,5 @@
 <?php 
-    Class tagihan{
+    Class Tagihan{
         function hitung($usaha_kategori, $harga_baku, $pajak_pabt, $kualitas, $persentasi_sda, $persentasi_kompensasi, $volume)
         {
           $jenisUsaha = $usaha_kategori;

@@ -7,7 +7,7 @@ class C_Tagihan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_wajibpajak');
-        $this->load->library('tagihan');
+        $this->load->library('Tagihan');
     }
 
     public function index()

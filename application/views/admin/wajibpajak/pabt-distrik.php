@@ -72,7 +72,7 @@
                                                             </button>
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
                                                                 <?php foreach ($wajib_pajak_distrik as $d ) : ?>
-                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/cetak-pabt-perdistrik/'.$tahun)?>?distrik=<?=$d['id_distrik']?>"><?=$d['nama_distrik']?></a>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-distrik/'.$tahun)?>?distrik=<?=$d['id_distrik']?>"><?=$d['nama_distrik']?></a>
                                                                 <?php endforeach; ?>
                                                             </div>
                                                         </div>
@@ -93,10 +93,9 @@
 
                                         <div class="row">
                                             <div class="col-12 py-2">
-
                                                 <div class="table table-responsive">
-
                                                     <!-- start table  -->
+
                                                     <table id="basic-datatable" class="table table-striped dt-responsive nowrap w-100">
                                                         <thead class="bg-light">
                                                             <tr>
@@ -105,14 +104,9 @@
                                                                 <?php foreach($bulan as $b):?>
                                                                     <th class="font-weight-bold"><?=$b['bulan']?></th>
                                                                 <?php endforeach;?>
-
-
                                                             </tr>
                                                         </thead>
-
-
                                                         <tbody>
-
                                                             <?php $no = 1;
                                                             foreach ($wajib_pajak as $l) { ?>
 
@@ -139,14 +133,20 @@
                                                                     </td>
                                                                     <?php endforeach;?>
 
-                                                                  
-                                                                   
-
                                                                 </tr>
 
                                                             <?php $no++;} ?>
-
-
+                                                            <tr>
+                                                                <td><?=$no?></td>
+                                                                <td class="text-center"> Total</td>
+                                                                 <?php 
+                                                                 foreach($bulan as $b):?>
+                                                                    <?php  $id_bulan  = $b['id'];
+                                                                        $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan, wajib_pajak WHERE wajib_pajak.id_wp = tagihan.id_wp AND wajib_pajak.usaha_distrik = '$distrik' AND tagihan.tahun = '$tahun' AND tagihan.id_bulan = '$id_bulan'")->result_array();
+                                                                        ?>
+                                                                    <td><?= rupiah($queryTotal[0]['total'])?></td>
+                                                                <?php endforeach;?>       
+                                                            </tr>
                                                         </tbody>
                                                     </table>
                                                     <!-- end table  -->

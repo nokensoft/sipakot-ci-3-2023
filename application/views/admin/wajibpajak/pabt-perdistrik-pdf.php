@@ -72,7 +72,16 @@
                                     </td>
                     <?php endforeach;?>                                    
                                 </tr>
-                <?php $no++;} ?>
+                    <?php $no++;} ?>
+                    <tr>
+                        <td class="field-data" colspan="2"> Total</td>
+                        <?php 
+                            foreach($bulan as $b):?>
+                           <?php  $id_bulan  = $b['id'];
+                            $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan, wajib_pajak WHERE wajib_pajak.id_wp = tagihan.id_wp AND wajib_pajak.usaha_distrik = '$distrik' AND tagihan.tahun = '$tahun' AND tagihan.id_bulan = '$id_bulan'")->result_array();?>                                  ?>
+                            <td class="field-data"><?= rupiah($queryTotal[0]['total'])?></td>
+                            <?php endforeach;?>       
+                   </tr>
         </table>
         <!-- end table  -->
         <div class="ttd" style="text-align: center; margin-left:500px">
