@@ -41,6 +41,7 @@
                 <tr>
                     <td class="font-weight-bold">No</td>
                     <td class="font-weight-bold">Nama Usaha</td>
+                    <td class="font-weight-bold">Alamat Usaha</td>
                     <?php foreach($bulan as $b):?>
                         <th class="font-weight-bold"><?=$b['bulan']?></th>
                     <?php endforeach;?>
@@ -55,7 +56,15 @@
                             </td>
                             <td class="field-data">
                                 <?= $l['usaha_nama'];?>
-                            </td>                                                                             
+                            </td> 
+                            <td class="field-data">
+                                <?= $l['usaha_alamat'].' ';
+                                if($l['usaha_kelurahan'] == '')
+                                {
+                                    $l['usahan_kelurahan'];
+                                };
+                                ?>
+                            </td>                                                                               
                              <?php foreach($bulan as $b):?>
                                 <td class="field-data">
                                     <?php
