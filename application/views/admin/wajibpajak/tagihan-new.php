@@ -120,11 +120,8 @@
 
                                                             <?php if(!empty($tagihan['bukti_pembayaran'])){ ?>
                                                             <a href="#" class="btn btn-xs btn-success" data-toggle="modal" data-target="#MODAL-TAMPILKAN-<?=$tagihan['id']?>" data-plugin="tippy" data-tippy-placement="top-start" title="Tampilkan Bukti Pembayaran"><i class="fas fa-file"></i> Bukti Pembayaran</a>
-                                                            
                                                             <?php } else { ?>
-                                                            
                                                             <a href="#" class="btn btn-xs btn-warning" data-plugin="tippy" data-tippy-placement="top-start" title="Bukti Pembayaran Belum Diunggah"><i class="fas fa-times"></i></a>
-                                                            
                                                             <?php }?>
 
                                                         </td> -->
@@ -142,7 +139,6 @@
                                                         <td>
                                                             <!-- <a href="<?= base_url('admin/wajibpajak/tagihan/sunting/') . $this->uri->segment(5) . '?id=' . $tagihan['id'] . '&b='.$tagihan['id_bulan'].'&t='.date('Y')?>" class="btn btn-xs btn-success" data-plugin="tippy" data-tippy-placement="top-start" title="Ubah"><i class="mdi mdi-pencil"></i></a> -->
                                                             <!-- <a href="#" class="btn btn-xs btn-light" data-toggle="modal" data-target="#MODAL-HAPUS-<?=$tagihan['id']?>" data-plugin="tippy" data-tippy-placement="top-start" title="Hapus"><i class="fas fa-trash"></i></a> -->
-
                                                             <a href="<?= base_url('admin/wajibpajak/tagihan/cetak/') . $this->uri->segment(5) .'?id=' .$tagihan['id'] ?>" class="btn btn-xs btn-success" target="_blank" data-plugin="tippy" data-tippy-placement="top-start" title="Cetak Info Tagihan"><i class="fas fa-print"></i></a>
                                                             
                                                             <?php if(!empty($tagihan['bukti_pembayaran'])){ ?>

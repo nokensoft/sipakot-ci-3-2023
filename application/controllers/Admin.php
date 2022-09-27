@@ -712,11 +712,10 @@ class Admin extends CI_Controller
 		$data['wajib_pajak'] = $this->M_tagihan->baca_detail_wajib_pajak('wajib_pajak')->row_array();
 		$data['bulans'] = $this->M_wajibpajak->baca('bulan')->result_array();
 		$data['tagihan'] = $this->M_tagihan->baca_sunting_tagihan('tagihan')->row_array();
-
 		$data['jenis_usaha'] = $this->M_tagihan->baca('pajak_kk')->result_array();
 
 		$this->load->view('admin/wajibpajak/tagihan-cetak', $data);
-		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-L','margin_top' => 9,
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-P','margin_top' => 5,
 		'margin_left' => 3,
 		'margin_right' => 3,
 		'mirrorMargins' => true]);
