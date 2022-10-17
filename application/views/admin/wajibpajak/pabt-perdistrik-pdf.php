@@ -28,6 +28,9 @@
   .field-data{
     border: 1px solid black;
   }
+  .center{
+    text-align: center;
+  }
     </style>
 </head>
 <body>
@@ -78,7 +81,7 @@
                                 </tr>
                     <?php $no++;} ?>
                     <tr>
-                        <td class="field-data" colspan="3"> Total</td>
+                        <td class="field-data center" colspan="4"> Total</td>
                         <?php 
                             foreach($bulan as $b):?>
                            <?php  $id_bulan  = $b['id'];
