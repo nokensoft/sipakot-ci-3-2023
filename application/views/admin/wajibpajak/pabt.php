@@ -87,6 +87,8 @@
                                                             <tr>
                                                                 <th class="font-weight-bold">No</th>
                                                                 <th class="font-weight-bold">Nama Usaha</th>
+                                                                <th class="font-weight-bold">Alamat Usaha</th>
+                                                                <th class="font-weight-bold">Pemilik Usaha</th>
                                                                 <?php foreach($bulan as $b):?>
                                                                     <th class="font-weight-bold"><?=$b['bulan']?></th>
                                                                 <?php endforeach;?>
@@ -107,6 +109,8 @@
                                                                     <td>
                                                                         <?= $l['usaha_nama'];?>
                                                                    </td>
+                                                                   <td><?= $l['usaha_alamat']?> </td>
+                                                                   <td><i class="fa fa-user mr-1 text-dark"></i> <?= $l['pemilik_nama']?> </td>
                                                                     <?php foreach($bulan as $b):?>
                                                                     <td>
                                                                         <?php
@@ -131,7 +135,9 @@
                                                             <?php $no++;}?>
                                                             <tr>
                                                                 <td><?=$no?></td>
-                                                                <td class="text-center"> Total</td>
+                                                                <td class="text-center" > Total</td>
+                                                                <td></td>
+                                                                <td></td>
                                                                  <?php 
                                                                  foreach($bulan as $b):?>
                                                                     <?php  $id_bulan  = $b['id'];

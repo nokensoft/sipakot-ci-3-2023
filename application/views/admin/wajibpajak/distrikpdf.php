@@ -28,6 +28,8 @@
                 <th>Alamat Usaha</th>
                 <th>Pemilik Usaha</th>
                 <th>Email Pemilik</th>
+                <th>No Telepon Pemilik</th>
+                <th>Jumlah Kamar (Usaha Kos)</th>
             </tr>
             <?php $i=1;
             foreach($wajib_pajak_sortir_distrik as $pajak):
@@ -38,6 +40,8 @@
                     <td><?=$pajak["usaha_alamat"]?></td>
                     <td><?=$pajak["pemilik_nama"]?></td>
                     <td><?=$pajak["pemilik_email"]?></td>
+                    <td><?=$pajak["pemilik_telp"]?></td>
+                    <td><?=$pajak["usaha_kos_jml_kmr"]?></td>
                 </tr>
             <?php endforeach ?>    
         </table>  
