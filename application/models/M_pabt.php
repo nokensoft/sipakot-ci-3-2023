@@ -15,6 +15,12 @@ class M_pabt extends CI_Model
     {
         return $this->db->get_where('wajib_pajak', 'usaha_distrik', $distrik);
     }
+
+       // BERSADARKAN wajib pajak 
+    function berdasarkan_wp($id)
+    {
+        return $data = $this->db->where('id_wp', $id)->get('wajib_pajak');
+    }
 }
 
 

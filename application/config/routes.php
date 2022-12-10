@@ -131,6 +131,9 @@ $route['admin/wajibpajak/pabt/(:any)'] = 'admin/wajib_pajak_pabt/$1';
 // SORTIR PABT PERDISTRIK
 $route['admin/wajibpajak/pabt-distrik/(:any)'] = 'admin/wajib_pajak_pabt_distrik/$1';
 
+// SORTIR PABT WAJIB PAJAK PERTAHUN
+$route['admin/wajibpajak/pabt-wp/(:any)'] = 'admin/wajib_pajak_pabt_pertahun/$1';
+
 // CETAK PDF PABT
 $route['admin/wajibpajak/cetak-pabt/(:any)'] = 'admin/wajib_pajak_pabt_pdf/$1';
 

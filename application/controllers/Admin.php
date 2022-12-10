@@ -477,7 +477,24 @@ class Admin extends CI_Controller
 		$this->load->view('admin/partials/footer');
 	}
 
-	// admin > wajin pajak > patb > pdf 
+	// admin > wajib pajak > patb
+	public function wajib_pajak_pabt_pertahun($id)
+	{
+		$data['wajib_pajak'] = $this->M_pabt->berdasarkan_wp($id)->result_array();
+		$data['bulan'] = $this->M_wajibpajak->baca('bulan')->result_array();
+		$data['tahun'] = $_GET['t'];
+		$data['id'] = $id;
+		$pengaturan = array (
+			'judul_situs' => $this->M_pengaturan->judul_situs(),
+			'footer_text' => $this->M_pengaturan->footer_text(),
+			'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+		);
+		$this->load->view('admin/partials/header', $pengaturan);
+		$this->load->view('admin/wajibpajak/pabt-wp', $data);
+		$this->load->view('admin/partials/footer');
+	}
+
+	// admin > wajib pajak > patb > pdf 
 	public function wajib_pajak_pabt_pdf($id)
 	{
 		$data['wajib_pajak'] = $this->M_pabt->tampilkan_data('wajib_pajak')->result_array();

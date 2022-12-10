@@ -50,12 +50,14 @@
                                                 
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between">
+                                            <div class="">
                                             <div class="btn-group dropdown mb-2">
                                                 <button type="button" class="btn btn-lg btn-primary"><?=$_GET['t']?></button>
                                                 <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="mdi mdi-chevron-down"></i>
                                                 </button>
                                                 <div class="dropdown-menu" style="">
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/tagihan/new/' . $wajib_pajak['id_wp']) ?>?t=2023">2023</a>
                                                     <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/tagihan/new/' . $wajib_pajak['id_wp']) ?>?t=2022">2022</a>
                                                     <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/tagihan/new/' . $wajib_pajak['id_wp']) ?>?t=2021">2021</a>
                                                     <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/tagihan/new/' . $wajib_pajak['id_wp']) ?>?t=2020">2020</a>
@@ -64,6 +66,26 @@
                                                     <!-- <a class="dropdown-item" href="<?= base_url('wajibpajak/tagihan') ?>?t=semua">Semua</a> -->
                                                 </div>
                                             </div>
+                                            <div class="btn-group dropdown mb-2">
+                                                <button type="button" class="btn btn-lg btn-primary">Rekapan</button>
+                                                <button type="button" class="btn btn-lg btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="mdi mdi-paperclip"></i>
+                                                </button>
+                                                <div class="dropdown-menu" style="">
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2023">2023</a>
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2022">2022</a>
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2021">2021</a>
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2020">2020</a>
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2019">2019</a>
+                                                    <!-- <div class="dropdown-divider"></div> -->
+                                                    <!-- <a class="dropdown-item" href="<?= base_url('wajibpajak/tagihan') ?>?t=semua">Semua</a> -->
+                                                </div>
+                                            </div>
+                                           
+                                            </div>
+                                           
+                                        
+                                        
                                             <a href="<?= base_url('admin/wajibpajak/tagihan/buat/') . $this->uri->segment(5) . '?t='.date('Y')  ?>">
                                                 <button type="submit" class="btn btn-lg btn-primary waves-effect waves-light" data-plugin="tippy" data-tippy-placement="top-start" title="Tambah">
                                                 <span class="btn-label"><i class="fas fa-plus"></i></span>Buat Tagihan</button>
