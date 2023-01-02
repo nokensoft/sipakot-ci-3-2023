@@ -46,6 +46,8 @@
                                                 <i class="mdi mdi-chevron-down"></i>
                                             </button>
                                             <div class="dropdown-menu" style="">
+                                                <a class="dropdown-item" href="<?= base_url('wajibpajak/tagihan') ?>?t=2023">2023</a>
+                                                <a class="dropdown-item" href="<?= base_url('wajibpajak/tagihan') ?>?t=2022">2022</a>
                                                 <a class="dropdown-item" href="<?= base_url('wajibpajak/tagihan') ?>?t=2021">2021</a>
                                                 <a class="dropdown-item" href="<?= base_url('wajibpajak/tagihan') ?>?t=2020">2020</a>
                                                 <a class="dropdown-item" href="<?= base_url('wajibpajak/tagihan') ?>?t=2019">2019</a>
