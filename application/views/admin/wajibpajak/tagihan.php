@@ -119,6 +119,8 @@
                                             <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2019"><i class="mdi mdi-book mr-1"></i>2019</a>
                                             <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2020"><i class="mdi mdi-book mr-1"></i>2020</a>
                                             <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2021"><i class="mdi mdi-book mr-1"></i>2021</a>
+                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2022"><i class="mdi mdi-book mr-1"></i>2022</a>
+                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2023"><i class="mdi mdi-book mr-1"></i>2023</a>
                                         </div>
                                     </div>
 
