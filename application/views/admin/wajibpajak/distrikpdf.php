@@ -30,6 +30,7 @@
                 <th>Email Pemilik</th>
                 <th>No Telepon Pemilik</th>
                 <th>Jumlah Kamar (Usaha Kos)</th>
+                <th>Volumen Air</th>
             </tr>
             <?php $i=1;
             foreach($wajib_pajak_sortir_distrik as $pajak):
@@ -42,6 +43,18 @@
                     <td><?=$pajak["pemilik_email"]?></td>
                     <td><?=$pajak["pemilik_telp"]?></td>
                     <td><?=$pajak["usaha_kos_jml_kmr"]?></td>
+                    <td>
+                        <?php
+                        $queryVolumeAir = $this->db->query("SELECT volume FROM tagihan WHERE id_wp = '".$pajak['id_wp']."' ORDER BY id DESC LIMIT 1" );
+                        $rowVolumeAir = $queryVolumeAir->row_array();
+                        if($rowVolumeAir == null)
+                        {
+                        echo "-";
+                        }else{
+                        echo volume_air($rowVolumeAir['volume']);
+                        }
+                        ?>
+                    </td>
                 </tr>
             <?php endforeach ?>    
         </table>  
