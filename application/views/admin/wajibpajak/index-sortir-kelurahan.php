@@ -142,6 +142,7 @@
                                                                 <th class="font-weight-bold">Distrik</th>
                                                                 <th class="font-weight-bold">Pemilik Usaha</th>
                                                                 <th class="font-weight-bold">Nomor Telepon Pemilik</th>
+                                                                <th class="font-weight-bold">Volume Air</th>
                                                                 <th class="font-weight-bold">Aktif</th>
                                                                 <th class="font-weight-bold">Opsi</th>
                                                             </tr>
@@ -206,6 +207,16 @@
 
                                                                     <td>
                                                                         <?= $l['pemilik_telp']; ?>
+                                                                    </td>
+
+                                                                    <td>
+                                                                    <?php
+                                                                        // query volume air 
+                                                                                      
+                                                                        $queryVolumeAir = $this->db->query("SELECT volume FROM tagihan WHERE id_wp = '".$l['id_wp']."' ORDER BY id DESC LIMIT 1" );
+                                                                        $rowVolumeAir = $queryVolumeAir->row_array();
+                                                                        ?>
+                                                                        <?=volume_air($rowVolumeAir['volume'])?>
                                                                     </td>
 
                                                                     <td>
