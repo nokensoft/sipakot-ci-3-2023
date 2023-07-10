@@ -86,6 +86,8 @@
                                                     <option value="2020" <?php if(isset($_GET['t']) && $_GET['t'] == '2020') { echo 'selected';} ?>>2020</option>
                                                     <option value="2021" <?php if(isset($_GET['t']) && $_GET['t'] == '2021') { echo 'selected';} ?>>2021</option>
                                                     <option value="2022" <?php if(isset($_GET['t']) && $_GET['t'] == '2022') { echo 'selected';} ?>>2022</option>
+                                                    <option value="2023" <?php if(isset($_GET['t']) && $_GET['t'] == '2023') { echo 'selected';} ?>>2023</option>
+                                                    <option value="2024" <?php if(isset($_GET['t']) && $_GET['t'] == '2024') { echo 'selected';} ?>>2024</option>
                                                 </select>
                                             </div>
 
