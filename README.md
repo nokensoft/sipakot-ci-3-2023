@@ -5,7 +5,7 @@
 ### Admin
 `| URLs : /admin` <br>
 `| Email : admin.sipakot@jayapurakota.go.id` <br>
-`| Pass : qwerty12345` <br>
+`| Pass : admin.sipakot@jayapurakota.go.id` <br>
 
 ### Pelaksana
 `| URLs : /pelaksana` <br>
