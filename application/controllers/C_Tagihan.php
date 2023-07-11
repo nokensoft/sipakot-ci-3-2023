@@ -7,7 +7,7 @@ class C_Tagihan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_wajibpajak');
-        $this->load->library('Tagihan');
+        $this->load->library('tagihan');
     }
 
     public function index()
@@ -73,7 +73,7 @@ class C_Tagihan extends CI_Controller
 
         $id_pengguna = $this->input->post('id_pengguna');
 
-        $totalPABT = $this->Tagihan->hitung($usaha_kategori, $harga_baku, $pajak_pabt, $kualitas, $persentasi_sda, $persentasi_kompensasi, $volume);
+        $totalPABT = $this->tagihan->hitung($usaha_kategori, $harga_baku, $pajak_pabt, $kualitas, $persentasi_sda, $persentasi_kompensasi, $volume);
 
         $data = array(
             'id_wp' => $id_wp,
