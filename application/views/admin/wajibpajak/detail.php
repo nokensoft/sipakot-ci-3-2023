@@ -37,15 +37,36 @@
                                             
                                                 <div class="col-12">
                                                     <div class="d-flex justify-content-between">
-                                                        <a href="<?= base_url('admin/wajibpajak/ubah/') . $wp['id_wp'] ?>">
-                                                            <button type="button" class="btn btn-lg btn-primary waves-effect waves-light" data-plugin="tippy" data-tippy-placement="top-start" title="Simpan">
-                                                            <span class="btn-label"><i class="fas fa-edit"></i></span>Ubah</button>
-                                                        </a>
+                                                        <div class="col-4 m-2">
+                                                            <a href="<?= base_url('admin/wajibpajak/ubah/') . $wp['id_wp'] ?>">
+                                                                <button type="button" class="btn btn-lg btn-primary waves-effect waves-light" data-plugin="tippy" data-tippy-placement="top-start" title="Ubah">
+                                                                <span class="btn-label"><i class="fas fa-edit"></i></span>Ubah</button>
+                                                            </a>
+                                                            <a href="<?= base_url('admin/wajibpajak/tagihan/new/') ?><?= $wp['id_wp']; ?>?t=<?=date('Y')?>" >
+                                                                <button type="button" class="btn btn-lg btn-success waves-effect waves-light" data-plugin="tippy" data-tippy-placement="top-start" title="Tagihan">
+                                                                <span class="btn-label"><i class="mdi mdi-animation-outline"></i></span>Tagihan</button>
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-6 m-2">
+                                                        
+                                                        </div>
 
-                                                        <a href="<?= base_url('admin/wajibpajak') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Kembali ke Halaman Wajib Pajak">
-                                                            <button type="button" class="btn btn-lg btn-primary text-primary bg-light waves-effect waves-light">
-                                                            <span class="btn-label"><i class="mdi mdi-replay"></i></span>Kembali</button>
-                                                        </a>
+                                                        <div class="col-2 m-2">
+                                                            <a href="<?= base_url('admin/wajibpajak') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Kembali ke Halaman Wajib Pajak">
+                                                                <button type="button" class="btn btn-lg btn-primary text-primary bg-light waves-effect waves-light">
+                                                                <span class="btn-label"><i class="mdi mdi-replay"></i></span>Kembali</button>
+                                                            </a>
+                                                        </div>
+                                                       
+
+                                                        
+
+
+
+
+
+
+                                                        
 
                                                     </div>
                                                     <hr>
