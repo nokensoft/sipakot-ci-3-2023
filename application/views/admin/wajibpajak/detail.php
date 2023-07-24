@@ -42,9 +42,9 @@
                                                                 <button type="button" class="btn btn-lg btn-primary waves-effect waves-light" data-plugin="tippy" data-tippy-placement="top-start" title="Ubah">
                                                                 <span class="btn-label"><i class="fas fa-edit"></i></span>Ubah</button>
                                                             </a>
-                                                            <a href="<?= base_url('admin/wajibpajak/tagihan/new/') ?><?= $wp['id_wp']; ?>?t=<?=date('Y')?>" >
+                                                            <a target="_blank" href="<?= base_url('admin/wajibpajak/tagihan/new/') ?><?= $wp['id_wp']; ?>?t=<?=date('Y')?>" >
                                                                 <button type="button" class="btn btn-lg btn-success waves-effect waves-light" data-plugin="tippy" data-tippy-placement="top-start" title="Tagihan">
-                                                                <span class="btn-label"><i class="mdi mdi-animation-outline"></i></span>Tagihan</button>
+                                                                <span class="btn-label"><i class="mdi mdi-animation-outline"></i></span> Lihat Tagihan</button>
                                                             </a>
                                                         </div>
                                                         <div class="col-6 m-2">
