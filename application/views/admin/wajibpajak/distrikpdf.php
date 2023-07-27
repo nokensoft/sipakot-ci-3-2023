@@ -40,6 +40,7 @@
                     <td><?=$pajak["pemilik_nama"]?></td>
                     <td><?=$pajak["pemilik_email"]?></td>
                     <td><?=$pajak["usaha_kos_jml_kmr"]?></td>
+                    <?php endforeach ?>    
         </table>  
              
         <div class="ttd" style="text-align: center; margin-left:500px">
