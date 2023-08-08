@@ -234,7 +234,7 @@
                                         <td class="bg-light text-dark text-center align-middle" width="20%">Vol 0-50  m<sup>3</sup></td>
                                         <td class="bg-light text-dark text-center">
                                             <?php
-                                            $volumeAirTanah = round($tagihan['volume']);
+                                            $volumeAirTanah = $tagihan['volume'];
                                             // echo $volumeAirTanah;
                                             // echo '<br>';
                                             // echo '<br>';

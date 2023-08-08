@@ -95,7 +95,8 @@
              
             }
             $fna5 = $jml5A + $jml5B;
-            $volumeAirTanah = round($volume);
+            // $volumeAirTanah = round($volume);
+            $volumeAirTanah = $volume;
             if ($volumeAirTanah > 50) {
                 $volume1 = 50;
                 $nilaiSisah1 = $volumeAirTanah - $volume1;
