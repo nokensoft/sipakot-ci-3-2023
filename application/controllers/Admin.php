@@ -614,7 +614,7 @@ class Admin extends CI_Controller
 		}
 		$bln = $this->db->query("SELECT * FROM bulan WHERE id = $bulan")->row_array();
 		$bln = $bln['bulan'];
-		$data['judul'] = ' Wajib Pajak Volume < '.$volume.' Bulan '. $bln.' Tahun '.$tahun;
+		$data['judul'] = ' Wajib Pajak Volume < '.volume_air($volume).' Bulan '. $bln.' Tahun '.$tahun;
 		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan)->result_array();
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 30,'margin_top' => 10]);
 		$pdf = $this->load->view('admin/wajibpajak/volume-pdf',$data, TRUE);
