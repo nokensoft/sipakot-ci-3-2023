@@ -614,7 +614,7 @@ class Admin extends CI_Controller
 		}
 		$bln = $this->db->query("SELECT * FROM bulan WHERE id = $bulan")->row_array();
 		$bln = $bln['bulan'];
-		$data['judul'] = ' Wajib Pajak Volume < '.$volume.' BULAN '. $bln.' Tahun '.$tahun;
+		$data['judul'] = ' Wajib Pajak Volume < '.$volume.' Bulan '. $bln.' Tahun '.$tahun;
 		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan)->result_array();
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 30,'margin_top' => 10]);
 		$pdf = $this->load->view('admin/wajibpajak/volume-pdf',$data, TRUE);
@@ -624,12 +624,12 @@ class Admin extends CI_Controller
 						<hr>
 							<td width="30%"> <i>sipakot.jayapurakota.go.id</i></td>
 							<td width="30%" align="center"></td>
-							<td width="40%" style="text-align: right;">  Wajib Pajak Volume < '.$volume.' BULAN '. $bln.' Tahun '.$tahun.'<b>  Halaman - {PAGENO}</b></td>
+							<td width="40%" style="text-align: right;">  Wajib Pajak Volume < '.$volume.' Bulan '. $bln.' Tahun '.$tahun.'<b>  Halaman - {PAGENO}</b></td>
 						</tr>
 					</table>
 		');
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output('data-wajib-pajak-volume-'.$volume.'-bulan-'.$bln.'tahun-'.$tahun.'.pdf',"I");
+		$mpdf->Output('data-wajib-pajak-volume-'.$volume.'-bulan-'.$bln.'-tahun-'.$tahun.'.pdf',"I");
 	}
 
 	// admin > wajib pajak > terhapus
