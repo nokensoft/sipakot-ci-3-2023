@@ -199,7 +199,7 @@
                                 <tr>
                                     <td  style="padding:20px">
                                         <label>Volume Pemanfaatan Air : </label>
-                                        <strong style="font-weight:bold"><?= $tagihan['volume'] . ' m<sup>3</sup>'?></strong>
+                                        <strong style="font-weight:bold"><?=round($tagihan['volume']) . ' m<sup>3</sup>'?></strong>
                                     </td>
                                 </tr>
                         </table>
@@ -242,7 +242,7 @@
                                         <td class="bg-light text-dark text-center align-middle" width="20%">Vol 0-50  m<sup>3</sup></td>
                                         <td class="bg-light text-dark text-center">
                                             <?php
-                                            $volumeAirTanah = $tagihan['volume'];
+                                            $volumeAirTanah = ($tagihan['volume']);
                                             // echo $volumeAirTanah;
                                             // echo '<br>';
                                             // echo '<br>';
