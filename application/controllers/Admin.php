@@ -140,6 +140,7 @@ class Admin extends CI_Controller
 			'dasbor_info_persentasi_sda' => $this->M_opsi->dasbor_info_persentasi_sda(),
 			'dasbor_info_persentasi_kompensasi' => $this->M_opsi->dasbor_info_persentasi_kompensasi(),
 
+			
 			// profil
 			'user' => $this->M_user->detail_profil(),
 		);
@@ -227,7 +228,11 @@ class Admin extends CI_Controller
 		$data['wajib_pajak_kategori_usaha'] = $this->M_opsi->wajib_pajak_kategori_usaha();
 		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
 		$data['wajib_pajak_kelurahan'] = $this->M_kelurahan->wajib_pajak_kelurahan();
-		
+		$data['tahun'] = date('Y');
+		$data['bulan'] = date('m');
+
+	
+
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
 			'footer_text' => $this->M_pengaturan->footer_text(),
@@ -555,6 +560,78 @@ class Admin extends CI_Controller
 			
 		}
 
+	// admin > wajib pajak > volume air
+	public function volume_air($volume)
+	{
+		$tahun = $_GET['tahun'];
+		$bulan = $_GET['bulan'];
+		if($tahun == null)
+		{
+			$tahun = date('Y');
+		}
+
+		if($bulan == null)
+		{
+			$bulan = date('m');
+		}
+		
+		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan)->result_array();
+		$data['wajib_pajak_kategori_usaha'] = $this->M_opsi->wajib_pajak_kategori_usaha();
+		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
+		$data['wajib_pajak_kelurahan'] = $this->M_kelurahan->wajib_pajak_kelurahan();
+		$data['tahun'] = $tahun;
+		$data['bulan'] = $bulan;
+		$data['volume'] = $volume;
+		$data['bulans'] = $this->db->query("SELECT * FROM bulan")->result_array();
+		$data['b'] = $this->db->query("SELECT * FROM bulan WHERE id = $bulan")->row_array();
+		
+
+		$pengaturan = array (
+			'judul_situs' => $this->M_pengaturan->judul_situs(),
+			'footer_text' => $this->M_pengaturan->footer_text(),
+			'footer_text_right' => $this->M_pengaturan->footer_text_right(),
+		);
+		
+		
+		$this->load->view('admin/partials/header', $pengaturan);
+		$this->load->view('admin/wajibpajak/index-volume', $data);
+		$this->load->view('admin/partials/footer');
+	}
+
+	// admin > wajib pajak > volume air > pdf
+	public function volume_air_pdf($volume)
+	{
+		$tahun = $_GET['tahun'];
+		$bulan = $_GET['bulan'];
+		if($tahun == null)
+		{
+			$tahun = date('Y');
+		}
+
+		if($bulan == null)
+		{
+			$bulan = date('m');
+		}
+		$bln = $this->db->query("SELECT * FROM bulan WHERE id = $bulan")->row_array();
+		$bln = $bln['bulan'];
+		$data['judul'] = ' Wajib Pajak Volume < '.$volume.' BULAN '. $bln.' Tahun '.$tahun;
+		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan)->result_array();
+		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 30,'margin_top' => 10]);
+		$pdf = $this->load->view('admin/wajibpajak/volume-pdf',$data, TRUE);
+		$mpdf->SetHTMLFooter('
+					<table width="100%" height="1" style="border:0px; font-size:12px">
+						<tr>
+						<hr>
+							<td width="30%"> <i>sipakot.jayapurakota.go.id</i></td>
+							<td width="30%" align="center"></td>
+							<td width="40%" style="text-align: right;">  Wajib Pajak Volume < '.$volume.' BULAN '. $bln.' Tahun '.$tahun.'<b>  Halaman - {PAGENO}</b></td>
+						</tr>
+					</table>
+		');
+		$mpdf->WriteHTML($pdf);
+		$mpdf->Output('data-wajib-pajak-volume-'.$volume.'-bulan-'.$bln.'tahun-'.$tahun.'.pdf',"I");
+	}
+
 	// admin > wajib pajak > terhapus
 	public function wajib_pajak_terhapus()
 	{
@@ -571,6 +648,12 @@ class Admin extends CI_Controller
 		$this->load->view('admin/wajibpajak/index-terhapus', $data);
 		$this->load->view('admin/partials/footer');
 	}
+
+
+
+
+
+
 
 
 

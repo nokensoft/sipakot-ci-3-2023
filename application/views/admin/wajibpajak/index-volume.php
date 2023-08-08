@@ -18,7 +18,12 @@
                                             <li class="breadcrumb-item active">Wajib Pajak</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Wajib Pajak</span></h4>
+                                    <h4 class="page-title"> Volume < <?= volume_air($volume) ?> Wajib Pajak Bulan
+                                    <?php
+                                    echo ($b['bulan']);
+                                    ?>
+                                    
+                                     Tahun <?= $tahun?></span></h4>
                                 </div>
                             </div>
                         </div>
@@ -40,50 +45,76 @@
                                             <div class="col-md-12">
                                                 <div class="d-flex justify-content-between">
                                                     <div class="">
-                                                        <a href="<?= base_url('admin/wajibpajak/tambah') ?>">
-                                                            <button type="button" class="mt-2 btn btn-lg btn-primary waves-effect waves-light" data-plugin="tippy" data-tippy-placement="top-start" title="Tambah">
-                                                            <span class="btn-label"><i class="fas fa-plus"></i></span>Tambah</button>
-                                                        </a>
-                                                        <div class="btn-group">                                                            
-                                                            <button class="mt-2 btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Jenis Usaha</button>
-                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <?php foreach ($wajib_pajak_kategori_usaha as $kategori_usaha ) : ?>
-                                                                <a target="_blank" class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortir/')?><?=$kategori_usaha['id']?>"><?=$kategori_usaha['kriteria']?></a>
-                                                                <?php endforeach; ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="btn-group">                                                            
-                                                            <button class=" mt-2 btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Distrik</button>
-                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <?php foreach ($wajib_pajak_distrik as $distrik ) : ?>
-                                                                <a target="_blank" class="dropdown-item" href="<?=base_url('admin/wajibpajak/sortirdistrik/')?><?=$distrik['id_distrik']?>"><?=$distrik['nama_distrik']?></a>
-                                                                <?php endforeach; ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="btn-group">                                                            
-                                                            <button class="mt-2 btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>PABT</button>
-                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2019')?>">2019</a>
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2020')?>">2020</a>
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2021')?>">2021</a>
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2022')?>">2022</a>
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2023')?>">2023</a>
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2024')?>">2024</a>
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt/2025')?>">2025</a>
-                                                            </div>
+                                                      
+                                                    <div class="btn-group">                                                            
+                                                            <a href="<?= base_url('admin/wajibpajak/volume/50?tahun='.$tahun.'&bulan='.$bulan)?>" class="btn btn-success bg-success text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Volume Air">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
+                                                            
+                                                            <  <?= volume_air($volume);?>
+
+                                                            </a>
                                                         </div>
 
                                                         <div class="btn-group">                                                            
-                                                            <button class="mt-2 btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Volume Air</button>
+                                                            <button class="btn btn-primary bg-primary text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
+                                                            
+                                                                <?= $tahun?>
+
+                                                            </button>
+
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/50?tahun='.$tahun.'&bulan='.$bulan)?>">  
-                                                                <  <?= volume_air(50);?>
-                                                             </a>
+                                                               
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2021&bulan='.$bulan)?>">  
+                                                                    2021
+                                                                </a>
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2022&bulan='.$bulan)?>">  
+                                                                    2022
+                                                                </a>
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2023&bulan='.$bulan)?>">  
+                                                                    2023
+                                                                </a>
+
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2024&bulan='.$bulan)?>">  
+                                                                    2024
+                                                                </a>
+
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2025&bulan='.$bulan)?>">  
+                                                                    2025
+                                                                </a>
                                                             </div>
+
+                                                        </div>
+
+                                                        <div class="btn-group">                                                            
+                                                            <button class="btn btn-primary bg-primary text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
+                                                            
+                                                                <?= $b['bulan']?>
+
+                                                            </button>
+
+                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
+                                                              
+                                                            <?php foreach($bulans as $bln) :  ?>
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun='.$tahun.'&bulan='.$bln['id'])?>">  
+                                                                <?=$bln['bulan']?>
+                                                            </a>
+                                                            <?php endforeach  ?>
+
+                                                            
+                                                           
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="btn-group">                                                            
+
+                                                            <a  target="_blank"; href="<?= base_url('admin/wajibpajak/pdfvolume/'.$volume.'?tahun='.$tahun.'&bulan='.$bulan) ?>">
+                                                            <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
+                                                            <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
+                                                        </a>
                                                         </div>
                                                     </div>
                                                     
@@ -191,16 +222,7 @@
 
                                                                     <td>
                                                                     <?php
-                                                                        // query volume air 
-                                                                                      
-                                                                        $queryVolumeAir = $this->db->query("SELECT volume FROM tagihan WHERE id_wp = '".$l['id_wp']."' ORDER BY id DESC LIMIT 1" );
-                                                                        $rowVolumeAir = $queryVolumeAir->row_array();
-                                                                        if($rowVolumeAir == null)
-                                                                        {
-                                                                            echo "-";
-                                                                        }else{
-                                                                            echo volume_air($rowVolumeAir['volume']);
-                                                                        }
+                                                                            echo volume_air($l['volume']);
                                                                         ?>
                                                                     </td>
 

@@ -1,7 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+
 class M_tagihan extends CI_Model
 {
+   
     // 	TAMBAH 
     function tambah()
     {
@@ -26,6 +28,13 @@ class M_tagihan extends CI_Model
         $id = $_GET['id'];
 		return $this->db->where('id', $id)->get($table);
 	}
+
+
+    // VOLUME AIR
+    function tagihan_volume($volume, $tahun, $bulan)
+    {
+        return $this->db->query("SELECT * FROM `tagihan`, `wajib_pajak` WHERE   `wajib_pajak`.`id_wp` = `tagihan`.`id_wp` AND `wajib_pajak`.`hapus` = 0 AND `tagihan`.`volume` < $volume AND `tahun` = '$tahun' AND `id_bulan` = '$bulan' ORDER BY  `tagihan`.`id_wp` DESC" );
+    }
 
 
 

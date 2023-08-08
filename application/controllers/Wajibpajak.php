@@ -10,6 +10,7 @@ class Wajibpajak extends CI_Controller {
 		$this->load->model('M_opsi');
 		$this->load->model('M_wajibpajak');
 		$this->load->model('M_tagihan');
+		$this->load->model('M_tagihan');
 
 		if ($this->session->userdata('status') != "telah_login") {
 			redirect(base_url("wajibpajak/masuk"));
@@ -101,6 +102,7 @@ class Wajibpajak extends CI_Controller {
 			'dasbor_info_persentasi_kompensasi' => $this->M_opsi->dasbor_info_persentasi_kompensasi(),
 
 			'user' => $this->M_wajibpajak->detail_profil(),
+
 		);
 		
 		$pengaturan = array (

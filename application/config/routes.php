@@ -158,6 +158,12 @@ $route['admin/wajibpajak/ubah/foto/usaha/(:any)'] = 'admin/wajib_pajak_ubah_foto
 // DETAIL
 $route['admin/wajibpajak/detail/(:any)'] = 'admin/wajibpajakdetail/$1';
 
+// VOLUMEN AIR
+$route['admin/wajibpajak/volume/(:any)'] = 'admin/volume_air/$1';
+
+// VOLUMEN AIR PDF
+$route['admin/wajibpajak/pdfvolume/(:any)'] = 'admin/volume_air_pdf/$1';
+
 // HAPUS
 // $route['admin/wajibpajak/hapus/(:any)'] = 'admin/wajibpajakhapus/$1';
 $route['admin/wajibpajak/terhapus'] = 'admin/wajib_pajak_terhapus';
