@@ -28,6 +28,7 @@
                 <th>Alamat Usaha</th>
                 <th>Pemilik Usaha</th>
                 <th>Email Pemilik</th>
+                <th> Volume Air </th>
                 <th>Jumlah Kamar (Usaha Kos)</th>
             </tr>
             <?php $i=1;
@@ -39,7 +40,20 @@
                     <td><?=$pajak["usaha_alamat"]?></td>
                     <td><?=$pajak["pemilik_nama"]?></td>
                     <td><?=$pajak["pemilik_email"]?></td>
+                    <td>
+                        <?php
+                        $queryVolumeAir = $this->db->query("SELECT volume FROM tagihan WHERE id_wp = '".$pajak['id_wp']."' ORDER BY id DESC LIMIT 1" );
+                        $rowVolumeAir = $queryVolumeAir->row_array();
+                        if($rowVolumeAir == null)
+                        {
+                        echo "-";
+                        }else{
+                        echo volume_air($rowVolumeAir['volume']);
+                        }
+                        ?>
+                    </td>
                     <td><?=$pajak["usaha_kos_jml_kmr"]?></td>
+            </tr>
                     <?php endforeach ?>    
         </table>  
              
