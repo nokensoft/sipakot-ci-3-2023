@@ -123,10 +123,27 @@
 
                                                         </div>
 
-                                                        <a target="_blank" href="<?= base_url('admin/wajibpajak/pdfdistrik/'. $this->uri->segment(4)) ?>">
+                                                        <div class="btn-group">                                                            
+                                                            <button class="btn btn-danger bg-danger text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
+                                                                    PDF
+
+                                                            </button>
+
+                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
+                                                                
+                                                                     <a target='_blank' class="dropdown-item" href="<?= base_url('admin/wajibpajak/pdfdistrik/'. $this->uri->segment(4)) ?>">PDF Biasa</a>
+                                                                     <a target='_blank' class="dropdown-item" href="<?= base_url('admin/wajibpajak/pdfdistrik/'. $this->uri->segment(4)).'?pdf=noemail' ?> "> PDF tanpa email & ada keterangan </a>
+                                                                    
+                                                              
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!-- <a target="_blank" href="">
                                                             <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
                                                             <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
-                                                        </a>
+                                                        </a> -->
 
                                                     </div>
                                                     

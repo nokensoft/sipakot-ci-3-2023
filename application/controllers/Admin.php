@@ -332,6 +332,7 @@ class Admin extends CI_Controller
 
 	public function wajib_pajak_pdf_distrik($id)
 	{
+		
 		$wajib_pajak_distrik = $this->M_distrik->wajib_pajak_distrik();
 
 		foreach($wajib_pajak_distrik as $distrik)
@@ -350,7 +351,12 @@ class Admin extends CI_Controller
 			'judul' => $judul_kategori
 		);
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
-		$pdf = $this->load->view('admin/wajibpajak/distrikpdf',$data, TRUE);
+		if($_GET['pdf'] == 'noemail')
+		{
+			$pdf = $this->load->view('admin/wajibpajak/distrikpdf_noemail',$data, TRUE);
+		}else{
+			$pdf = $this->load->view('admin/wajibpajak/distrikpdf',$data, TRUE);
+		}
 		// $mpdf->setFooter($judul_dua. 'Halaman - {PAGENO}');
 		// $mpdf->setFooter('sipakot.jayapurakota.go.id||Data Distrik '.$judul_dua.' Halaman - {PAGENO}');
 		$mpdf->SetHTMLFooter('
@@ -397,6 +403,7 @@ class Admin extends CI_Controller
 
 	public function wajib_pajak_pdf_kelurahan()
 	{
+	
 		$kelurahan =$_GET['kelurahan'];
 		$distrik =$_GET['distrik'];
 		$wajib_pajak_kelurahan = $this->M_kelurahan->wajib_pajak_kelurahan();
@@ -426,7 +433,13 @@ class Admin extends CI_Controller
 			'judul' => $judul_kategori
 		);
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
-		$pdf = $this->load->view('admin/wajibpajak/kelurahanpdf',$data, TRUE);
+		if($_GET['pdf'] == 'noemail')
+		{
+		
+			$pdf = $this->load->view('admin/wajibpajak/kelurahanpdf_noemail',$data, TRUE);
+		}else{
+			$pdf = $this->load->view('admin/wajibpajak/kelurahanpdf',$data, TRUE);
+		}
 		$mpdf->SetHTMLFooter('
 				<table width="100%" height="1" style="border:0px; font-size:12px">
 					<tr>
@@ -521,8 +534,6 @@ class Admin extends CI_Controller
 		');
 		$mpdf->WriteHTML($pdf);
 		$mpdf->Output('sipakot-wajib-pajak-pabt-tahun-'.$judul.'.pdf',"I");
-
-		
 	}
 
 		// admin > wajin pajak > patb > perdistrik pdf 
