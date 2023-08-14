@@ -188,7 +188,7 @@
 
                             <li class="list-group-item">
                                 <label>Volume Pemanfaatan Air : </label>
-                                <strong style="font-weight:bold"><?=round($tagihan['volume']) . ' m<sup>3</sup>'?></strong>
+                                <strong style="font-weight:bold"><?=$tagihan['volume'] . ' m<sup>3</sup>'?></strong>
                             </li>
 
                         </ul>

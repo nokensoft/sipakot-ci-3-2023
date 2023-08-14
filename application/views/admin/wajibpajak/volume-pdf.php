@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?=base_url()?>assets/images/favicon-cms-hr.png">
-    <title> <?=$judul?> </title>
+    <title> <?=$judul2?> </title>
     <!-- CSS only -->
     <link rel="stylesheet" href="<?=base_url()?>assets/css/pdf.css">
 </head>

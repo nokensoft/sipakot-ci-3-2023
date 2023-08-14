@@ -80,7 +80,7 @@
                                                             <button class="mt-2 btn btn-primary bg-light text-primary btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
                                                             <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>Volume Air</button>
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/50?tahun='.$tahun.'&bulan='.$bulan)?>">  
+                                                                <a target="_blank" class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/50?tahun='.$tahun.'&bulan='.$bulan.'&distrik=abepura')?>">  
                                                                 <  <?= volume_air(50);?>
                                                              </a>
                                                             </div>

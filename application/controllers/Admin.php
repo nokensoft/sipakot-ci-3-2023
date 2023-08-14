@@ -339,16 +339,16 @@ class Admin extends CI_Controller
 		{
 			if($distrik['id_distrik'] == $id)
 			{
-				$judul_kategori = $distrik['nama_distrik'];
+				$judul_distirk = $distrik['nama_distrik'];
 			}
 		}
-		$judul=  strtolower(str_replace(" ", "-", $judul_kategori));
-		$judul_dua =  $judul_kategori;
+		$judul=  strtolower(str_replace(" ", "-", $judul_distirk));
+		$judul_dua =  $judul_distirk;
 		$data = array (
 			'wajib_pajak_sortir_distrik' => $this->M_distrik->wajib_pajak_sortir_distrik($id),
 			'wajib_pajak_kategori_usaha' => $this->M_opsi->wajib_pajak_kategori_usaha(),
 			'id' => $id,
-			'judul' => $judul_kategori
+			'judul' => $judul_distirk
 		);
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 18,'margin_top' => 10]);
 		if($_GET['pdf'] == 'noemail')
@@ -576,6 +576,7 @@ class Admin extends CI_Controller
 	{
 		$tahun = $_GET['tahun'];
 		$bulan = $_GET['bulan'];
+		$distrik = $_GET['distrik'];
 		if($tahun == null)
 		{
 			$tahun = date('Y');
@@ -585,17 +586,30 @@ class Admin extends CI_Controller
 		{
 			$bulan = date('m');
 		}
+
+		foreach( $this->M_distrik->wajib_pajak_distrik() as $distrikLoop)
+		{
+			if($distrikLoop['id_distrik'] == $distrik )
+			{
+				$nama_distrik = $distrikLoop['nama_distrik'];
+			}
+		}
 		
-		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan)->result_array();
+		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan, $distrik)->result_array();
 		$data['wajib_pajak_kategori_usaha'] = $this->M_opsi->wajib_pajak_kategori_usaha();
 		$data['wajib_pajak_distrik'] = $this->M_distrik->wajib_pajak_distrik();
 		$data['wajib_pajak_kelurahan'] = $this->M_kelurahan->wajib_pajak_kelurahan();
 		$data['tahun'] = $tahun;
 		$data['bulan'] = $bulan;
+		$data['distrik'] = $distrik;
 		$data['volume'] = $volume;
 		$data['bulans'] = $this->db->query("SELECT * FROM bulan")->result_array();
 		$data['b'] = $this->db->query("SELECT * FROM bulan WHERE id = $bulan")->row_array();
+		$data['nama_distrik'] = $nama_distrik;
 		
+	
+	  
+	
 
 		$pengaturan = array (
 			'judul_situs' => $this->M_pengaturan->judul_situs(),
@@ -614,6 +628,7 @@ class Admin extends CI_Controller
 	{
 		$tahun = $_GET['tahun'];
 		$bulan = $_GET['bulan'];
+		$distrik = $_GET['distrik'];
 		if($tahun == null)
 		{
 			$tahun = date('Y');
@@ -623,10 +638,20 @@ class Admin extends CI_Controller
 		{
 			$bulan = date('m');
 		}
+		foreach( $this->M_distrik->wajib_pajak_distrik() as $distrikLoop)
+		{
+			if($distrikLoop['id_distrik'] == $distrik )
+			{
+				$nama_distrik = $distrikLoop['nama_distrik'];
+			}
+		}
+		$judul_distrik =  strtolower(str_replace(" ", "-", $nama_distrik));
+
 		$bln = $this->db->query("SELECT * FROM bulan WHERE id = $bulan")->row_array();
-		$bln = $bln['bulan'];
-		$data['judul'] = ' Wajib Pajak Volume < '.volume_air($volume).' Bulan '. $bln.' Tahun '.$tahun;
-		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan)->result_array();
+		$bln = strtolower($bln['bulan']);
+		$data['judul'] = ' Wajib Pajak Volume < '.volume_air($volume).' Distrik '.$nama_distrik. ' Bulan '. $bln.' Tahun '.$tahun;
+		$data['judul2'] = ' Wajib Pajak Volume < '.$volume.' Distrik '.$nama_distrik. ' Bulan '. $bln.' Tahun '.$tahun;
+		$data['wp'] = $this->M_tagihan->tagihan_volume($volume, $tahun, $bulan, $distrik)->result_array();
 		$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L','margin_bottom' => 30,'margin_top' => 10]);
 		$pdf = $this->load->view('admin/wajibpajak/volume-pdf',$data, TRUE);
 		$mpdf->SetHTMLFooter('
@@ -635,12 +660,12 @@ class Admin extends CI_Controller
 						<hr>
 							<td width="30%"> <i>sipakot.jayapurakota.go.id</i></td>
 							<td width="30%" align="center"></td>
-							<td width="40%" style="text-align: right;">  Wajib Pajak Volume < '.$volume.' Bulan '. $bln.' Tahun '.$tahun.'<b>  Halaman - {PAGENO}</b></td>
+							<td width="40%" style="text-align: right;">  Wajib Pajak Volume < '.$volume.'Distrik '.$nama_distrik. ' Bulan '. $bln.' Tahun '.$tahun.'<b>  Halaman - {PAGENO}</b></td>
 						</tr>
 					</table>
 		');
 		$mpdf->WriteHTML($pdf);
-		$mpdf->Output('data-wajib-pajak-volume-'.$volume.'-bulan-'.$bln.'-tahun-'.$tahun.'.pdf',"I");
+		$mpdf->Output('data-wajib-pajak-volume-'.$volume.'-distrik-'.$judul_distrik.'-bulan-'.$bln.'-tahun-'.$tahun.'.pdf',"I");
 	}
 
 	// admin > wajib pajak > terhapus

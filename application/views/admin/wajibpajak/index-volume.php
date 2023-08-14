@@ -23,7 +23,7 @@
                                     echo ($b['bulan']);
                                     ?>
                                     
-                                     Tahun <?= $tahun?></span></h4>
+                                     Tahun <?= $tahun?> Distrik <?= $nama_distrik ?> </h4>
                                 </div>
                             </div>
                         </div>
@@ -54,6 +54,25 @@
 
                                                             </a>
                                                         </div>
+                                                         <div class="btn-group">                                                            
+                                                            <button class="btn btn-success bg-success text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
+                                                            
+                                                            <?php
+                                                           
+                                                                    echo $nama_distrik;
+                                                            
+                                                            ?>
+
+                                                            </button>
+
+                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
+                                                                <?php foreach ($wajib_pajak_distrik as $distrik_usaha ) : ?>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun='.$tahun.'&bulan='.$bulan.'&distrik='.$distrik_usaha['id_distrik'])?>"><?=$distrik_usaha['nama_distrik']?></a>
+                                                                <?php endforeach; ?>
+                                                            </div>
+
+                                                        </div>
 
                                                         <div class="btn-group">                                                            
                                                             <button class="btn btn-primary bg-primary text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
@@ -65,21 +84,21 @@
 
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
                                                                
-                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2021&bulan='.$bulan)?>">  
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2021&bulan='.$bulan.'&distrik='.$distrik)?>">  
                                                                     2021
                                                                 </a>
-                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2022&bulan='.$bulan)?>">  
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2022&bulan='.$bulan.'&distrik='.$distrik)?>">  
                                                                     2022
                                                                 </a>
-                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2023&bulan='.$bulan)?>">  
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2023&bulan='.$bulan.'&distrik='.$distrik)?>">  
                                                                     2023
                                                                 </a>
 
-                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2024&bulan='.$bulan)?>">  
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2024&bulan='.$bulan.'&distrik='.$distrik)?>">  
                                                                     2024
                                                                 </a>
 
-                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2025&bulan='.$bulan)?>">  
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun=2025&bulan='.$bulan.'&distrik='.$distrik)?>">  
                                                                     2025
                                                                 </a>
                                                             </div>
@@ -97,7 +116,7 @@
                                                             <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
                                                               
                                                             <?php foreach($bulans as $bln) :  ?>
-                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun='.$tahun.'&bulan='.$bln['id'])?>">  
+                                                                <a  class="dropdown-item" href="<?= base_url('admin/wajibpajak/volume/'.$volume.'?tahun='.$tahun.'&bulan='.$bln['id'].'&distrik='.$distrik)?>">  
                                                                 <?=$bln['bulan']?>
                                                             </a>
                                                             <?php endforeach  ?>
@@ -111,7 +130,7 @@
 
                                                         <div class="btn-group">                                                            
 
-                                                            <a  target="_blank"; href="<?= base_url('admin/wajibpajak/pdfvolume/'.$volume.'?tahun='.$tahun.'&bulan='.$bulan) ?>">
+                                                            <a  target="_blank"; href="<?= base_url('admin/wajibpajak/pdfvolume/'.$volume.'?tahun='.$tahun.'&bulan='.$bulan.'&distrik='.$distrik) ?>">
                                                             <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
                                                             <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
                                                         </a>

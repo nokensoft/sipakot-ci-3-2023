@@ -31,9 +31,9 @@ class M_tagihan extends CI_Model
 
 
     // VOLUME AIR
-    function tagihan_volume($volume, $tahun, $bulan)
+    function tagihan_volume($volume, $tahun, $bulan,$distrik)
     {
-        return $this->db->query("SELECT * FROM `tagihan`, `wajib_pajak` WHERE   `wajib_pajak`.`id_wp` = `tagihan`.`id_wp` AND `wajib_pajak`.`hapus` = 0 AND `tagihan`.`volume` < $volume AND `tahun` = '$tahun' AND `id_bulan` = '$bulan' ORDER BY  `tagihan`.`id_wp` DESC" );
+        return $this->db->query("SELECT * FROM `tagihan`, `wajib_pajak` WHERE   `wajib_pajak`.`id_wp` = `tagihan`.`id_wp` AND `wajib_pajak`.`hapus` = 0 AND `tagihan`.`volume` < $volume AND `tahun` = '$tahun' AND `id_bulan` = '$bulan' AND `wajib_pajak`.`usaha_distrik` = '$distrik' ORDER BY  `tagihan`.`id_wp` DESC" );
     }
 
 
