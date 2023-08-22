@@ -21,6 +21,10 @@ class M_pabt extends CI_Model
     {
         return $data = $this->db->where('id_wp', $id)->get('wajib_pajak');
     }
+    // function pabt_semua($id)
+    // {
+    //     return $data = $this->db->query("SELECT * FROM wajib_pajak, tagihan WHERE wajib_pajak.id_wp = tagihan.id_wp ORDER BY YEAR(tagihan.tahun), MONTH(tagihan.id_bulan) ");
+    // }
 }
 
 

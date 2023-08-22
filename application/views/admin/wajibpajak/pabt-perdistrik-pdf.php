@@ -49,10 +49,11 @@
                     <?php foreach($bulan as $b):?>
                         <th class="font-weight-bold"><?=$b['bulan']?></th>
                     <?php endforeach;?>
-
+                    <th class="font-weight-bold">Total PABT</th>
+                    
 
                 </tr>
-                <?php $no = 1;
+                <?php  $totalPabt = 0; $no = 1;
                     foreach ($wajib_pajak as $l) { ?>
                         <tr>
                             <td class="field-data">
@@ -63,7 +64,7 @@
                             </td> 
                             <td class="field-data"><?= $l['usaha_alamat']?> </td>
                             <td class="field-data"><?= $l['pemilik_nama']?> </td>                                                                             
-                             <?php foreach($bulan as $b):?>
+                            <?php foreach($bulan as $b):?>
                                 <td class="field-data">
                                     <?php
                                        error_reporting(0);
@@ -75,9 +76,13 @@
                                         echo '-';
                                         }else{
                                          echo rupiah($queryPabt[0]['total_pabt']);
-                                        }; ?>
+                                        }; 
+                                        
+                                        $totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
+                                        ?>
                                     </td>
-                    <?php endforeach;?>                                    
+                            <?php endforeach;?>   
+                                 <td class="field-data" ><?php echo rupiah($totalPabt); $totalPabt = 0; ?></td>                 
                                 </tr>
                     <?php $no++;} ?>
                     <tr>

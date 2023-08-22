@@ -106,10 +106,11 @@
                                                                 <?php foreach($bulan as $b):?>
                                                                     <th class="font-weight-bold"><?=$b['bulan']?></th>
                                                                 <?php endforeach;?>
+                                                                <th class="font-weight-bold">Total Pabt</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php $no = 1;
+                                                            <?php $totalPabt = 0; $no = 1;
                                                             foreach ($wajib_pajak as $l) { ?>
 
                                                                 <tr>
@@ -133,15 +134,21 @@
                                                                             echo '-';
                                                                         }else{
                                                                             echo rupiah($queryPabt[0]['total_pabt']);
-                                                                        }; ?>
+                                                                        }; 
+                                                                        
+                                                                        $totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
+                                                                        ?>
                                                                     </td>
                                                                     <?php endforeach;?>
+
+                                                                    <td><?php echo rupiah($totalPabt); $totalPabt = 0; ?></td>
 
                                                                 </tr>
 
                                                             <?php $no++;} ?>
                                                             <tr>
                                                                 <td><?=$no?></td>
+                                                                <td></td>
                                                                 <td></td>
                                                                 <td></td>
                                                                 <td class="text-center"> Total</td>
