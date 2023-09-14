@@ -79,10 +79,11 @@
                                         }; 
                                         
                                         $totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
-                                        $totalSemuaPabt = $totalSemuaPabt + $totalPabt;
+                                   
                                         ?>
                                     </td>
                             <?php endforeach;?>   
+                            <?php   $totalSemuaPabt = $totalSemuaPabt + $totalPabt; ?>
                                  <td class="field-data" ><?php echo rupiah($totalPabt); $totalPabt = 0; ?></td>      
                              
                                 </tr>
