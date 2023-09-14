@@ -53,7 +53,7 @@
                     
 
                 </tr>
-                <?php  $totalPabt = 0; $no = 1;
+                <?php  $totalPabt = 0; $no = 1; $totalSemuaPabt = 0;
                     foreach ($wajib_pajak as $l) { ?>
                         <tr>
                             <td class="field-data">
@@ -79,10 +79,12 @@
                                         }; 
                                         
                                         $totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
+                                        $totalSemuaPabt = $totalSemuaPabt + $totalPabt;
                                         ?>
                                     </td>
                             <?php endforeach;?>   
-                                 <td class="field-data" ><?php var_dump($totalPabt); echo rupiah($totalPabt); $totalPabt = 0; ?></td>                 
+                                 <td class="field-data" ><?php echo rupiah($totalPabt); $totalPabt = 0; ?></td>      
+                             
                                 </tr>
                     <?php $no++;} ?>
                     <tr>
@@ -92,8 +94,9 @@
                                         $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan, wajib_pajak WHERE wajib_pajak.id_wp = tagihan.id_wp AND wajib_pajak.usaha_distrik = '$distrik' AND tagihan.tahun = '$tahun' AND tagihan.id_bulan = '$id_bulan'")->result_array();
                                     ?>
 
-                            <td class="field-data"><?= rupiah($queryTotal[0]['total'])?></td>
+                            <td class="field-data"><?= rupiah($queryTotal[0]['total'])?></td> 
                         <?php endforeach;?>       
+                                <td class="field-data" ><?php echo rupiah( $totalSemuaPabt);?></td> 
                    </tr>
         </table>
         <!-- end table  -->
