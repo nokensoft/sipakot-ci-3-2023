@@ -79,12 +79,12 @@
                                         }; 
                                         
                                         $totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
-                                   
+                             
                                         ?>
                                     </td>
                             <?php endforeach;?>   
                             <?php   $totalSemuaPabt = $totalSemuaPabt + $totalPabt; ?>
-                                 <td class="field-data" ><?php echo rupiah($totalPabt); $totalPabt = 0; ?></td>      
+                                 <td class="field-data" ><?php echo rupiah($totalPabt);  $totalPabt = 0; ?></td>      
                              
                                 </tr>
                     <?php $no++;} ?>
@@ -92,10 +92,12 @@
                         <td class="field-data center" colspan="4"> Total</td>
                         <?php foreach($bulan as $b):?>
                                     <?php  $id_bulan  = $b['id'];
-                                        $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan, wajib_pajak WHERE wajib_pajak.id_wp = tagihan.id_wp AND wajib_pajak.usaha_distrik = '$distrik' AND tagihan.tahun = '$tahun' AND tagihan.id_bulan = '$id_bulan'")->result_array();
+                                        $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan, wajib_pajak WHERE wajib_pajak.id_wp = tagihan.id_wp  AND tagihan.tahun = '$tahun' AND tagihan.id_bulan = '$id_bulan'")->result_array();
+                               
+                                   
                                     ?>
 
-                            <td class="field-data"><?= rupiah($queryTotal[0]['total'])?></td> 
+                            <td class="field-data"><?php echo rupiah($queryTotal[0]['total']);      ?></td> 
                         <?php endforeach;?>       
                                 <td class="field-data" ><?php echo rupiah( $totalSemuaPabt);?></td> 
                    </tr>
