@@ -82,7 +82,7 @@
                                         ?>
                                     </td>
                             <?php endforeach;?>   
-                                 <td class="field-data" ><?php echo rupiah($totalPabt); $totalPabt = 0; ?></td>                 
+                                 <td class="field-data" ><?php var_dump($totalPabt); echo rupiah($totalPabt); $totalPabt = 0; ?></td>                 
                                 </tr>
                     <?php $no++;} ?>
                     <tr>
