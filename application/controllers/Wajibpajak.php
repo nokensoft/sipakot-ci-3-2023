@@ -18,6 +18,7 @@ class Wajibpajak extends CI_Controller {
 
 		is_logged_in_wajibpajak();
 		$this->load->helper('rupiah');
+		$this->load->helper('tanpa_rupiah');
 		$this->load->helper('volume_air');
 	}
 

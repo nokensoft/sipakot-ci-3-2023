@@ -75,7 +75,7 @@
                                         <?php if($queryPabt[0]['total_pabt'] == null){
                                         echo '-';
                                         }else{
-                                         echo rupiah($queryPabt[0]['total_pabt']);
+                                         echo tanpa_rupiah($queryPabt[0]['total_pabt']);
                                         }; 
                                         
                                         $totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
@@ -84,7 +84,7 @@
                                     </td>
                             <?php endforeach;?>   
                             <?php   $totalSemuaPabt = $totalSemuaPabt + $totalPabt; ?>
-                                 <td class="field-data" ><?php echo rupiah($totalPabt);  $totalPabt = 0; ?></td>      
+                                 <td class="field-data" ><?php echo tanpa_rupiah($totalPabt);  $totalPabt = 0; ?></td>      
                              
                                 </tr>
                     <?php $no++;} ?>
@@ -97,9 +97,9 @@
                                    
                                     ?>
 
-                            <td class="field-data"><?php echo rupiah($queryTotal[0]['total']);      ?></td> 
+                            <td class="field-data"><?php echo tanpa_rupiah($queryTotal[0]['total']);      ?></td> 
                         <?php endforeach;?>       
-                                <td class="field-data" ><?php echo rupiah( $totalSemuaPabt);?></td> 
+                                <td class="field-data" ><?php echo tanpa_rupiah( $totalSemuaPabt);?></td> 
                    </tr>
         </table>
         <!-- end table  -->

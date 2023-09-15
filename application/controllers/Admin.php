@@ -28,6 +28,9 @@ class Admin extends CI_Controller
 
 		// helper membuat titik pada angka
 		$this->load->helper('volume_air');
+
+		$this->load->helper('tanpa_rupiah');
+
 	}
 
 
