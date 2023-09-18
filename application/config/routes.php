@@ -140,6 +140,9 @@ $route['admin/wajibpajak/cetak-pabt/(:any)'] = 'admin/wajib_pajak_pabt_pdf/$1';
 // CETAK PDF PABT PERDISTRIK
 $route['admin/wajibpajak/cetak-pabt-perdistrik/(:any)'] = 'admin/wajib_pajak_pabt_perdistrik_pdf/$1';
 
+// CETAK EXCEL PABT PERDISTRIK
+$route['admin/wajibpajak/cetak-pabt-perdistrik-excel/(:any)'] = 'admin/wajib_pajak_pabt_perdistrik_excel/$1';
+
 // INDEX SAMPAH
 $route['admin/wajibpajak/sampah'] = 'admin/wajibpajak_sampah';
 

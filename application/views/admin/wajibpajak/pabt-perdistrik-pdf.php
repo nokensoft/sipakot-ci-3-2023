@@ -54,6 +54,18 @@
 
                 </tr>
                 <?php  $totalPabt = 0; $no = 1; $totalSemuaPabt = 0;
+                    $satu = 0;
+                    $dua = 0;
+                    $tiga = 0;
+                    $empat = 0;
+                    $lima = 0;
+                    $enam = 0;
+                    $tujuh = 0;
+                    $delapan = 0;
+                    $sembilan = 0;
+                    $sepuluh = 0;
+                    $sebelas = 0;
+                    $duabelas = 0;
                     foreach ($wajib_pajak as $l) { ?>
                         <tr>
                             <td class="field-data">
@@ -79,27 +91,92 @@
                                         }; 
                                         
                                         $totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
+
+                                        if($id_bulan == '1' )
+                                        {
+                                            
+                                            $satu = $queryPabt[0]['total_pabt'] + $satu;
+                            
+                                        }
+                                        if($id_bulan == '2' )
+                                        {
+                                           
+                                            $dua =  $queryPabt[0]['total_pabt'] + $dua;
+                            
+                                        }
+                                        if($id_bulan == '3' )
+                                        {
+                                            
+                                            $tiga =  $queryPabt[0]['total_pabt'] + $tiga;
+                                        }
+                                        if($id_bulan == '4')
+                                        {
+                                            
+                                            $empat =  $queryPabt[0]['total_pabt'] + $empat;
+                                            
+                                        }
+                                        if($id_bulan == '5')
+                                        {
+                                            $lima =  $queryPabt[0]['total_pabt'] + $lima;
+                                            
+                                        }
+                                        if($id_bulan == '6')
+                                        {
+                                            $enam =  $queryPabt[0]['total_pabt'] + $enam;
+                                        }
+                                        if($id_bulan == '7')
+                                        {
+                                            $tujuh =  $queryPabt[0]['total_pabt'] + $tujuh;
+                                        }
+                                        if($id_bulan == '8')
+                                        {
+                                            $delapan =  $queryPabt[0]['total_pabt'] + $delapan;
+                                            
+                                        }
+                                        if($id_bulan == '9')
+                                        {
+                                            $sembilan =  $queryPabt[0]['total_pabt'] + $sembilan;
+                                            
+                                        }
+                                        if($id_bulan == '10')
+                                        {
+                                            $sepuluh =  $queryPabt[0]['total_pabt'] + $sepuluh;
+                                            
+                                        }
+                                        if($id_bulan == '11')
+                                        {
+                                            $sebelas = $queryPabt[0]['total_pabt'] + $sebelas;
+                                            
+                                        }
+                                        if($id_bulan == '12')
+                                        {
+                                            $duabelas = $queryPabt[0]['total_pabt'] + $duabelas;
+                                        }
+
+
                              
                                         ?>
                                     </td>
                             <?php endforeach;?>   
                             <?php   $totalSemuaPabt = $totalSemuaPabt + $totalPabt; ?>
                                  <td class="field-data" ><?php echo tanpa_rupiah($totalPabt);  $totalPabt = 0; ?></td>      
-                             
                                 </tr>
                     <?php $no++;} ?>
                     <tr>
                         <td class="field-data center" colspan="4"> Total</td>
-                        <?php foreach($bulan as $b):?>
-                                    <?php  $id_bulan  = $b['id'];
-                                        $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan, wajib_pajak WHERE wajib_pajak.id_wp = tagihan.id_wp  AND tagihan.tahun = '$tahun' AND tagihan.id_bulan = '$id_bulan'")->result_array();
-                               
-                                   
-                                    ?>
-
-                            <td class="field-data"><?php echo tanpa_rupiah($queryTotal[0]['total']);      ?></td> 
-                        <?php endforeach;?>       
-                                <td class="field-data" ><?php echo tanpa_rupiah( $totalSemuaPabt);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($satu);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($dua);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($tiga);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($empat);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($lima);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($enam);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($tujuh); ?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($delapan);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($sembilan);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($sepuluh);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($sebelas);?></td> 
+                        <td class="field-data"><?php echo tanpa_rupiah($duabelas);?></td> 
+                        <td class="field-data" ><?php echo tanpa_rupiah( $totalSemuaPabt);?></td> 
                    </tr>
         </table>
         <!-- end table  -->

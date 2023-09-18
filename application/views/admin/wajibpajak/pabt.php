@@ -133,19 +133,7 @@
 
                                                                 </tr>
                                                             <?php $no++;}?>
-                                                            <tr>
-                                                                <td><?=$no?></td>
-                                                                <td class="text-center" > Total</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                 <?php 
-                                                                 foreach($bulan as $b):?>
-                                                                    <?php  $id_bulan  = $b['id'];
-                                                                        $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan WHERE tahun = '$tahun' AND id_bulan = '$id_bulan'")->result_array();
-                                                                        ?>
-                                                                    <td><?= rupiah($queryTotal[0]['total'])?></td>
-                                                                <?php endforeach;?>       
-                                                            </tr>
+                                                           
                                                         </tbody>
                                                     </table>
                                                     <!-- end table  -->

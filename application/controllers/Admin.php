@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Admin extends CI_Controller
 {
 	public function __construct()
@@ -539,6 +542,8 @@ class Admin extends CI_Controller
 		$mpdf->Output('sipakot-wajib-pajak-pabt-tahun-'.$judul.'.pdf',"I");
 	}
 
+
+
 		// admin > wajin pajak > patb > perdistrik pdf 
 		public function wajib_pajak_pabt_perdistrik_pdf($id)
 		{
@@ -572,6 +577,414 @@ class Admin extends CI_Controller
 			$mpdf->Output('sipakot-pabt-wajib-pajak-distrik-'.$judul_lower.'-tahun-'.$id.'.pdf',"I");
 	
 			
+		}
+
+		// admin > wajib pajak > patb > excel 
+		public function wajib_pajak_pabt_perdistrik_excel($id)
+		{
+			$distrik = $_GET['distrik'];
+			$wajib_pajak = $this->M_distrik->wajib_pajak_sortir_distrik($distrik);
+			$bulan = $this->M_wajibpajak->baca('bulan')->result_array();
+			$tahun = $id;
+			$wajib_pajak_distrik = $this->M_distrik->wajib_pajak_distrik();
+			foreach($wajib_pajak_distrik as $k)
+			{
+			if($k['id_distrik'] == $distrik)
+				{
+					$judul_distrik = $k['nama_distrik'];
+				}
+			}
+
+			$distrik_biasa = 'Distrik '.$judul_distrik.' Tahun '. $tahun;
+			
+			$spreadsheet = new Spreadsheet();
+			$sheet = $spreadsheet->getActiveSheet();
+
+		
+			$style_col = [
+				'font' => ['bold' => true], // Set font nya jadi bold
+				'alignment' => [
+				  'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+				  'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+				],
+				'borders' => [
+				  'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+				  'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+				  'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+				  'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+				]
+			  ];
+
+			  $style_biasa = [
+				'font' => ['bold' => false], // Set font nya jadi bold
+				'alignment' => [
+				  'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+				  'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+				],
+				'borders' => [
+				  'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+				  'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+				  'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+				  'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+				]
+			  ];
+
+			  $style_biasa_dua = [
+				'font' => ['bold' => false], // Set font nya jadi bold
+				'alignment' => [
+				  'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+				],
+				'borders' => [
+				  'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+				  'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+				  'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+				  'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+				]
+			  ];
+
+			  $style_ttd = [
+				'font' => ['bold' => false], // Set font nya jadi bold
+				'alignment' => [
+					'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+					'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+				  ],
+				
+			  ];
+
+			  $kepala_dinas = [
+				'font' => ['bold' => true], // Set font nya jadi bold
+				'alignment' => [
+					'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+					'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+				  ],
+			  ];
+
+
+
+			  // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+			  $style_row = [
+				'alignment' => [
+				  'vertical' => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+				],
+				'borders' => [
+				  'top' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border top dengan garis tipis
+				  'right' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN],  // Set border right dengan garis tipis
+				  'bottom' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN], // Set border bottom dengan garis tipis
+				  'left' => ['borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN] // Set border left dengan garis tipis
+				]
+			  ];
+
+			
+			  
+			$sheet->setCellValue('A1', 'Data PABT Wajib Pajak')->mergeCells('A1:Q1');;
+			$sheet->setCellValue('A2', $distrik_biasa)->mergeCells('A2:Q2');;
+			$sheet->getStyle('A1')->applyFromArray($style_ttd);
+			$sheet->getStyle('A2')->applyFromArray($style_ttd);
+
+
+			$sheet->setCellValue('A5', "No");
+			$sheet->setCellValue('B5', "Nama Usaha");
+			$sheet->setCellValue('C5', "Alamat Usaha");
+			$sheet->setCellValue('D5', "Pemilik Usaha");
+			$sheet->setCellValue('Q5', "Total PABT");
+			// BULAN
+			foreach($bulan as $b)
+			{
+				$bulan_2[] = $b["bulan"];
+			}
+			$rowArray = $bulan_2;
+			$sheet->fromArray($rowArray,NULL,'E5');
+			// $sheet->fromArray($rowArray,NULL,'E5')->setWidth(30, 'pt');
+    
+			$sheet->getStyle('A5')->applyFromArray($style_col);
+			$sheet->getStyle('B5')->applyFromArray($style_col);
+			$sheet->getStyle('C5')->applyFromArray($style_col);
+			$sheet->getStyle('D5')->applyFromArray($style_col);
+			$sheet->getStyle('E5')->applyFromArray($style_col);
+			$sheet->getStyle('F5')->applyFromArray($style_col);
+			$sheet->getStyle('G5')->applyFromArray($style_col);
+			$sheet->getStyle('H5')->applyFromArray($style_col);
+			$sheet->getStyle('I5')->applyFromArray($style_col);
+			$sheet->getStyle('J5')->applyFromArray($style_col);
+			$sheet->getStyle('K5')->applyFromArray($style_col);
+			$sheet->getStyle('L5')->applyFromArray($style_col);
+			$sheet->getStyle('M5')->applyFromArray($style_col);
+			$sheet->getStyle('N5')->applyFromArray($style_col);
+			$sheet->getStyle('O5')->applyFromArray($style_col);
+			$sheet->getStyle('P5')->applyFromArray($style_col);
+			$sheet->getStyle('Q5')->applyFromArray($style_col);
+			
+
+			$totalPabt = 0;
+			$no = 0; 
+			$totalSemuaPabt = 0;
+			$numrow = 6;
+			$satu = 0;
+			$dua = 0;
+			$tiga = 0;
+			$empat = 0;
+			$lima = 0;
+			$enam = 0;
+			$tujuh = 0;
+			$delapan = 0;
+			$sembilan = 0;
+			$sepuluh = 0;
+			$sebelas = 0;
+			$duabelas = 0;
+			
+
+			foreach ($wajib_pajak as $l) {
+				$sheet->setCellValue('A'.$numrow, ++$no);
+				$sheet->setCellValue('B'.$numrow, $l['usaha_nama']);
+				$sheet->setCellValue('C'.$numrow, $l['usaha_alamat']);
+				$sheet->setCellValue('D'.$numrow, $l['pemilik_nama']);
+				$sheet->getStyle('A'.$numrow)->applyFromArray($style_biasa);
+				$sheet->getStyle('B'.$numrow)->applyFromArray($style_biasa_dua);
+				$sheet->getStyle('C'.$numrow)->applyFromArray($style_biasa_dua);
+				$sheet->getStyle('D'.$numrow)->applyFromArray($style_biasa_dua);
+
+				$sheet->getColumnDimension('A')->setWidth(30, 'pt');
+				$sheet->getColumnDimension('B')->setWidth(200, 'pt');
+				$sheet->getColumnDimension('C')->setWidth(200, 'pt');
+				$sheet->getColumnDimension('D')->setWidth(200, 'pt');
+
+				foreach($bulan as $b)
+				{
+					error_reporting(0);
+					$id_wp = $l['id_wp'];
+					$id_bulan  = $b['id'];
+					$queryPabt = $this->db->query("SELECT * FROM tagihan WHERE id_wp = '$id_wp' AND tahun = '$tahun' AND id_bulan = '$id_bulan' ")->result_array();
+					
+				
+
+					$pabt = $queryPabt[0]['total_pabt'];
+					$bulan_pabt  = ($queryPabt[0]["id_bulan"]);
+					$totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
+
+					
+					if($pabt != null){
+						$pabt = $pabt;
+						}else{
+							$pabt = 0;
+						}; 
+
+
+
+						if($bulan_pabt == '1' )
+						{
+							$row_bulan = 'E';
+							$satu = $queryPabt[0]['total_pabt'] + $satu;
+			
+						}
+						if($bulan_pabt == '2' )
+						{
+							$row_bulan = 'F';
+							$dua =  $queryPabt[0]['total_pabt'] + $dua;
+			
+						}
+						if($bulan_pabt == '3' )
+						{
+							$row_bulan = 'G';
+							$tiga =  $queryPabt[0]['total_pabt'] + $tiga;
+						}
+						if($bulan_pabt == '4')
+						{
+							$row_bulan = 'H';
+							$empat =  $queryPabt[0]['total_pabt'] + $empat;
+							
+						}
+						if($bulan_pabt == '5')
+						{
+							$row_bulan = 'I';
+							$lima =  $queryPabt[0]['total_pabt'] + $lima;
+							
+						}
+						if($bulan_pabt == '6')
+						{
+							$row_bulan = 'J';
+							$enam =  $queryPabt[0]['total_pabt'] + $enam;
+							
+						}
+						if($bulan_pabt == '7')
+						{
+							$row_bulan = 'K';
+							$tujuh =  $queryPabt[0]['total_pabt'] + $tujuh;
+						}
+						if($bulan_pabt == '8')
+						{
+							$row_bulan = 'L';
+							$delapan =  $queryPabt[0]['total_pabt'] + $delapan;
+							
+							
+						}
+						if($bulan_pabt == '9')
+						{
+							$row_bulan = 'M';
+							$sembilan =  $queryPabt[0]['total_pabt'] + $sembilan;
+							
+						}
+						if($bulan_pabt == '10')
+						{
+							$row_bulan = 'N';
+							$sepuluh =  $queryPabt[0]['total_pabt'] + $sepuluh;
+							
+						}
+						if($bulan_pabt == '11')
+						{
+							$row_bulan = 'O';
+							$sebelas = $queryPabt[0]['total_pabt'] + $sebelas;
+							
+						}
+						if($bulan_pabt == '12')
+						{
+							$row_bulan = 'P';
+							$duabelas = $queryPabt[0]['total_pabt'] + $duabelas;
+						}
+						$sheet->setCellValue($row_bulan.$numrow, $pabt);
+						$sheet->getStyle($row_bulan.$numrow)->getNumberFormat()->setFormatCode('#,###,###,###');
+						$sheet->getStyle($row_bulan.$numrow)->applyFromArray($style_biasa);
+						$sheet->getColumnDimension($row_bulan)->setWidth(100, 'pt');
+				}
+
+				$totalSemuaPabt = $totalSemuaPabt + $totalPabt;
+				$sheet->setCellValue("Q".$numrow, $totalPabt);
+				$sheet->getColumnDimension('Q')->setWidth(100, 'pt');
+				$sheet->getStyle("Q".$numrow)->applyFromArray($style_biasa);
+				$sheet->getStyle("Q".$numrow)->getNumberFormat()->setFormatCode('#,###,###,###');
+				$totalPabt = 0;
+
+				++$numrow;
+				
+			}
+			foreach($bulan as $b)
+			{
+				error_reporting(0);
+				$perbulan  = $b['id'];
+							if($perbulan == '1' )
+							{
+								$total_bulan = 'E';
+							}
+							if($perbulan == '2' )
+							{
+								$total_bulan = 'F';
+							}
+							if($perbulan == '3' )
+							{
+								$total_bulan = 'G';
+							}
+							if($perbulan == '4')
+							{
+								$total_bulan = 'H';
+							}
+							if($perbulan == '5')
+							{
+								$total_bulan = 'I';
+							}
+							if($perbulan == '6')
+							{
+								$total_bulan = 'J';
+							}
+							if($perbulan == '7')
+							{
+								$total_bulan = 'K';
+							}
+							if($perbulan == '8')
+							{
+								$total_bulan = 'L';
+							}
+							if($perbulan == '9')
+							{
+								$total_bulan = 'M';
+							}
+							if($perbulan == '10')
+							{
+								$total_bulan = 'N';
+							}
+							if($perbulan == '11')
+							{
+								$total_bulan = 'O';
+							}
+							if($perbulan == '12')
+							{
+								$total_bulan = 'P';
+							}
+				$sheet->setCellValue('E'.$numrow, $satu);
+				$sheet->setCellValue('F'.$numrow, $dua);
+				$sheet->setCellValue('G'.$numrow, $tiga);
+				$sheet->setCellValue('H'.$numrow, $empat);
+				$sheet->setCellValue('I'.$numrow, $lima);
+				$sheet->setCellValue('J'.$numrow, $enam);
+				$sheet->setCellValue('K'.$numrow, $tujuh);
+				$sheet->setCellValue('L'.$numrow, $delapan);
+				$sheet->setCellValue('M'.$numrow, $sembilan);
+				$sheet->setCellValue('N'.$numrow, $sepuluh);
+				$sheet->setCellValue('O'.$numrow, $sebelas);
+				$sheet->setCellValue('P'.$numrow, $duabelas);
+				$sheet->setCellValue('Q'.$numrow, $totalSemuaPabt);
+				
+				$sheet->getStyle($total_bulan.$numrow)->getNumberFormat()->setFormatCode('#,###,###,###');
+				$sheet->getStyle($total_bulan.$numrow)->applyFromArray($style_biasa);
+				$sheet->getStyle('Q'.$numrow)->getNumberFormat()->setFormatCode('#,###,###,###');
+				$sheet->getStyle('Q'.$numrow)->applyFromArray($style_biasa);
+
+			}
+
+			$sheet->setCellValue('A'.$numrow,'Total')->mergeCells('A'.$numrow.':'.'D'.$numrow);
+			$sheet->getStyle('A'.$numrow)->applyFromArray($style_biasa);
+			$sheet->getStyle('B'.$numrow)->applyFromArray($style_biasa);
+			$sheet->getStyle('C'.$numrow)->applyFromArray($style_biasa);
+			$sheet->getStyle('D'.$numrow)->applyFromArray($style_biasa);
+			$sheet->getStyle('Q'.$numrow)->applyFromArray($style_biasa);
+
+
+			$row = $numrow + 2;
+			$sheet->setCellValue('N'.$row,'Mengetahui,')->mergeCells('N'.$row.':'.'P'.$row);
+			$sheet->getStyle('N'.$row)->applyFromArray($style_ttd);
+
+			$row = $numrow + 3;
+			$sheet->setCellValue('N'.$row,'Kepala Dinas Lingkungan Hidup dan Kebersihan Kota Jayapura,')->mergeCells('N'.$row.':'.'P'.$row);
+			$sheet->getStyle('N'.$row)->applyFromArray($style_ttd);
+			
+
+			$row = $numrow + 8;
+			$sheet->setCellValue('N'.$row,'Ir. DOLFINA JECE MANO, M.Si,')->mergeCells('N'.$row.':'.'P'.$row);
+			$sheet->getStyle('N'.$row)->applyFromArray($kepala_dinas);
+
+			$row = $numrow + 9;
+			$sheet->setCellValue('N'.$row,'Pembina Tk. 1,')->mergeCells('N'.$row.':'.'P'.$row);
+			$sheet->getStyle('N'.$row)->applyFromArray($kepala_dinas);
+
+			$row = $numrow + 10;
+			$sheet->setCellValue('N'.$row,'NIP. 19671223 199503 2 001,')->mergeCells('N'.$row.':'.'P'.$row);
+			$sheet->getStyle('N'.$row)->applyFromArray($kepala_dinas);
+
+			$row = $numrow + 5;
+			$path_image = base_url('assets/images/info_tagihan/stempel_ttd.png');
+
+			// Prepare the drawing object
+			$drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+
+			// Set the picture name
+			$drawing->setName('PhpSpreadsheet logo');
+
+			// Set the picture path
+			$drawing->setPath($path_image);
+
+			// Set the cell address where the picture will be inserted
+			$drawing->setCoordinates('C2');
+
+			// Add the drawing to the worksheet
+			// $drawing->setWorksheet($spreadsheet->getActiveSheet());
+
+			$writer = new Xlsx($spreadsheet);
+			
+			$filename = $distrik_biasa;
+			
+			header('Content-Type: application/vnd.ms-excel');
+			header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 
+			header('Cache-Control: max-age=0');
+
+			$writer->save('php://output');
 		}
 
 	// admin > wajib pajak > volume air

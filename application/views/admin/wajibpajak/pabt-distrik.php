@@ -51,7 +51,7 @@
                                                                 </div>
                                                             </div>
                                                         <div class="btn-group">                                                            
-                                                            <button class="btn btn-success bg-success text-light btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                            <button class="btn btn-primary bg-primary text-light btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
                                                             <span class="btn-label"><i class="mdi mdi-paperclip"></i></span>
                                                             <?php 
                                                                  $nama_distrik = "";
@@ -77,10 +77,14 @@
                                                             </div>
                                                         </div>
                                                             <a target="_blank" href="<?= base_url('admin/wajibpajak/cetak-pabt-perdistrik/'.$tahun) ?>?distrik=<?=$distrik?>">
-                                                            <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
-                                                            <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
-                                                        </a>
-                                                    </div>
+                                                                <button type="button" class="btn btn-lg btn-danger waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download PDF">
+                                                                <span class="btn-label"><i class="fas fa-download"></i></span>PDF</button>
+                                                            </a>
+                                                            <a target="_blank" href="<?= base_url('admin/wajibpajak/cetak-pabt-perdistrik-excel/'.$tahun) ?>?distrik=<?=$distrik?>">
+                                                                <button type="button" class="btn btn-lg btn-success waves-effect waves-light ml-2" data-plugin="tippy" data-tippy-placement="top-start" title="Download EXCEL">
+                                                                <span class="btn-label"><i class="fas fa-download"></i></span>EXCEL</button>
+                                                            </a>
+                                                        </div>
                                                     
                                                     <a href="<?= base_url('admin/wajibpajak/terhapus') ?>" data-plugin="tippy" data-tippy-placement="top-start" title="Menampilkan Wajib Pajak Terhapus">
                                                         <button type="button" class="btn btn-lg btn-primary text-primary bg-light waves-effect waves-light">
@@ -146,20 +150,7 @@
                                                                 </tr>
 
                                                             <?php $no++;} ?>
-                                                            <tr>
-                                                                <td><?=$no?></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td class="text-center"> Total</td>
-                                                                 <?php 
-                                                                 foreach($bulan as $b):?>
-                                                                    <?php  $id_bulan  = $b['id'];
-                                                                        $queryTotal = $this->db->query("SELECT sum(total_pabt) as total FROM tagihan, wajib_pajak WHERE wajib_pajak.id_wp = tagihan.id_wp AND wajib_pajak.usaha_distrik = '$distrik' AND tagihan.tahun = '$tahun' AND tagihan.id_bulan = '$id_bulan'")->result_array();
-                                                                        ?>
-                                                                    <td><?= rupiah($queryTotal[0]['total'])?></td>
-                                                                <?php endforeach;?>       
-                                                            </tr>
+                                                          
                                                         </tbody>
                                                     </table>
                                                     <!-- end table  -->
