@@ -527,7 +527,7 @@
 
                                     <tr>
                                         <td></td>
-                                        <td class="bg-light text-dark text-center" style="background-color: yellow;"><?= volume_air($totalVolume)?></td>
+                                        <td class="bg-light text-dark text-center" ><?= volume_air($totalVolume)?></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
@@ -542,7 +542,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">PAJAK PABT ( <?= $pajakPABT*100 ?> %)</td>
-                                        <td class="text-left"  style="font-weight:bold;padding-left:20px ; ">
+                                        <td class="text-left"  style="font-weight:bold;padding-left:20px ; background-color: yellow; " >
                                             <?php
                                             $totalPajakPABT = $pajakPABT * $totalNPA;
                                             echo rupiah($totalPajakPABT);
