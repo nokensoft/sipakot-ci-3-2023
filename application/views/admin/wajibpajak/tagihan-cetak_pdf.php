@@ -242,7 +242,11 @@
                                         <td class="bg-light text-dark text-center align-middle" width="20%">Vol 0-50  m<sup>3</sup></td>
                                         <td class="bg-light text-dark text-center">
                                             <?php
+                                            $volumeAirTanah = 0;
+                                            $nilaiSisah1 = 0;
+                                            $volumeAirTanah = 0;
                                             $volumeAirTanah = ($tagihan['volume']);
+                                            $volume =0;
                                             // echo $volumeAirTanah;
                                             // echo '<br>';
                                             // echo '<br>';
@@ -260,9 +264,12 @@
                                                 if (isset($volume1)) {
                                                     echo $nilaiSisah1 . ' m<sup>3</sup>';
                                                 } else {
+                                                    $volume = $volumeAirTanah;
                                                     echo volume_air($volumeAirTanah);
                                                 }
                                             }
+                                            
+                                            $totalVolume = $volume1 + $nilaiSisah1 + $volume;
 
                                             ?>
                                         </td>
@@ -518,7 +525,12 @@
                                         <td class="text-center"></td>
                                     </tr> -->
 
-
+                                    <tr>
+                                        <td></td>
+                                        <td class="bg-light text-dark text-center" style="background-color: yellow;"><?= volume_air($totalVolume)?></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                     <tr>
                                         <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">NPA </td>
                                         <td class="text-left" style="font-weight:bold;padding-left:20px ;">
@@ -530,7 +542,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">PAJAK PABT ( <?= $pajakPABT*100 ?> %)</td>
-                                        <td class="text-left"  style="font-weight:bold;padding-left:20px ;">
+                                        <td class="text-left"  style="font-weight:bold;padding-left:20px ; ">
                                             <?php
                                             $totalPajakPABT = $pajakPABT * $totalNPA;
                                             echo rupiah($totalPajakPABT);
