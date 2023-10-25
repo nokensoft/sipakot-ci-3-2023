@@ -182,7 +182,7 @@
                             </tr>
                         </table>
                     </td>
-                    <td class="text-left  style="padding-left:20px ;"align-top" style="height: 150px; padding:30px">
+                    <td class="text-left  style="padding-left:20px "align-top" style="height: 150px; padding:30px">
                         <table style="border: 1px solid #dee2e6;  width:500px">
                                 <tr>
                                     <td style="padding:20px ">
@@ -247,6 +247,7 @@
                                             $volumeAirTanah = 0;
                                             $volumeAirTanah = ($tagihan['volume']);
                                             $volume =0;
+                                            $volume1 =0;
                                             // echo $volumeAirTanah;
                                             // echo '<br>';
                                             // echo '<br>';
