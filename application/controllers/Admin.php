@@ -582,6 +582,11 @@ class Admin extends CI_Controller
 		// admin > wajib pajak > patb > excel 
 		public function wajib_pajak_pabt_perdistrik_excel($id)
 		{
+
+			// $password = "user_input_password";
+			// $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+			// var_dump($hashed_password);
+			// die;
 			$distrik = $_GET['distrik'];
 			$wajib_pajak = $this->M_distrik->wajib_pajak_sortir_distrik($distrik);
 			$bulan = $this->M_wajibpajak->baca('bulan')->result_array();
@@ -754,21 +759,34 @@ class Admin extends CI_Controller
 					$id_wp = $l['id_wp'];
 					$id_bulan  = $b['id'];
 					$queryPabt = $this->db->query("SELECT * FROM tagihan WHERE id_wp = '$id_wp' AND tahun = '$tahun' AND id_bulan = '$id_bulan' ")->result_array();
-					
-				
+				$tes = "SELECT * FROM tagihan WHERE id_wp = '$id_wp' AND tahun = '$tahun' AND id_bulan = '$id_bulan'";	
+				// var_dump($tes);
+				// var_dump($queryPabt);
+				// die;
+					// if(($queryPabt) != null)
+					// {
+						$pabt = $queryPabt[0]['total_pabt'];
+						$bulan_pabt  = ($queryPabt[0]["id_bulan"]);
+						$totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
+					// }else{
+					// 	$pabt = 0;
+					// 	$bulan_pabt  = '0';
+					// 	$totalPabt = 0;
+					// }
 
-					$pabt = $queryPabt[0]['total_pabt'];
-					$bulan_pabt  = ($queryPabt[0]["id_bulan"]);
-					$totalPabt = $queryPabt[0]['total_pabt'] + $totalPabt;
-
 					
-					if($pabt != null){
+						if($pabt != null){
 						$pabt = $pabt;
+
 						}else{
 							$pabt = 0;
 						}; 
 
-
+						if($bulan_pabt == '0')
+						{
+							$row_bulan = '';
+							$duabelas = '';
+						}
 
 						if($bulan_pabt == '1' )
 						{
