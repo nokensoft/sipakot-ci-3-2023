@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url']	= "http://localhost/sipakot-ci-3-2023/"; 
+$config['base_url']	= "https://sipakot.api.nokensoft.web.id/"; 
+// $config['base_url']	= "http://localhost/sipakot-ci-3-2023/"; 
 
 /*
 |--------------------------------------------------------------------------
