@@ -625,7 +625,7 @@ $route['dispenda/wajibpajak/tagihan/cetak'] = 'wajibpajak/cetaktagihan'; // hala
 
 
 
-
+$route['api/geodistrik'] = 'Api/geoDistrik';
 
 
 
