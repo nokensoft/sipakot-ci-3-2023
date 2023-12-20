@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,15 +9,18 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon-cms-hr.png">
     <style>
-        body{
+        body {
             font-family: Arial;
         }
+
         .image-container {
             position: relative;
         }
+
         .tdd {
             width: 30%;
         }
+
         .before {
             position: absolute;
             margin-bottom: 200px;
@@ -25,187 +29,216 @@
             height: 100%;
             display: block;
         }
-    .after {
+
+        .after {
             position: absolute;
-            top:300%;
+            top: 300%;
             left: 0;
             width: 100%;
             height: 100%;
             display: block;
         }
-        table, th, td {
-                border: 1px solid #dee2e6;
-                border-collapse: collapse;
+
+        table,
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            border-collapse: collapse;
         }
+
         .text-left {
-            text-align :left;
+            text-align: left;
         }
+
         .text-center {
-            text-align :center;
+            text-align: center;
 
         }
+
         /* .image-container:hover .after {
             display: block;
             background: rgba(0, 0, 0, .6);
         } */
     </style>
-    
+
 </head>
 <!-- <body onload="window.print()"> -->
+
 <body>
 
-<div class="card-box">          
+    <div class="card-box">
 
-    <div class="row">
-        <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
 
-                    <?php
-                    // data jenis usaha
-                    $jenisUsaha = $wajib_pajak['usaha_kategori'];
-                    $komponen_SDA = $tagihan['persentasi_sda'];
+                <?php
+                // data jenis usaha
+                $jenisUsaha = $wajib_pajak['usaha_kategori'];
+                $komponen_SDA = $tagihan['persentasi_sda'];
 
-                    if (isset($jenisUsaha)) {
-                        $jenisUsaha = $jenisUsaha; // Ambil id jenis usaha
+                if (isset($jenisUsaha)) {
+                    $jenisUsaha = $jenisUsaha; // Ambil id jenis usaha
 
-                        if (isset($jenisUsaha) && $jenisUsaha == 1) {
-                            $judul_jenisUsaha = 'Non Niaga';
-                            $nilai1 = 1;
-                            $nilai2 = 1.1;
-                            $nilai3 = 1.2;
-                            $nilai4 = 1.3;
-                            $nilai5 = 1.4;
-                        } elseif (isset($jenisUsaha) && $jenisUsaha == 2) {
-                            $judul_jenisUsaha = 'Niaga Kecil';
-                            $nilai1 = 2;
-                            $nilai2 = 2.2;
-                            $nilai3 = 2.4;
-                            $nilai4 = 2.6;
-                            $nilai5 = 2.8;
-                        } elseif (isset($jenisUsaha) && $jenisUsaha == 3) {
-                            $judul_jenisUsaha = 'Industri Kecil';
-                            $nilai1 = 3;
-                            $nilai2 = 3.3;
-                            $nilai3 = 3.6;
-                            $nilai4 = 3.9;
-                            $nilai5 = 4.5;
-                        } elseif (isset($jenisUsaha) && $jenisUsaha == 4) {
-                            $judul_jenisUsaha = 'Niaga Besar';
-                            $nilai1 = 4;
-                            $nilai2 = 4.4;
-                            $nilai3 = 4.8;
-                            $nilai4 = 5.2;
-                            $nilai5 = 5.6;
-                        } elseif (isset($jenisUsaha) && $jenisUsaha == 5) {
-                            $judul_jenisUsaha = 'Industri Besar';
-                            $nilai1 = 5;
-                            $nilai2 = 5.5;
-                            $nilai3 = 6.0;
-                            $nilai4 = 6.5;
-                            $nilai5 = 7.0;
-                        }
+                    if (isset($jenisUsaha) && $jenisUsaha == 1) {
+                        $judul_jenisUsaha = 'Non Niaga';
+                        $nilai1 = 1;
+                        $nilai2 = 1.1;
+                        $nilai3 = 1.2;
+                        $nilai4 = 1.3;
+                        $nilai5 = 1.4;
+                    } elseif (isset($jenisUsaha) && $jenisUsaha == 2) {
+                        $judul_jenisUsaha = 'Niaga Kecil';
+                        $nilai1 = 2;
+                        $nilai2 = 2.2;
+                        $nilai3 = 2.4;
+                        $nilai4 = 2.6;
+                        $nilai5 = 2.8;
+                    } elseif (isset($jenisUsaha) && $jenisUsaha == 3) {
+                        $judul_jenisUsaha = 'Industri Kecil';
+                        $nilai1 = 3;
+                        $nilai2 = 3.3;
+                        $nilai3 = 3.6;
+                        $nilai4 = 3.9;
+                        $nilai5 = 4.5;
+                    } elseif (isset($jenisUsaha) && $jenisUsaha == 4) {
+                        $judul_jenisUsaha = 'Niaga Besar';
+                        $nilai1 = 4;
+                        $nilai2 = 4.4;
+                        $nilai3 = 4.8;
+                        $nilai4 = 5.2;
+                        $nilai5 = 5.6;
+                    } elseif (isset($jenisUsaha) && $jenisUsaha == 5) {
+                        $judul_jenisUsaha = 'Industri Besar';
+                        $nilai1 = 5;
+                        $nilai2 = 5.5;
+                        $nilai3 = 6.0;
+                        $nilai4 = 6.5;
+                        $nilai5 = 7.0;
                     }
+                }
 
-                    ?>
-
-
-                    <?php
-                    // data harga baku
-                    if (isset($tagihan['harga_baku']) && $tagihan['harga_baku'] != '') {
-                        $hargaBaku = $tagihan['harga_baku']; // ambil nilai harga baku
-                    }
-                    ?>
+                ?>
 
 
-
-                    <?php
-                    // data pajak PABT
-                    if (isset($tagihan['pajak_pabt']) && $tagihan['pajak_pabt'] != '') {
-                        $pajakPABT = $tagihan['pajak_pabt']; // ambil pajak PABT
-                    }
-                    ?>
+                <?php
+                // data harga baku
+                if (isset($tagihan['harga_baku']) && $tagihan['harga_baku'] != '') {
+                    $hargaBaku = $tagihan['harga_baku']; // ambil nilai harga baku
+                }
+                ?>
 
 
 
+                <?php
+                // data pajak PABT
+                if (isset($tagihan['pajak_pabt']) && $tagihan['pajak_pabt'] != '') {
+                    $pajakPABT = $tagihan['pajak_pabt']; // ambil pajak PABT
+                }
+                ?>
 
+
+
+
+            </div>
         </div>
-    </div>
-    
-    <div class="fna">
 
-        
-        <?php if (isset($tagihan['kualitas'])) { $jml1A = $tagihan['kualitas'] * $tagihan['persentasi_sda']; } ?>
-        <?php if (isset($nilai1)) {  $jml1B = $nilai1 * $tagihan['persentasi_kompensasi']; } ?>
-        <?php $fna1 = $jml1A + $jml1B; ?>
-        <?php if (isset($tagihan['kualitas'])) { $jml2A = $tagihan['kualitas'] * $tagihan['persentasi_sda']; } ?>
-        <?php if (isset($nilai2)) { $jml2B = $nilai2 * $tagihan['persentasi_kompensasi']; } ?>
-        <?php $fna2 = $jml2A + $jml2B; ?>
-    
-        <?php if (isset($tagihan['kualitas'])) { $jml3A = $tagihan['kualitas'] * $tagihan['persentasi_sda']; }  ?>
-        <?php if (isset($nilai3)) { $jml3B = $nilai3 * $tagihan['persentasi_kompensasi']; } ?>
-        <?php $fna3 = $jml3A + $jml3B; ?>
-        
-        <?php if (isset($tagihan['kualitas'])) { $jml4A = $tagihan['kualitas'] * $tagihan['persentasi_sda']; } ?>
-
-        <?php if (isset($nilai4)) { $jml4B = $nilai4 * $tagihan['persentasi_kompensasi']; } ?>
-
-        <?php $fna4 = $jml4A + $jml4B; ?>
-        
-        <?php if (isset($tagihan['kualitas'])) { $jml5A = $tagihan['kualitas'] * $tagihan['persentasi_sda']; } ?>
-        
-        <?php if (isset($nilai5)) { $jml5B = $nilai5 * $tagihan['persentasi_kompensasi']; } ?>
-        
-        <?php $fna5 = $jml5A + $jml5B; ?>
+        <div class="fna">
 
 
-    <!-- end fna -->
+            <?php if (isset($tagihan['kualitas'])) {
+                $jml1A = $tagihan['kualitas'] * $tagihan['persentasi_sda'];
+            } ?>
+            <?php if (isset($nilai1)) {
+                $jml1B = $nilai1 * $tagihan['persentasi_kompensasi'];
+            } ?>
+            <?php $fna1 = $jml1A + $jml1B; ?>
+            <?php if (isset($tagihan['kualitas'])) {
+                $jml2A = $tagihan['kualitas'] * $tagihan['persentasi_sda'];
+            } ?>
+            <?php if (isset($nilai2)) {
+                $jml2B = $nilai2 * $tagihan['persentasi_kompensasi'];
+            } ?>
+            <?php $fna2 = $jml2A + $jml2B; ?>
 
-    <div class="info-tagihan">
-                    
-        <table>
-                <tr>
-                    <th class="text-left  style="padding-left:20px ;"align-middle">
-                        <img src="<?=base_url()?>assets/images/logo-kota-jayapura-700-dark.png" height="200" alt="">
-                    </th>
-                    <th class="align-middle" width="700">
-                        <h1 class="text-dark" style="font-weight:bold; color:dark;"> INFORMASI TAGIHAN AIR TANAH</h1>
-                    </th>
-                </tr>
-                <tr>
-                    <td class="text-left  style="padding-left:20px ;"align-top" style="height: 150px; padding:30px">
-                        
-                        <table style="border: 1px solid #dee2e6; width:500px ">
-                            <tr>
-                                <td style="padding:40px ">
-                                    <p style="">Kepada Yth : </p>
-                                    <p style="font-weight:bold; margin:150px;">Pemilik <?= $wajib_pajak['usaha_nama'] ?></p> 
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td class="text-left  style="padding-left:20px "align-top" style="height: 150px; padding:30px">
-                        <table style="border: 1px solid #dee2e6;  width:500px">
+            <?php if (isset($tagihan['kualitas'])) {
+                $jml3A = $tagihan['kualitas'] * $tagihan['persentasi_sda'];
+            }  ?>
+            <?php if (isset($nilai3)) {
+                $jml3B = $nilai3 * $tagihan['persentasi_kompensasi'];
+            } ?>
+            <?php $fna3 = $jml3A + $jml3B; ?>
+
+            <?php if (isset($tagihan['kualitas'])) {
+                $jml4A = $tagihan['kualitas'] * $tagihan['persentasi_sda'];
+            } ?>
+
+            <?php if (isset($nilai4)) {
+                $jml4B = $nilai4 * $tagihan['persentasi_kompensasi'];
+            } ?>
+
+            <?php $fna4 = $jml4A + $jml4B; ?>
+
+            <?php if (isset($tagihan['kualitas'])) {
+                $jml5A = $tagihan['kualitas'] * $tagihan['persentasi_sda'];
+            } ?>
+
+            <?php if (isset($nilai5)) {
+                $jml5B = $nilai5 * $tagihan['persentasi_kompensasi'];
+            } ?>
+
+            <?php $fna5 = $jml5A + $jml5B; ?>
+
+
+            <!-- end fna -->
+
+            <div class="info-tagihan">
+
+                <table>
+                    <tr>
+                        <th class="text-left  style=" padding-left:20px ;"align-middle">
+                            <img src="<?= base_url() ?>assets/images/logo-kota-jayapura-700-dark.png" height="200" alt="">
+                            <img src="<?= $_SERVER['DOCUMENT_ROOT'] ?>/assets/images/logo-kota-jayapura-700-dark.png" height="200" alt="">
+                        </th>
+                        <th class="align-middle" width="700">
+                            <h1 class="text-dark" style="font-weight:bold; color:dark;"> INFORMASI TAGIHAN AIR TANAH</h1>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="text-left  style=" padding-left:20px ;"align-top" style="height: 150px; padding:30px">
+
+                            <table style="border: 1px solid #dee2e6; width:500px ">
+                                <tr>
+                                    <td style="padding:40px ">
+                                        <p style="">Kepada Yth : </p>
+                                        <p style="font-weight:bold; margin:150px;">Pemilik <?= $wajib_pajak['usaha_nama'] ?></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="text-left  style=" padding-left:20px "align-top" style="height: 150px; padding:30px">
+                            <table style="border: 1px solid #dee2e6;  width:500px">
                                 <tr>
                                     <td style="padding:20px ">
                                         <label>Tagihan Bulan : </label>
-                                            <?php
-                                            // query bulan
-                                            $queryBulan = $this->db->query("SELECT * FROM bulan WHERE id = " . $tagihan['id_bulan']);
-                                            $rowBulan = $queryBulan->row_array();
-                                                                                ?>
-                                            <strong style="font-weight:bold"><?=$rowBulan['bulan'] .' '. $tagihan['tahun']?>
+                                        <?php
+                                        // query bulan
+                                        $queryBulan = $this->db->query("SELECT * FROM bulan WHERE id = " . $tagihan['id_bulan']);
+                                        $rowBulan = $queryBulan->row_array();
+                                        ?>
+                                        <strong style="font-weight:bold"><?= $rowBulan['bulan'] . ' ' . $tagihan['tahun'] ?>
                                         </strong>
                                     </td>
-                               </tr>
+                                </tr>
                                 <tr>
-                                    <td  style="padding:20px">
+                                    <td style="padding:20px">
                                         <label>Volume Pemanfaatan Air : </label>
-                                        <strong style="font-weight:bold"><?=round($tagihan['volume']) . ' m<sup>3</sup>'?></strong>
+                                        <strong style="font-weight:bold"><?= round($tagihan['volume']) . ' m<sup>3</sup>' ?></strong>
                                     </td>
                                 </tr>
-                        </table>
-                    </td>
-                </tr>
-                <br>
+                            </table>
+                        </td>
+                    </tr>
+                    <br>
                     <tr>
                         <td colspan="2">
 
@@ -222,14 +255,16 @@
                                             <div class="image-container">
                                                 <div class="before">
                                                     <h4>Mengetahui,
-                                                         <br> <b>KEPALA DLHK KOTA JAYAPURA</b> </h4>
+                                                        <br> <b>KEPALA DLHK KOTA JAYAPURA</b>
+                                                    </h4>
                                                 </div>
-                                                <img class="tdd" src="<?=base_url('assets/images/info_tagihan/stempel_ttd.png')?>" alt="">
+                                                <img class="tdd" src="<?= $_SERVER['DOCUMENT_ROOT'] ?>/assets/images/info_tagihan/stempel_ttd.png" alt="">
+                                                <img class="tdd" src="<?= base_url('assets/images/info_tagihan/stempel_ttd.png') ?>" alt="">
                                                 <div class="after">
                                                     <h4>
                                                         <b>Ir. DOLFINA JECE MANO, M.Si</b>
                                                         <br>
-                                                        PEMBINA 
+                                                        PEMBINA
                                                         <br>
                                                         NIP. 19671223 199503 2 001
                                                     </h4>
@@ -239,15 +274,15 @@
                                     </tr>
                                     <!-- Vol 0-50 m3 -->
                                     <tr>
-                                        <td class="bg-light text-dark text-center align-middle" width="20%">Vol 0-50  m<sup>3</sup></td>
+                                        <td class="bg-light text-dark text-center align-middle" width="20%">Vol 0-50 m<sup>3</sup></td>
                                         <td class="bg-light text-dark text-center">
                                             <?php
                                             $volumeAirTanah = 0;
                                             $nilaiSisah1 = 0;
                                             $volumeAirTanah = 0;
                                             $volumeAirTanah = ($tagihan['volume']);
-                                            $volume =0;
-                                            $volume1 =0;
+                                            $volume = 0;
+                                            $volume1 = 0;
                                             // echo $volumeAirTanah;
                                             // echo '<br>';
                                             // echo '<br>';
@@ -269,7 +304,7 @@
                                                     echo volume_air($volumeAirTanah);
                                                 }
                                             }
-                                            
+
                                             $totalVolume = $volume1 + $nilaiSisah1 + $volume;
 
                                             ?>
@@ -286,24 +321,23 @@
                                         </td>
                                         <td class="bg-light text-dark text-left" style="padding-left:20px ;">
                                             <!-- <?php
-                                            $jmlPenagihan1 = $volume1 * $fna1 * $hargaBaku;
-                                            echo rupiah($jmlPenagihan1);
-                                            ?> -->
-
-                                            
-                                            <!-- jumlah harga 1 -->
-                                            <?php
-                                                if(!empty($volume1)) {
                                                     $jmlPenagihan1 = $volume1 * $fna1 * $hargaBaku;
                                                     echo rupiah($jmlPenagihan1);
-                                                } elseif(!empty($nilaiSisah1)){
-                                                    $jmlPenagihan1 = $nilaiSisah1 * $fna2 * $hargaBaku;
-                                                    echo rupiah($jmlPenagihan1);
-                                                } 
-                                                else {
-                                                    $jmlPenagihan1 = $volumeAirTanah * $fna2 * $hargaBaku;
-                                                    echo rupiah($jmlPenagihan1);
-                                                }
+                                                    ?> -->
+
+
+                                            <!-- jumlah harga 1 -->
+                                            <?php
+                                            if (!empty($volume1)) {
+                                                $jmlPenagihan1 = $volume1 * $fna1 * $hargaBaku;
+                                                echo rupiah($jmlPenagihan1);
+                                            } elseif (!empty($nilaiSisah1)) {
+                                                $jmlPenagihan1 = $nilaiSisah1 * $fna2 * $hargaBaku;
+                                                echo rupiah($jmlPenagihan1);
+                                            } else {
+                                                $jmlPenagihan1 = $volumeAirTanah * $fna2 * $hargaBaku;
+                                                echo rupiah($jmlPenagihan1);
+                                            }
                                             ?>
 
 
@@ -311,7 +345,7 @@
                                     </tr>
                                     <!-- Vol 51-500 m3 -->
                                     <tr>
-                                        <td class="bg-light text-dark text-center align-middle" width="20%">Vol 51-500  m<sup>3</sup></td>
+                                        <td class="bg-light text-dark text-center align-middle" width="20%">Vol 51-500 m<sup>3</sup></td>
                                         <td class="bg-light text-dark text-center">
                                             <?php
 
@@ -345,14 +379,13 @@
                                         <td class="bg-light text-dark text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 2 -->
                                             <?php
-                                            if(!empty($volume2)) {
+                                            if (!empty($volume2)) {
                                                 $jmlPenagihan2 = $volume2 * $fna2 * $hargaBaku;
                                                 echo rupiah($jmlPenagihan2);
-                                            } elseif(!empty($nilaiSisah1)){
+                                            } elseif (!empty($nilaiSisah1)) {
                                                 $jmlPenagihan2 = $nilaiSisah1 * $fna2 * $hargaBaku;
                                                 echo rupiah($jmlPenagihan2);
-                                            } 
-                                            else {
+                                            } else {
                                                 $jmlPenagihan2 = 0;
                                                 echo "-";
                                             }
@@ -395,17 +428,16 @@
                                         <td class="text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 3 -->
                                             <?php
-                                                if(!empty($volume3)) {
-                                                    $jmlPenagihan3 = $volume3 * $fna3 * $hargaBaku;
-                                                    echo rupiah($jmlPenagihan3);
-
-                                                } elseif(!empty($nilaiSisah2)){
-                                                    $jmlPenagihan3 = $nilaiSisah2 * $fna3 * $hargaBaku;
-                                                    echo rupiah($jmlPenagihan3);
-                                                } else {
-                                                    $jmlPenagihan3 = 0;
-                                                    echo "-";
-                                                }
+                                            if (!empty($volume3)) {
+                                                $jmlPenagihan3 = $volume3 * $fna3 * $hargaBaku;
+                                                echo rupiah($jmlPenagihan3);
+                                            } elseif (!empty($nilaiSisah2)) {
+                                                $jmlPenagihan3 = $nilaiSisah2 * $fna3 * $hargaBaku;
+                                                echo rupiah($jmlPenagihan3);
+                                            } else {
+                                                $jmlPenagihan3 = 0;
+                                                echo "-";
+                                            }
                                             ?>
                                         </td>
                                     </tr>
@@ -444,17 +476,17 @@
                                         <td class="text-left" style="padding-left:20px ;">
                                             <!-- jumlah harga 4 -->
                                             <?php
-                                                if(!empty($volume4)) {
-                                                    $jmlPenagihan4 = $volume4 * $fna4 * $hargaBaku;
-                                                    echo rupiah($jmlPenagihan4);
-                                                } elseif(!empty($nilaiSisah3)){
-                                                    $jmlPenagihan4 = $nilaiSisah3 * $fna4 * $hargaBaku;
-                                                    echo rupiah($jmlPenagihan4);
-                                                } else {
-                                                    
-                                                    $jmlPenagihan4 = 0;
-                                                    echo "-";
-                                                }
+                                            if (!empty($volume4)) {
+                                                $jmlPenagihan4 = $volume4 * $fna4 * $hargaBaku;
+                                                echo rupiah($jmlPenagihan4);
+                                            } elseif (!empty($nilaiSisah3)) {
+                                                $jmlPenagihan4 = $nilaiSisah3 * $fna4 * $hargaBaku;
+                                                echo rupiah($jmlPenagihan4);
+                                            } else {
+
+                                                $jmlPenagihan4 = 0;
+                                                echo "-";
+                                            }
                                             ?>
                                         </td>
                                     </tr>
@@ -492,13 +524,13 @@
                                             echo rupiah($hargaBaku);
                                             ?>
                                         </td>
-                                        <td class="text-left" style="padding-left:20px ;" >
+                                        <td class="text-left" style="padding-left:20px ;">
                                             <?php
-                                            if(!empty($nilaiSisah5)) {
+                                            if (!empty($nilaiSisah5)) {
                                                 $jmlPenagihan5 = $nilaiSisah5 * $fna5 * $hargaBaku;
                                                 echo rupiah($jmlPenagihan5);
                                             } else {
-                                                
+
                                                 $jmlPenagihan5 = 0;
                                                 echo "-";
                                             }
@@ -528,7 +560,7 @@
 
                                     <tr>
                                         <td></td>
-                                        <td class="bg-light text-dark text-center" ><?= volume_air($totalVolume)?></td>
+                                        <td class="bg-light text-dark text-center"><?= volume_air($totalVolume) ?></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
@@ -542,8 +574,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">PAJAK PABT ( <?= $pajakPABT*100 ?> %)</td>
-                                        <td class="text-left"  style="font-weight:bold;padding-left:20px ; background-color: yellow; " >
+                                        <td colspan="4" class="text-center align-middle" width="20%" style="font-weight:bold">PAJAK PABT ( <?= $pajakPABT * 100 ?> %)</td>
+                                        <td class="text-left" style="font-weight:bold;padding-left:20px ; background-color: yellow; ">
                                             <?php
                                             $totalPajakPABT = $pajakPABT * $totalNPA;
                                             echo rupiah($totalPajakPABT);
@@ -554,14 +586,15 @@
 
                             </table>
                             <!-- end table  -->
-                        
+
                         </td>
                     </tr>
-            </tbody>
-        </table>
-    
-    </div> <!-- end info-tagihan  -->
+                    </tbody>
+                </table>
 
-</div>
+            </div> <!-- end info-tagihan  -->
+
+        </div>
 </body>
+
 </html>

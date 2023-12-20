@@ -76,6 +76,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
+	// 'username' => 'sboc4997_api_sipakot',
+	// 'password' => 'sboc4997_api_sipakot',
+	// 'database' => 'sboc4997_api_sipakot',
+
 	'username' => 'root',
 	'password' => '',
 	'database' => 'sipakot',
@@ -94,4 +98,3 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-
