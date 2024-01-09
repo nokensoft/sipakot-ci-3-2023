@@ -60,7 +60,7 @@ $route['translate_uri_dashes'] = FALSE;
  * ==========================================================
  * ROLE VISITOR
  * ==========================================================
-*/
+ */
 
 
 // BERANDA 
@@ -75,7 +75,7 @@ $route['beranda'] = 'Beranda';
  * ==========================================================
  * ROLE ADMINISTRATOR
  * ==========================================================
-*/
+ */
 
 
 // MASUK
@@ -257,13 +257,13 @@ $route['wajibpajak/tentangpajak/nilaiperolehanair'] = 'wajibpajak/nilaiperolehan
 $route['admin/tentangpajak/penentuannpa'] = 'admin/penentuannpa';
 
 // pelaksana > dasar penentuan npa
-$route['pelaksana/tentangpajak/penentuannpa'] = 'pelaksana/penentuannpa'; 
+$route['pelaksana/tentangpajak/penentuannpa'] = 'pelaksana/penentuannpa';
 
 // dispenda > dasar penentuan npa
-$route['dispenda/tentangpajak/penentuannpa'] = 'dispenda/penentuannpa'; 
+$route['dispenda/tentangpajak/penentuannpa'] = 'dispenda/penentuannpa';
 
 // wajibpajak > dasar penentuan npa
-$route['wajibpajak/tentangpajak/penentuannpa'] = 'wajibpajak/penentuannpa'; 
+$route['wajibpajak/tentangpajak/penentuannpa'] = 'wajibpajak/penentuannpa';
 
 
 
@@ -358,7 +358,7 @@ $route['admin/pengaturan/halamandepan'] = 'admin/halamandepan'; // halaman dasar
  * ==========================================================
  * END ROLE ADMINISTRATOR
  * ==========================================================
-*/
+ */
 
 
 
@@ -399,7 +399,7 @@ $route['admin/pengaturan/halamandepan'] = 'admin/halamandepan'; // halaman dasar
 // DASBOR
 // ==========================================================
 
-$route['pelaksana/dasbor'] = 'pelaksana/dasbor'; 
+$route['pelaksana/dasbor'] = 'pelaksana/dasbor';
 
 
 
@@ -409,7 +409,7 @@ $route['pelaksana/dasbor'] = 'pelaksana/dasbor';
 
 // PROFIL
 // ==========================================================
-$route['pelaksana/profil'] = 'pelaksana/profil'; 
+$route['pelaksana/profil'] = 'pelaksana/profil';
 
 // UBAH
 $route['pelaksana/profil/ubah'] = 'pelaksana/profilubah';
@@ -422,7 +422,7 @@ $route['pelaksana/profil/ubah/foto'] = 'pelaksana/profilubahfoto';
 
 // WAJIB PAJAK
 // ==========================================================
-$route['pelaksana/wajibpajak'] = 'pelaksana/wajibpajak'; 
+$route['pelaksana/wajibpajak'] = 'pelaksana/wajibpajak';
 $route['pelaksana/wajibpajak/detail/(:any)'] = 'pelaksana/wajibpajakdetail/$1'; // detail wajib pajak
 
 
@@ -430,7 +430,7 @@ $route['pelaksana/wajibpajak/detail/(:any)'] = 'pelaksana/wajibpajakdetail/$1'; 
 
 // TAGIHAN
 // ==========================================================
-$route['pelaksana/wajibpajak/tagihan/new/(:any)'] = 'pelaksana/wajibpajak_tagihan_new'; 
+$route['pelaksana/wajibpajak/tagihan/new/(:any)'] = 'pelaksana/wajibpajak_tagihan_new';
 
 // buat tagihan
 $route['pelaksana/wajibpajak/tagihan/buat/(:any)'] = 'pelaksana/wajibpajak_buat_tagihan'; // halaman sunting tagihan
@@ -472,7 +472,7 @@ $route['pelaksana/wajibpajak/tagihan/hapus/(:any)'] = 'C_tagihan/hapus_tagihan';
  * ==========================================================
  * END ROLE PELAKSANA
  * ==========================================================
-*/
+ */
 
 
 
@@ -512,10 +512,10 @@ $route['pelaksana/wajibpajak/tagihan/hapus/(:any)'] = 'C_tagihan/hapus_tagihan';
 
 
 // MASUK (login)
-$route['wajibpajak/masuk'] = 'Loginwajibpajak/index'; 
+$route['wajibpajak/masuk'] = 'Loginwajibpajak/index';
 
 // KELUAR (logout)
-$route['wajibpajak/keluar'] = 'Loginwajibpajak/keluar'; 
+$route['wajibpajak/keluar'] = 'Loginwajibpajak/keluar';
 
 
 
@@ -624,8 +624,19 @@ $route['dispenda/wajibpajak/tagihan/cetak'] = 'wajibpajak/cetaktagihan'; // hala
 
 
 
+/*
+| -------------------------------------------------------------------------
+| API GEOJSON
+| -------------------------------------------------------------------------
+*/
 
-$route['api/geodistrik'] = 'Api/geoDistrik';
+
+// Data distrik
+$route['api/geodistrik'] = 'api/geodistrik';
+
+// Data wajib pajak
+$route['api/wajibPajak'] = 'api/wajibPajak';
+
 
 
 
