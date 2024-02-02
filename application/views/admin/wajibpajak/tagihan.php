@@ -52,52 +52,52 @@
                                 <div class="card-box">
 
 
-                                        <ul class="list-group">
+                                    <ul class="list-group">
 
-                                            <li class="list-group-item bg-dark">
-                                                <h1 class="m-0 font-weight-bold text-white"><?= $wp['nama_usaha'] ?></h1>
-                                            </li>
+                                        <li class="list-group-item bg-dark">
+                                            <h1 class="m-0 font-weight-bold text-white"><?= $wp['nama_usaha'] ?></h1>
+                                        </li>
 
-                                            <li class="list-group-item text-center">
-                                                <img src="<?= base_url() ?>assets/images/gambar_wp/<?= $wp['foto'] ?>" alt="contact-img" title="contact-img" class="img-thumbnail" width="200px" />
-                                            </li>
+                                        <li class="list-group-item text-center">
+                                            <img src="<?= base_url() ?>assets/images/gambar_wp/<?= $wp['foto'] ?>" alt="contact-img" title="contact-img" class="img-thumbnail" width="200px" />
+                                        </li>
 
-                                            <li class="list-group-item">
-                                                <label>Pemilik Usaha : </label> <br>
-                                                <strong style="font-weight:bold"><?= $wp['nama_pemilik'] ?></strong>
-                                            </li>
+                                        <li class="list-group-item">
+                                            <label>Pemilik Usaha : </label> <br>
+                                            <strong style="font-weight:bold"><?= $wp['nama_pemilik'] ?></strong>
+                                        </li>
 
-                                            <li class="list-group-item">
-                                                <label>Nama Usaha : </label> <br>
-                                                <strong style="font-weight:bold"><?= $wp['nama_usaha'] ?></strong>
-                                            </li>
+                                        <li class="list-group-item">
+                                            <label>Nama Usaha : </label> <br>
+                                            <strong style="font-weight:bold"><?= $wp['nama_usaha'] ?></strong>
+                                        </li>
 
-                                            <li class="list-group-item">
-                                                <label>Kategori Usaha : </label> <br>
-                                                <?php
-                                                // query komponen usaha
-                                                $queryKomponenUsaha = $this->db->query("SELECT * FROM pajak_kk WHERE id = " . $wp['kategori_usaha']);
-                                                $rowKomponenUsaha = $queryKomponenUsaha->row_array();
-                                                ?>
-                                                <strong style="font-weight:bold"><?= $rowKomponenUsaha['kriteria'] ?></strong>
-                                            </li>
+                                        <li class="list-group-item">
+                                            <label>Kategori Usaha : </label> <br>
+                                            <?php
+                                            // query komponen usaha
+                                            $queryKomponenUsaha = $this->db->query("SELECT * FROM pajak_kk WHERE id = " . $wp['kategori_usaha']);
+                                            $rowKomponenUsaha = $queryKomponenUsaha->row_array();
+                                            ?>
+                                            <strong style="font-weight:bold"><?= $rowKomponenUsaha['kriteria'] ?></strong>
+                                        </li>
 
-                                            <li class="list-group-item">
-                                                <label>Alamat : </label> <br>
-                                                <strong style="font-weight:bold"><?= $wp['alamat'] ?></strong>
-                                            </li>
+                                        <li class="list-group-item">
+                                            <label>Alamat : </label> <br>
+                                            <strong style="font-weight:bold"><?= $wp['alamat'] ?></strong>
+                                        </li>
 
-                                            <li class="list-group-item">
-                                                <label>Nomor Telepon : </label> <br>
-                                                <strong style="font-weight:bold"><?= $wp['no_tlp'] ?></strong>
-                                            </li>
+                                        <li class="list-group-item">
+                                            <label>Nomor Telepon : </label> <br>
+                                            <strong style="font-weight:bold"><?= $wp['no_tlp'] ?></strong>
+                                        </li>
 
-                                            <li class="list-group-item">
-                                                <label>Email : </label> <br>
-                                                <strong style="font-weight:bold"><?= $wp['email'] ?></strong>
-                                            </li>
+                                        <li class="list-group-item">
+                                            <label>Email : </label> <br>
+                                            <strong style="font-weight:bold"><?= $wp['email'] ?></strong>
+                                        </li>
 
-                                        </ul>
+                                    </ul>
 
 
                                 </div>
@@ -107,20 +107,22 @@
                             <div class="col-lg-8 col-md-8">
                                 <div class="card-box">
 
-                                    
+
                                     <div class="dropdown mb-3">
                                         <a class="btn btn-lg btn-success dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <?=$_GET['t']?> <i class="mdi mdi-chevron-down"></i>
+                                            <?= $_GET['t'] ?> <i class="mdi mdi-chevron-down"></i>
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuLink" style="">
-                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2017"><i class="mdi mdi-book mr-1"></i>2017</a>
-                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2018"><i class="mdi mdi-book mr-1"></i>2018</a>
-                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2019"><i class="mdi mdi-book mr-1"></i>2019</a>
-                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2020"><i class="mdi mdi-book mr-1"></i>2020</a>
-                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2021"><i class="mdi mdi-book mr-1"></i>2021</a>
-                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2022"><i class="mdi mdi-book mr-1"></i>2022</a>
-                                            <a class="dropdown-item" href="<?=$this->uri->segment(4)?>?t=2023"><i class="mdi mdi-book mr-1"></i>2023</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2017"><i class="mdi mdi-book mr-1"></i>2017</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2018"><i class="mdi mdi-book mr-1"></i>2018</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2019"><i class="mdi mdi-book mr-1"></i>2019</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2020"><i class="mdi mdi-book mr-1"></i>2020</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2021"><i class="mdi mdi-book mr-1"></i>2021</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2022"><i class="mdi mdi-book mr-1"></i>2022</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2023"><i class="mdi mdi-book mr-1"></i>2023</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2024"><i class="mdi mdi-book mr-1"></i>2024</a>
+                                            <a class="dropdown-item" href="<?= $this->uri->segment(4) ?>?t=2025"><i class="mdi mdi-book mr-1"></i>2025</a>
                                         </div>
                                     </div>
 
@@ -187,7 +189,7 @@
                                                         <?php } ?>
 
                                                         <a href="<?= base_url('C_tagihan/hapus/') .  $rowStatus['id'] ?>?wp=<?= $this->uri->segment(4) ?>" class="btn btn-sm btn-danger" title="Hapus"><i class="fas fa-times-circle"></i> Hapus</a>
-                                                        <a href="<?= base_url('admin/wajibpajak/tagihan/sunting/') . $this->uri->segment(4) . '?b='.$b['id'].'&t='.date('Y')?>" class="btn btn-sm btn-dark bg-warning text-dark"><i class="mdi mdi-pencil"></i> Sunting Tagihan</a>
+                                                        <a href="<?= base_url('admin/wajibpajak/tagihan/sunting/') . $this->uri->segment(4) . '?b=' . $b['id'] . '&t=' . date('Y') ?>" class="btn btn-sm btn-dark bg-warning text-dark"><i class="mdi mdi-pencil"></i> Sunting Tagihan</a>
                                                         <a href="#" data-toggle="modal" data-target="#ubah-tagihan-<?= $b['id'] ?>" class="btn btn-sm btn-dark bg-warning text-dark"><i class="mdi mdi-pencil"></i></a>
                                                         <a href="#" data-toggle="modal" data-target="#perhitungan-tagihan-<?= $b['id'] ?>" class="btn btn-sm btn-dark bg-warning text-dark"><i class="mdi mdi-pencil-circle"></i></a>
                                                         <a href="#" data-toggle="modal" data-target="#bukti-tagihan-<?= $b['id'] ?>" class="btn btn-sm btn-dark bg-dark text-light"><i class="mdi mdi-eye"></i></a>
@@ -956,7 +958,7 @@
                                                                                             </table>
                                                                                             <!-- end table  -->
 
-                                                            
+
 
                                                                                             <!-- ==========================================
                                                                                                 END 0 - 50
@@ -978,8 +980,8 @@
                                                                             <div class="form-group text-right">
 
                                                                                 <span>
-                                                                                    <iframe src="<?= base_url() ?>admin/wajibpajak/tagihan/cetak/?t=<?=$rowStatus['id']?>&b=<?=$rowStatus['id_bulan']?>" style="display:none;" name="frame"></iframe>
-                                                                                    <input type="text" value="<?=$rowStatus['id']?>&b=<?=$rowStatus['id_bulan']?>">
+                                                                                    <iframe src="<?= base_url() ?>admin/wajibpajak/tagihan/cetak/?t=<?= $rowStatus['id'] ?>&b=<?= $rowStatus['id_bulan'] ?>" style="display:none;" name="frame"></iframe>
+                                                                                    <input type="text" value="<?= $rowStatus['id'] ?>&b=<?= $rowStatus['id_bulan'] ?>">
                                                                                     <button type="button" class="btn btn-xs btn-primary" onclick="frames['frame'].print()"><i class="fas fa-print mr-1"></i> Cetak</button>
                                                                                 </span>
 
@@ -1045,10 +1047,12 @@
                                                                                 <div class="form-group mb-3">
                                                                                     <label for="kualitas">Kualitas Air Tanah</label>
                                                                                     <select class="form-control" id="example-select" name="kualitas">
-                                                                                            <option></option>
-                                                                                            <?php foreach ($komponen_sda as $ksda) : ?>
-                                                                                            <option value="<?php echo $ksda['bobot'] ?>" <?php if ($ksda['bobot'] == $rowStatus['kualitas']) {  echo 'Selected'; } ?>><?php echo $ksda['kriteria'] ?></option>
-                                                                                            <?php endforeach; ?>
+                                                                                        <option></option>
+                                                                                        <?php foreach ($komponen_sda as $ksda) : ?>
+                                                                                            <option value="<?php echo $ksda['bobot'] ?>" <?php if ($ksda['bobot'] == $rowStatus['kualitas']) {
+                                                                                                                                                echo 'Selected';
+                                                                                                                                            } ?>><?php echo $ksda['kriteria'] ?></option>
+                                                                                        <?php endforeach; ?>
                                                                                     </select>
                                                                                 </div>
 
