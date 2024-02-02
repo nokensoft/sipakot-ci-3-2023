@@ -74,8 +74,8 @@
                                                     <i class="mdi mdi-paperclip"></i>
                                                 </button>
                                                 <div class="dropdown-menu" style="">
-                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/tagihan/new/' . $wajib_pajak['id_wp']) ?>?t=2025">2025</a>
-                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/tagihan/new/' . $wajib_pajak['id_wp']) ?>?t=2024">2024</a>
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2025">2025</a>
+                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2024">2024</a>
                                                     <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2023">2023</a>
                                                     <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2022">2022</a>
                                                     <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak['id_wp']) ?>?t=2021">2021</a>
