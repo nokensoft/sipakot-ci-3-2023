@@ -14,8 +14,8 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="<?=base_url('admin/dasbor')?>">Dasbor</a></li>
-                                            <li class="breadcrumb-item"><a href="<?=base_url('admin/wajibpajak/')?>">Wajib Pajak</a></li>
+                                            <li class="breadcrumb-item"><a href="<?= base_url('admin/dasbor') ?>">Dasbor</a></li>
+                                            <li class="breadcrumb-item"><a href="<?= base_url('admin/wajibpajak/') ?>">Wajib Pajak</a></li>
                                             <li class="breadcrumb-item active">PABT</li>
                                         </ol>
                                     </div>
@@ -25,7 +25,7 @@
                         </div>
                         <!-- end page title -->
 
-                        
+
 
                         <!-- start .row  -->
                         <div class="row">
@@ -33,24 +33,26 @@
                                 <?= $this->session->userdata('message') ?>
                                 <div class="card">
                                     <div class="card-body">
-                                    <div class="row mb-3">
+                                        <div class="row mb-3">
                                             <div class="col-md-12">
                                                 <div class="d-flex justify-content-between">
                                                     <div class="">
-                                                        <div class="btn-group">                                                            
-                                                                <button class="btn btn-secondary bg-secondary text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
-                                                                <span class="btn-label"><i class="mdi mdi-paperclip"></i></span><?=$tahun?></button>
-                                                                <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
-                                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2023">2023</a>
-                                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2022">2022</a>
-                                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2021">2021</a>
-                                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2020">2020</a>
-                                                                    <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2019">2019</a>
-                                                                </div>
+                                                        <div class="btn-group">
+                                                            <button class="btn btn-secondary bg-secondary text-white btn-lg dropdown-toggle waves-effect waves-light ml-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-plugin="tippy" data-tippy-placement="top-start" title="Rekapan">
+                                                                <span class="btn-label"><i class="mdi mdi-paperclip"></i></span><?= $tahun ?></button>
+                                                            <div class="dropdown-menu ml-2" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);" x-placement="bottom-start">
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2025">2025</a>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2024">2024</a>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2023">2023</a>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2022">2022</a>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2021">2021</a>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2020">2020</a>
+                                                                <a class="dropdown-item" href="<?= base_url('admin/wajibpajak/pabt-wp/' . $wajib_pajak[0]['id_wp']) ?>?t=2019">2019</a>
                                                             </div>
+                                                        </div>
                                                     </div>
-                                                    
-                                                  
+
+
                                                 </div>
                                             </div> <!-- end .col  -->
                                         </div> <!-- end .row  -->
@@ -65,9 +67,9 @@
                                                             <tr>
                                                                 <th class="font-weight-bold">No</th>
                                                                 <th class="font-weight-bold">Nama Usaha</th>
-                                                                <?php foreach($bulan as $b):?>
-                                                                    <th class="font-weight-bold"><?=$b['bulan']?></th>
-                                                                <?php endforeach;?>
+                                                                <?php foreach ($bulan as $b) : ?>
+                                                                    <th class="font-weight-bold"><?= $b['bulan'] ?></th>
+                                                                <?php endforeach; ?>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -75,30 +77,31 @@
                                                             foreach ($wajib_pajak as $l) { ?>
                                                                 <tr>
                                                                     <td>
-                                                                        <?=$no; ?>
+                                                                        <?= $no; ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?= $l['usaha_nama'];?>
+                                                                        <?= $l['usaha_nama']; ?>
                                                                     </td>
-                                                                    <?php foreach($bulan as $b):?>
-                                                                    <td>
-                                                                        <?php
-                                                                        error_reporting(0);
-                                                                        $id_wp = $l['id_wp'];
-                                                                        $id_bulan  = $b['id'];
-                                                                        $queryPabt = $this->db->query("SELECT * FROM tagihan WHERE id_wp = '$id_wp' AND tahun = '$tahun' AND id_bulan = '$id_bulan' ")->result_array();
-                                                                        ?>
-                                                                        <?php if($queryPabt[0]['total_pabt'] == null){
-                                                                            echo '-';
-                                                                        }else{
-                                                                            echo rupiah($queryPabt[0]['total_pabt']);
-                                                                        }; ?>
-                                                                    </td>
-                                                                    <?php endforeach;?>
+                                                                    <?php foreach ($bulan as $b) : ?>
+                                                                        <td>
+                                                                            <?php
+                                                                            error_reporting(0);
+                                                                            $id_wp = $l['id_wp'];
+                                                                            $id_bulan  = $b['id'];
+                                                                            $queryPabt = $this->db->query("SELECT * FROM tagihan WHERE id_wp = '$id_wp' AND tahun = '$tahun' AND id_bulan = '$id_bulan' ")->result_array();
+                                                                            ?>
+                                                                            <?php if ($queryPabt[0]['total_pabt'] == null) {
+                                                                                echo '-';
+                                                                            } else {
+                                                                                echo rupiah($queryPabt[0]['total_pabt']);
+                                                                            }; ?>
+                                                                        </td>
+                                                                    <?php endforeach; ?>
 
                                                                 </tr>
 
-                                                            <?php $no++;} ?>
+                                                            <?php $no++;
+                                                            } ?>
                                                         </tbody>
                                                     </table>
                                                     <!-- end table  -->
