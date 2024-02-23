@@ -193,7 +193,7 @@
                                             $queryBulan = $this->db->query("SELECT * FROM bulan WHERE id = " . $tagihan['id_bulan']);
                                             $rowBulan = $queryBulan->row_array();
                                                                                 ?>
-                                            <strong style="font-weight:bold"><?=$rowBulan['bulan']?>
+                                            <strong style="font-weight:bold"><?=$rowBulan['bulan'].' '.$tagihan['tahun']?>
                                         </strong>
                                     </td>
                                </tr>
